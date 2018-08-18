@@ -40,6 +40,10 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
     compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.1'
 
+    //시큐리티
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.0.7.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.7.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.0.7.RELEASE'
 }
 
 // 의존 라이브러리를 다운로드 받을 때 접속할 서버 정보 등록
