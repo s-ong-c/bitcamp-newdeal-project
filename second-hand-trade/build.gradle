@@ -44,6 +44,10 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.0.7.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.7.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.0.7.RELEASE'
+
+	// 구글 메시징 -> 구글 이메일 전
+	compile group: 'org.springframework', name: 'spring-messaging', version: '5.0.7.RELEASE'
+	
 }
 
 // 의존 라이브러리를 다운로드 받을 때 접속할 서버 정보 등록
