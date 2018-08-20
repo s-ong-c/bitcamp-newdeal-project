@@ -3,14 +3,17 @@ package trade.assignment.service.impl;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import trade.assignment.domain.Member;
 import trade.assignment.repository.MemberRepository;
-import trade.assignment.service.memberService;
+import trade.assignment.service.MemberService;
 
 @Service
-public class MemberServiceImpl implements memberService {
+public class MemberServiceImpl implements MemberService {
     
     @Autowired MemberRepository memberRepository;
     
@@ -30,5 +33,7 @@ public class MemberServiceImpl implements memberService {
         params.put("password",password);
         return memberRepository.findByEmailAndPassword(params);
     }
+    
+	
 
 }
