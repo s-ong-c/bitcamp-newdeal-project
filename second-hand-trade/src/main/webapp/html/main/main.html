@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인 화면</title>
+<style type="text/css">
+
+img {
+	height: 25px;
+	width: 25px;
+}
+
+body{
+    height: 100vh;
+}
+
+.jangter {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+    height: 50px;
+	background-color: steelblue;
+}
+
+header #logo {
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
+	position: absolute;
+	left: 3%;
+	top: 0px;
+}
+
+header #sbi{
+    position: absolute;
+    left: 30%;
+    top: 0px;
+    margin-top: 10px;
+}
+header #hRight {
+    margin-top: 10px;
+	position: absolute;
+	right: 15%;
+	top: 0px;
+}
+
+#search{
+    width: 300px;
+}
+
+#sct-s{
+    height: 100%;
+    width: 1050px;
+    display: flex;
+    margin: 0 auto;
+}
+
+#s1{
+    width: 200px;
+    height: 100%;
+    background: antiquewhite;
+    flex: 0 0 200px;
+}
+
+#s2{
+    width: 600px;
+    height: 100%;
+    background: darkred;
+    flex: 0 0 600px;
+}
+
+#s3{
+    width: 300px;
+    height: 100%;
+    background: steelblue;
+    flex: 0 0 300px;
+}
+</style>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>      
+	<div class="jangter">
+        <header>
+            <img id="logo" src="../../images/icons/cart.png">
+            <div id="sbi">
+                <input id="search" type="text">
+                <button id="sBtn">
+                    <img id="sBImg" src="../../images/icons/search.png">
+                </button>
+            </div><!-- #sbi -->
+            <div id="hRight">
+                <img id="profile" src="../../images/icons/profile.png">
+                <button id="myPage">My Page</button>
+                <button id="Logout">Logout</button>
+            </div><!-- #hRight -->
+        </header>
+	</div><!-- #container -->
+	<div id="sct-s">
+	   <section id="s1" class="ss"><!-- 180*404 -->
+	       왼쪽
+	   </section>
+	
+        <section id="s2" class="ss"><!-- 500*6985 -->
+            메인
+        </section>
+    
+        <section id="s3" class="ss"><!-- 308*1156 -->
+            오른쪽
+        </section>
+    </div><!-- #sct-s -->
+    
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../js/jquery.bit.js"></script>
+
+</body>
+</html>
