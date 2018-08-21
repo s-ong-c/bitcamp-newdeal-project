@@ -17,8 +17,7 @@ public class MemberController {
     
     @Autowired 
     MemberService memberService;
-    //@RequestMapping(value ="singUp", method=RequestMethod.POST)
-   @PostMapping("signUp")
+    @PostMapping("signUp")
     public Object signUp(Member member) {
         
        System.out.println(member);

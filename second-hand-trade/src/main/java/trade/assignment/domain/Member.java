@@ -8,7 +8,7 @@ public class Member implements Serializable {
     
 
     
-    private int id;
+    private int no;
 	private String email;
 	private String password;
 	private String name;
@@ -26,11 +26,11 @@ public class Member implements Serializable {
 	
 	private Date regdate;
 	private int postCount;
-	public int getId() {
-		return id;
+	public int getNo() {
+		return no;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getEmail() {
 		return email;
@@ -121,6 +121,14 @@ public class Member implements Serializable {
 	}
 	public void setPostCount(int postCount) {
 		this.postCount = postCount;
+	}
+	@Override
+	public String toString() {
+		return "Member [no=" + no + ", email=" + email + ", password=" + password + ", name=" + name + ", nickname="
+				+ nickname + ", phonenumber=" + phonenumber + ", profilephoto=" + profilephoto + ", website=" + website
+				+ ", intro=" + intro + ", snsID=" + snsID + ", prilevel=" + prilevel + ", userlevel=" + userlevel
+				+ ", sessionkey=" + sessionkey + ", memberAuthKey=" + memberAuthKey + ", regdate=" + regdate
+				+ ", postCount=" + postCount + "]";
 	}
 	
     
