@@ -40,10 +40,7 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
     compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.1'
 
-    //시큐리티
-    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.0.7.RELEASE'
-    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.7.RELEASE'
-    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.0.7.RELEASE'
+
 
 	// 구글 메시징 -> 구글 이메일 전
 	compile group: 'org.springframework', name: 'spring-messaging', version: '5.0.7.RELEASE'

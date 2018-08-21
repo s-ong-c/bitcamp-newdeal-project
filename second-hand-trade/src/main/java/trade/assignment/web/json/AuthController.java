@@ -21,18 +21,19 @@ public class AuthController {
     MemberService memberService;
     //@RequestMapping(value ="singUp", method=RequestMethod.POST)
    @PostMapping("signIn")
-    public Object signUp(String email, String password,boolean saveEmail,HttpSession session) {
+    public Object signUp(String email, String password,boolean saveEmail) {
         
         HashMap<String, Object> result = new HashMap<>();
         
         try {
             Member loginUser = memberService.getMember(email,password);
             
-            
-            if(loginUser ==null) 
-                throw new Exception("로그인 실패");
+            System.out.println(loginUser);
+            if(loginUser ==null) {
+               throw new Exception("로그인 실패");
+            }
            
-            session.setAttribute("loginUser",loginUser);
+           // session.setAttribute("loginUser",loginUser);
             result.put("status","success");
                 
             
@@ -44,5 +45,4 @@ public class AuthController {
             
             return result;
     }
-
 }
