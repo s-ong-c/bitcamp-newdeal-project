@@ -24,7 +24,7 @@ public class MemberController {
         HashMap<String, Object> result = new HashMap<>();
         
         try {
-            memberService.add(member);
+        		memberService.add(member);
             result.put("status", "success");
         }catch (Exception e) {
             result.put("status", "faile");
