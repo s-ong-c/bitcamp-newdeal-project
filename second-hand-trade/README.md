@@ -15,8 +15,13 @@
 - JDK 10
 - gradle
 <<<<<<< HEAD
+<<<<<<< HEAD
 - IDE(eclipse) 
 eerreassd
 =======
 - IDE(eclipse)
 >>>>>>> refs/remotes/origin/dongsu
+=======
+- IDE(eclipse) 
+11
+>>>>>>> refs/remotes/origin/kgm
