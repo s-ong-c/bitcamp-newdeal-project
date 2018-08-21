@@ -23,7 +23,7 @@ $(eNextBtn).click(function() {
 });
 
 function loadList(page, size) {
-    $.getJSON(serverApiAddr + '/json/board/list', // ../..을 못써서 serverApiAddr롤 분리시킴 
+    $.getJSON(serverApiAddr + '/json/board/list',
         {
             page: page,
             size: size
