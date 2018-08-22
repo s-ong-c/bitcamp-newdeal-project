@@ -1,6 +1,8 @@
 'use strict'
 $('#loginBtn').click(() => {
 	
+	   var input = $('.validate-input .input100')
+	   console.log(input);
 
 	
     $.post(`${serverApiAddr}/json/auth/signIn`, {
