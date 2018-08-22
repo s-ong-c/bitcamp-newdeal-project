@@ -30,6 +30,49 @@ public class MemberServiceImpl implements MemberService {
         params.put("password",password);
         return memberRepository.findByEmailAndPassword(params);
     }
+    //이메일 아이디 중복 관련 코드 전송
+   
+    
+    @Override
+    public String authenticate(String str) throws Exception {
+    	
+    	
+    	Member vo =
+    	 	
+    		memberRepository.authenticate(str);
+    		System.out.println("dao vo:"+vo);
+    		if(vo == null) {
+    			return "T";
+    		}else if(vo.getPrilevel() == 0){
+    			return "F";
+    		}else{
+    			return "D";
+    		}
+    
+
+    }
+    
+    
+    
+	//이메일 인증 키 검증
+    @Override
+    public Member userAuth(Member member) throws Exception {
+        Member vo =new Member();
+  		System.out.println(member+"user");
+          vo=memberRepository.chkAuth(member);
+          //System.out.println("ser.userAuth.chkauth"+vo);
+          if(vo!=null){
+              try{
+              	System.out.println(vo+"vo");
+              	memberRepository.userAuth(member);
+                  memberRepository.successAuth(vo);
+              }catch (Exception e) {
+                  e.printStackTrace();
+              }}
+          return vo;
+    }
+    
+ 
     
 	
 

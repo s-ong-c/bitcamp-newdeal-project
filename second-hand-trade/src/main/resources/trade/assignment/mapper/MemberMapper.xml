@@ -13,7 +13,7 @@
        </resultMap>
        
   <insert id="insert" parameterType="Member">
-    insert into P2_MEMB(EMAIL,NAME,PWD) 
+    insert into tbl_user(EMAIL,NAME,PWD) 
     values(#{email},#{name},password(#{password}))
   </insert>
  
@@ -22,10 +22,19 @@
   resultMap="memberMap"
   >
     select MNO,EMAIL, NAME
-    from P2_MEMB
+    from tbl_user
     where EMAIL=#{email} and PWD =password(#{password})
- 
  </select>
+ 
+  <select id="checkdupl"   
+	  parameterType="map"
+	  resultMap="memberMap">
+        SELECT
+            MNO    EMAIL,
+            PRI_LEVEL userState
+        FROM tbl_user
+        WHERE EMAIL = #{email}
+    </select>
 
 </mapper>
 

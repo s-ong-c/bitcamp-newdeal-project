@@ -10,4 +10,15 @@ public interface MemberRepository {
 
     Member findByEmailAndPassword(Map<String,Object> params);
 
+	Member authenticate(String str);
+
+	Member chkAuth(Member member);
+
+	void userAuth(Member member);
+
+	void successAuth(Member vo);
+    
+
+
+	
 }
