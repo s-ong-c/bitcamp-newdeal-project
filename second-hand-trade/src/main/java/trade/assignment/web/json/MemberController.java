@@ -17,15 +17,14 @@ public class MemberController {
     
     @Autowired 
     MemberService memberService;
-    //@RequestMapping(value ="singUp", method=RequestMethod.POST)
-   @PostMapping("signUp")
+    @PostMapping("signUp")
     public Object signUp(Member member) {
         
        System.out.println(member);
         HashMap<String, Object> result = new HashMap<>();
         
         try {
-            memberService.add(member);
+        		memberService.add(member);
             result.put("status", "success");
         }catch (Exception e) {
             result.put("status", "faile");
