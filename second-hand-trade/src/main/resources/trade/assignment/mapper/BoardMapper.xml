@@ -10,6 +10,7 @@
 		<result column="titl" property="title" />
 		<result column="cont" property="content" />
 		<result column="cdt" property="createdate" />
+		<result column="photo" property="photo" />
 	</resultMap>
 
 	<insert id="insert" parameterType="Board">
@@ -18,8 +19,9 @@
 		  WRIT,
 		  TITL,
 		  CONT,
-		  CDT)
-		values(#{no},#{writer},#{title},#{content},now())
+		  CDT,
+		  PHOTO)
+		values(#{no},#{writer},#{title},#{content},now(),#{photo})
 	</insert>
 
 	<select id="selectOne" parameterType="map" resultType="int">
@@ -35,7 +37,9 @@
 		select
 		  TITL,
 		  WRIT,
-		  CDT
+		  CDT,
+		  CONT,
+		  PHOTO
 		from P2_BOARD
 		<if test="startIndex != null and pageSize != null">
 			limit #{startIndex}, #{pageSize}

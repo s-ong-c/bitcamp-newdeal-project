@@ -1,10 +1,19 @@
 package trade.assignment.service.impl;
 
+/*
+ * created by 김동수 on 게시판 서비스 구현
+ * */
+
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import trade.assignment.domain.Board;
 import trade.assignment.repository.BoardRepository;
@@ -14,9 +23,20 @@ import trade.assignment.service.BoardService;
 public class BoardServiceImpl implements BoardService {
 
     @Autowired BoardRepository boardRepository;
+    @Autowired ServletContext sc;
     
     @Override
-    public int add(Board board) {
+    public int add(Board board, MultipartFile photo){
+        // 새 파일명 준비
+        String newfilename = UUID.randomUUID().toString();
+        String path = sc.getRealPath("/files/" + newfilename);
+        
+        try {
+            photo.transferTo(new File(path));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         return boardRepository.insert(board);
     }
     

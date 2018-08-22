@@ -25,6 +25,8 @@ a#eNewBtn {
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
+					<th>내용</th>
+					<th>사진</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -33,7 +35,7 @@ a#eNewBtn {
 			<button id="ePrevBtn" class="btn btn-outline-secondary btn-sm">이전</button>
 			<span id="ePageNo"></span>
 			<button id="eNextBtn" class="btn btn-outline-secondary btn-sm">다음</button>
-			<a id="eNewBtn" href='detailView.html' class="btn btn-primary btn-sm">글작성</a>
+			<a id="eNewBtn" href='boardUp.html' class="btn btn-primary btn-sm">글작성</a>
 		</div>
 	</div>
 	<!-- .container -->
@@ -46,6 +48,8 @@ a#eNewBtn {
        class='viewLink'>{{title}}</a></td>
   <td><a href='#'>{{writer}}</a></td>
   <td>{{createdate}}</td>
+  <td>{{content}}</td>
+  <td>{{photo}}</td>
 </tr>
 {{/each}}
 </script>
