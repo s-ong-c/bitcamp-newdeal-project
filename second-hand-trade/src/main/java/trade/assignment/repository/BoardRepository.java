@@ -1,3 +1,7 @@
+/*
+ * created by 김동수 on 게시판 레포지토리
+ * */
+
 package trade.assignment.repository;
 
 import java.util.HashMap;

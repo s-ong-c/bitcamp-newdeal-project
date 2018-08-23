@@ -3,43 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 등록</title>
-<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/common.css">
 <style>
 div.container {
-    width: 400px;
+	width: 400px;
+}
+
+.file label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #337ab7;
+	font-size: inherit;
+	font-weight: bold;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	line-height: normal;
+}
+
+.file input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 </style>
 </head>
 <body>
-<div class="container">
-<h1>게시글 등록</h1>
+	<div class="container">
+		<h1>게시글 등록</h1>
 
-<form>
-  <div class="form-group">
-    <label for="fWriter">작성자</label>
-    <input type="text" class="form-control" id="fWriter" placeholder="작성자">
-  </div>
-    <div class="form-group">
-    <label for="fTitle">제목</label>
-    <input type="text" class="form-control" id="fTitle" placeholder="게시글 제목을 입력하세요">
-  </div>
-    <div class="form-group">
-    <label for="fContent">글쓰기</label>
-    <textarea class="form-control" id="fContent" rows="6" placeholder="내용을 입력하세요"></textarea>
-  </div>
-  <button id="addBtn" type="button" class="btn btn-primary">완료</button>
-</form>
+		<form enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="fWriter">작성자</label> <input type="text"
+					class="form-control" id="fWriter" placeholder="작성자">
+			</div>
+			<div class="form-group">
+				<label for="fTitle">제목</label> <input type="text"
+					class="form-control" id="fTitle" placeholder="게시글 제목을 입력하세요">
+			</div>
+			<div class="form-group">
+				<label for="fContent">글쓰기</label>
+				<textarea class="form-control" id="fContent" rows="6"
+					placeholder="내용을 입력하세요"></textarea>
+			</div>
+			<div class="form-group file">
+				<label for="fPhoto">사진 선택</label>
+				<div class="form-group">
+					<input type="file" class="form-control" id="fPhoto" multiple> 
+					<img id="image_section" src="#" alt="your image" />
+				</div>
+			</div>
 
-<footer></footer>
+			<button id="addBtn" type="button" class="btn btn-primary">완료</button>
+		</form>
+		<footer></footer>
 
-</div> <!-- .container -->
-
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/jquery.bit.js"></script>
-<script src="js/common.js"></script>
-<script src="boardUp.js"></script>
+	</div>
+	<!-- .container -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="js/jquery.bit.js"></script>
+	<script src="js/common.js"></script>
+	<script src="boardUp.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+/*
+ * created by 김동수 on board 게시판 컨트롤러
+ * */
+
 package trade.assignment.web.json;
 
 import java.util.HashMap;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import trade.assignment.domain.Board;
 import trade.assignment.service.BoardService;
@@ -21,11 +26,10 @@ public class BoardController {
     @Autowired BoardService boardService;
     
     @PostMapping("boardUp")
-    public Object signUp(Board board) {
-        System.out.println(board);
+    public Object BoardUp(Board board, MultipartFile photo) {
         HashMap<String, Object> result = new HashMap<>();
         try {
-            boardService.add(board);
+            boardService.add(board, photo);
             result.put("status", "success");
 
         } catch (Exception e) {

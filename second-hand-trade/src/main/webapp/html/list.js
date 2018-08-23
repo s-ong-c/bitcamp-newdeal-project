@@ -14,11 +14,11 @@ if (page != undefined && size != undefined) {
     loadList(1, 10);
 }
 
-$(ePrevBtn).click(function() {
+$('#ePrevBtn').click(function() {
     loadList(data.page - 1, data.size);
 });
 
-$(eNextBtn).click(function() {
+$('#eNextBtn').click(function() {
     loadList(data.page + 1, data.size);
 });
 
@@ -34,21 +34,23 @@ function loadList(page, size) {
        var trListHTML = trTemplateFn({list: data.list});
        tbody.html(trListHTML);
        
-       $(ePageNo).html(data.page);
+       $('#ePageNo').html(data.page);
        if (data.page <= 1)
-           $(ePrevBtn).attr('disabled', '');
+           $('#ePrevBtn').attr('disabled', '');
        else 
-           $(ePrevBtn).removeAttr('disabled');
+           $('#ePrevBtn').removeAttr('disabled');
        
        if (data.page >= data.totalPage)
-           $(eNextBtn).attr('disabled', '');
+           $('#eNextBtn').attr('disabled', '');
        else
-             $(eNextBtn).removeAttr('disabled');
+             $('#eNextBtn').removeAttr('disabled');
     });
 }
 
 tbody.on('click', 'a.viewLink', function(event) {
     event.preventDefault();
     var id = $(event.target).attr('data-id');
-    location.href = `detailView.html?id=${id}&page=${data.page}&size=${data.size}`;
+    // location.href =
+    // `detailView.html?id=${id}&page=${data.page}&size=${data.size}`;
+    location.href = 'boardUp.html';
 });
