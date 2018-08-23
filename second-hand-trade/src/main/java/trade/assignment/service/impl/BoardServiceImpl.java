@@ -24,42 +24,39 @@ public class BoardServiceImpl implements BoardService {
 
     @Autowired BoardRepository boardRepository;
     @Autowired ServletContext sc;
-    
+
     @Override
-    public int add(Board board, MultipartFile photo){
-        // 새 파일명 준비
+    public int add(Board board, MultipartFile photo) {
         String newfilename = UUID.randomUUID().toString();
         String path = sc.getRealPath("/files/" + newfilename);
-        
         try {
             photo.transferTo(new File(path));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
         return boardRepository.insert(board);
     }
-    
+
     @Override
     public Board getBoard(Board board) {
-        HashMap<String ,Object> params = new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("Board", board);
         return boardRepository.findByWriterAndDateAndTitle(params);
     }
-    
+
     @Override
     public Board get(int no) {
         return boardRepository.selectOne(no);
     }
-    
+
     @Override
     public List<Board> list(int page, int size) {
-        HashMap<String ,Object> params = new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("page", page);
         params.put("size", size);
         return boardRepository.findByPageAndSize(params);
     }
-    
+
     @Override
     public int getTotalPage(int size) {
         return boardRepository.totalPage(size);

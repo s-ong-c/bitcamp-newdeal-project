@@ -53,6 +53,6 @@ $("#fPhoto").change(function(){
                   .css('height', '60px')
                   .appendTo('#image_section');
           });
-      }, 5000);
+      }, 500);
     }
   }); */

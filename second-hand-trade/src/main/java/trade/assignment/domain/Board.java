@@ -6,15 +6,13 @@ package trade.assignment.domain;
 
 import java.sql.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class Board {
     private int no;
     private String writer;
     private String title;
     private String content;
     private Date createdate;
-    private MultipartFile photo;
+    private String photo;
 
     public int getNo() {
         return no;
@@ -56,11 +54,11 @@ public class Board {
         this.createdate = createdate;
     }
 
-    public MultipartFile getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(MultipartFile photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
