@@ -3,19 +3,45 @@ package trade.assignment.service.impl;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
+
+import common.MailHandler;
 import trade.assignment.domain.Member;
 import trade.assignment.repository.MemberRepository;
 import trade.assignment.service.MemberService;
+import common.TempKey;
 
 @Service
 public class MemberServiceImpl implements MemberService {
     
     @Autowired MemberRepository memberRepository;
+    @Autowired
+	private JavaMailSender mailSender;
     
     @Override
-    public int add(Member member) {
+    public int add(Member member) throws Exception {
+    	
+		String key = new TempKey().getKey(50,false);  // 인증키 생성
+		
+		System.out.println(key+"키는??");
+		//memberRepository.createAuthKey(member.getEmail(),key); //인증키 db 저장
+    	
+		//메일 전송
+		MailHandler sendMail = new MailHandler(mailSender);
+		sendMail.setSubject("8AZON  서비스 이메일 인증]");
+		sendMail.setText(
+				new StringBuffer().append("<h1>메일인증</h1>")
+				.append("<a href='http://localhost:8080/auth/emailConfirm?email=")
+				.append(member.getEmail()).append("&memberAuthKey=")
+				.append(key).append("' target='_blank'>이메일 인증 확인</a>")
+				.toString());
+		sendMail.setFrom("sososososo@gmail.com", "서어비스센터 ");
+		sendMail.setTo(member.getEmail());
+		sendMail.send();
+  
         
         return memberRepository.insert(member);
         

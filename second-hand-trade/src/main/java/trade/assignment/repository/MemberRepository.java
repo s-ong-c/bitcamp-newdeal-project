@@ -10,13 +10,15 @@ public interface MemberRepository {
 
     Member findByEmailAndPassword(Map<String,Object> params);
 
-	Member authenticate(String str);
+	Member authenticate(String email);
 
 	Member chkAuth(Member member);
 
 	void userAuth(Member member);
 
 	void successAuth(Member vo);
+	
+	void createAuthKey(String Email, String memberAuthKey) ; // 인증키 발
     
 
 

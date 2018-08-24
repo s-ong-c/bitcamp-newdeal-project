@@ -40,7 +40,7 @@
 
     <mvc:mapping path="/**"
         allowed-origins="*"
-        max-age="100" />
+        max-age="100000" />
 
 </mvc:cors>
 </beans>

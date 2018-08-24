@@ -9,6 +9,7 @@
          <id column="MNO" property="no"/>
          <result column="NAME" property="name"/>
          <result column="EMAIL" property="email"/>
+         <result column="PRI_LEVEL" property="prilevel"/>
          <result column="PWD" property="password"/>
        </resultMap>
        
@@ -19,22 +20,28 @@
  
  <select id="findByEmailAndPassword"
   parameterType="map"
-  resultMap="memberMap"
-  >
+  resultMap="memberMap">
     select MNO,EMAIL, NAME
     from tbl_user
     where EMAIL=#{email} and PWD =password(#{password})
  </select>
  
-  <select id="checkdupl"   
+  <select id="authenticate"   
 	  parameterType="map"
 	  resultMap="memberMap">
         SELECT
-            MNO    EMAIL,
-            PRI_LEVEL userState
+            MNO,
+            EMAIL,
+            PRILEVEL
         FROM tbl_user
         WHERE EMAIL = #{email}
     </select>
+    
+    <update id="createAuthKey">
+        UPDATE tbl_user
+        SET AUTHKEY = #{memberAuthKey}
+        WHERE EMAIL = #{email}
+    </update>
 
 </mapper>
 

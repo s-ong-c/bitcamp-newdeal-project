@@ -17,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="../vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	
+	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
 	<style>
 	#authenticateName{
 		float:right;
@@ -30,16 +30,16 @@
 <body>
 	<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-			<form class="login100-form validate-form">
+			<form class="login100-form validate-form" name="signup" >
 				<span class="login100-form-title p-b-37">
 					 Sign Up 
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="이메일을 입력하세요!!">
-					<input class="input100" type="email" id="fEmail" placeholder="username or email">
+					<input class="input100" type="email" name="fEmail" id="fEmail" onkeyup="checkvalue()" placeholder="username or email" autofocus>
 					<span class="focus-input100"></span>
 				</div>
-
+					<button type="button" class="btn btn-warning" id="authenticate">중복체크</button>
 					<div class="wrap-input100 validate-input m-b-20" data-validate="이름을적어주세요!!">
 					<input class="input100" type="text" id="fName" placeholder="예:>강동원">
 					<span class="focus-input100"></span>
@@ -53,7 +53,9 @@
 					<input class="input100" type="password" id="chkPassword" placeholder="비밀번확인">
 					<span class="focus-input100"></span>
 				</div>
-	
+				<div>
+						<span id="pwsame" name="pwsame"></span>
+			</div>	
 				<div class="container-login100-form-btn">
 					<button class="login100-form-btn" type="button" id="addBtn">
 						가입하기 
@@ -63,8 +65,90 @@
 		</div>
 	</div>
 	<div id="dropDownSelect1"></div>
-	
-	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script>
+
+    var chkid=false;
+    var chkName=false;
+    var chkpass=false;
+    function checkvalue() {
+        if(signup.fPassword.value && signup.chkPassword.value) {
+            if(signup.fPassword.value.trim().length >40){
+                alert("비밀번호는 40자 이내로 입력해 주세요.");
+                return false;
+            }
+            if(signup.chkPassword.value.trim().length >40){
+                alert("비밀번호 확인 40자 이내로 입력해 주세요.");
+                return false;
+            }
+            if(signup.fPassword.value!=signup.chkPassword.value){
+                $('#pwsame').text('비밀번호가 일치하지 않습니다.');
+                $('#pwsame').css("color","red");
+                chkpass=false;
+            }else if(signup.fPassword.value===signup.chkPassword.value) {
+                $('#pwsame').text('비밀번호가 일치합니다.');
+                $('#pwsame').css("color","#2EFE2E");
+                chkpass=true;
+            }
+        } else {
+            $('#pwsame').text('비밀번호가 옳지 않아.');
+            $('#pwsame').css("color","red");
+            chkpass=false;
+        }
+
+    }
+
+
+
+</script>
+<script>
+    $(document).on('click','#authenticate',function(){
+        var email = $('#fEmail').val();
+
+        var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+        if(fEmail.value ==0){
+            alert("이메일이 입력되지 않았습니다.");
+            return false;
+        }
+        if(signup.fEmail.value.length >40){
+            alert("E-mail은 40자 이내로 입력해 주세요.");
+            return false;
+        }
+        else {
+        		
+            $.post(`${serverApiAddr}/json/auth/authenticate`, {
+                'email': $('#fEmail').val()
+  
+            }, (responseMsg) => {
+            		console.log("============")
+            		console.log(responseMsg);
+            		
+            		console.log(responseMsg==='T')
+            if(responseMsg !=null){
+	            	if(responseMsg==='T'){
+	                  
+	                        alert('사용 가능한 이메일입니다.' );
+	                        chkid=true;
+	                    }
+	            	else if(responseMsg==='F'){
+	            		alert('인증 대기중인 이메일 입니다. 인증해주세요.' );
+	            	
+	            	}else{
+	            		alert('이미 사용중인 이메일입니다.');
+	            		}
+            }else{
+            		alert('서버와의 통신이 원할하지 않습니다.\n다시 시도 해 주십시오.' );
+            		console.log(responseMsg.message)
+            	}
+            		
+            }, 'json')
+
+   		 }
+    });
+
+   
+</script>
+<!-- 	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script> -->
 	<script src="../vendor/animsition/js/animsition.min.js"></script>
 	<script src="../vendor/bootstrap/js/popper.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -72,7 +156,7 @@
 	<script src="../vendor/daterangepicker/moment.min.js"></script>
 	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="../vendor/countdowntime/countdowntime.js"></script>
-	<script src="../js/main.js"></script>
+	<!-- <script src="../js/main.js"></script> -->
 	
 	<script src="js/jquery.bit.js"></script>
 	<script src="js/common.js"></script>
