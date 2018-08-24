@@ -1,6 +1,7 @@
 package trade.assignment.service;
 
 import trade.assignment.domain.Member;
+import trade.assignment.dto.LoginDTO;
 
 public interface MemberService {
 	
@@ -11,5 +12,5 @@ public interface MemberService {
 
 	public String authenticate(String email) throws Exception;
 
-
+	public Member googleLogin(LoginDTO dto) throws Exception;
 }

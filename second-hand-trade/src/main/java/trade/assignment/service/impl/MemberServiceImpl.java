@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import common.MailHandler;
 import trade.assignment.domain.Member;
+import trade.assignment.dto.LoginDTO;
 import trade.assignment.repository.MemberRepository;
 import trade.assignment.service.MemberService;
 import common.TempKey;
@@ -95,6 +96,22 @@ public class MemberServiceImpl implements MemberService {
                   e.printStackTrace();
               }}
           return vo;
+    }
+    
+	//구글 oauth login
+    @Override
+    public Member googleLogin(LoginDTO dto) throws Exception {
+    	System.out.println("구글 로그인을 시작한다. ");
+    	Member vo =new Member();
+        vo=memberRepository.naverReadUser(dto);
+        if(vo==null){
+            try{
+            	memberRepository.naverInsertUser(dto);
+            }catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }}
+        return memberRepository.naverReadUser(dto);
     }
     
  

@@ -83,6 +83,24 @@
   <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"/>
   </bean>
+  
+  <!-- 클라이언트ID와 보안비밀 세팅 -->
+<bean id="googleConnectionFactory"
+  class="org.springframework.social.google.connect.GoogleConnectionFactory">
+  <constructor-arg
+    value="34138722145-j8upnor2ujj5hmquiraaflo7au4uu1l3.apps.googleusercontent.com" />
+  <constructor-arg value="PaD2YF9RmeH96TbdexDgI1XX" />
+</bean>
+<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+<bean id="googleOAuth2Parameters"
+  class="org.springframework.social.oauth2.OAuth2Parameters">
+  <property name="scope"
+    value="https://www.googleapis.com/auth/plus.login" />
+    
+  <property name="redirectUri"
+    value="http://localhost:8181/user/googleSignInCallback" />
+</bean>
+		
 
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <property name="basePackage" 

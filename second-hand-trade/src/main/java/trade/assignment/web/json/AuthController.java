@@ -3,10 +3,22 @@ package trade.assignment.web.json;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.google.api.Google;
+import org.springframework.social.google.api.impl.GoogleTemplate;
+import org.springframework.social.google.api.plus.Person;
+import org.springframework.social.google.api.plus.PlusOperations;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.AccessGrant;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +27,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import common.TempKey;
 import trade.assignment.domain.Member;
+import trade.assignment.dto.LoginDTO;
 import trade.assignment.service.MemberService;
 
 @RestController
@@ -73,5 +87,103 @@ public class AuthController {
   		URLEncoder.encode(responseMsg , "UTF-8");
   		return responseMsg;
   	}
+	
+	
+	////////////////////////////////////////////
+	/* GoogleLogin */
+	@Inject
+	private GoogleConnectionFactory googleConnectionFactory;
+	@Inject
+	private OAuth2Parameters googleOAuth2Parameters;
+
+
+
+	@RequestMapping(value = "/googleLogin", method = { RequestMethod.GET, RequestMethod.POST })
+    public String doGoogleSignInActionPage(HttpServletResponse response, Model model) throws Exception{
+        OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+
+//		googleOAuth2Parameters.setRedirectUri("http://localhost:8080/user/googleLogincallback");
+        String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+       // System.out.println("/user/googleLogincallback, url : " + url);
+        model.addAttribute("url",url);
+
+        return "user/googleLogin";
+
+    }
+
+
+    @RequestMapping(value = "/googleSignInCallback")
+    public String doSessionAssignActionPage(HttpServletRequest request, Model model)throws Exception{
+     //System.out.println("/user/googleLogincallback");
+    System.out.println("야 왜 안되냐 뒤질래 가자1");
+        String code = request.getParameter("code");
+
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth2Parameters.getRedirectUri(),
+				null);
+	    System.out.println("야 왜 안되냐 뒤질래 가자2");
+		String accessToken = accessGrant.getAccessToken();
+		System.out.println("야 왜 안되냐 뒤질래 가자22");
+		Long expireTime = accessGrant.getExpireTime();
+		System.out.println("야 왜 안되냐 뒤질래 가자33");
+		if (expireTime != null && expireTime < System.currentTimeMillis()) {
+			accessToken = accessGrant.getRefreshToken();
+			System.out.printf("accessToken is expired. refresh token = {}", accessToken);
+			
+			   System.out.println("야 왜 안되냐 뒤질래 가자3");
+		}
+		Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
+		Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
+		   System.out.println("야 왜 안되냐 뒤질래 가자4");
+		PlusOperations plusOperations = google.plusOperations();
+		Person person = plusOperations.getGoogleProfile();
+
+//		System.out.println("UserVO 전");
+//		System.out.println("person getId: "+person.getId());
+
+	
+		
+        LoginDTO dto = new LoginDTO();
+		TempKey TK = new TempKey();
+
+  //      System.out.println(person.getDisplayName());
+		dto.setEmail("google"+"#"+TK.generateNumber(6));
+        dto.setName(person.getDisplayName()+"#"+TK.generateNumber(5));
+        dto.setSnsID("g"+person.getId());
+        HttpSession session = request.getSession();
+//		System.out.println("controller dto: "+dto);
+
+    	Member member = new Member();
+		try {
+			member = memberService.googleLogin(dto);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+		if(member != null) {
+			session.setAttribute("login", member );
+			//response.sendRedirect("/");
+			//System.out.println(userVO);
+			Object dest = session.getAttribute("dest");
+			if(dest=="user/socialLoginPost"){
+				session.setAttribute("dest","/");
+			}
+			//System.out.println("postHandle dest: "+dest);
+			if(dest==null){
+				session.setAttribute("dest","/");
+			}
+		}else{
+			session.setAttribute("dest","/user/login");
+		}
+
+
+
+//        session.setAttribute("login", vo );
+//		model.addAttribute("userVO",vo);
+		//System.out.println("getAattributeNames"+session.getAttribute(savedest));
+        return "redirect:/user/socialLoginPost";
+    }
 
 }
