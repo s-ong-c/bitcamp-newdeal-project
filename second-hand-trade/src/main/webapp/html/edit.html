@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>프로필 편집</title>
+
 </head>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <style>
@@ -10,6 +11,13 @@ h2{
 	margin:0;
 }
 </style>
+	<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="js/jquery.bit.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/edit.js"></script>
 <script>
 //프로필 수정 후 로딩 될때 메시지 띄우기
 	if ('${result}' == "profileEdit") {
@@ -23,9 +31,9 @@ h2{
 	<main class="_8fi2q _2v79o">
 	<div class="_28rsa">
 	<!-- 사이드바 -->
+	<header></header>
 	<article class="_75z9k"> 
 	<!-- 프로필 사진 -->
-	<jsp:include page="modifyProfilePhoto.jsp" flush="false"></jsp:include>
 	
 	<input type="file" name="file" id="inputfile" accept="image/*"	style="display: none;">
 		<!-- 프로필 변경 폼 -->
@@ -170,7 +178,6 @@ h2{
 	</div>
 	</article> 
 	</main>
-	<jsp:include page="../../common/footer.jsp" flush="false"></jsp:include>
 	</section>
 	</span>
 	<input type="file" name="file" id="inputfile" accept="image/*"
@@ -336,4 +343,5 @@ h2{
 		}
 	}
 </script>
+
 </html>
