@@ -20,6 +20,7 @@ import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 import common.TempKey;
 import trade.assignment.domain.Member;
 import trade.assignment.dto.LoginDTO;
+import trade.assignment.dto.RelationDTO;
 import trade.assignment.service.MemberService;
 
 @RestController
@@ -184,6 +186,31 @@ public class AuthController {
 //		model.addAttribute("userVO",vo);
 		//System.out.println("getAattributeNames"+session.getAttribute(savedest));
         return "redirect:/user/socialLoginPost";
+    }
+    
+    ///////////
+    
+	@RequestMapping(value="{name}", method=RequestMethod.GET)
+    public Object get(@PathVariable("name") String name,HttpSession session ) throws Exception {
+        
+        Member vo = 
+                (Member)session.getAttribute("loginUser");
+        
+        System.out.println(vo);
+        RelationDTO dto=new RelationDTO();
+        dto.setLoginid(vo.getNo());
+        dto.setName(vo.getName());
+        Member member = memberService.userRead(dto);
+        
+        System.out.println(member);
+        System.out.println("=======");
+        HashMap<String, Object> result = new HashMap<>();
+       result.put("status", "success"); 
+       result.put("data", member);
+      // result.put("list", list); 
+       
+        return result;
+        
     }
 
 }

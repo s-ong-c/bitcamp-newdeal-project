@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import common.MailHandler;
 import trade.assignment.domain.Member;
 import trade.assignment.dto.LoginDTO;
+import trade.assignment.dto.RelationDTO;
 import trade.assignment.repository.MemberRepository;
 import trade.assignment.service.MemberService;
 import common.TempKey;
@@ -114,7 +115,16 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.naverReadUser(dto);
     }
     
- 
+    
+	@Override
+	public Member userRead(RelationDTO dto) throws Exception{
+		
+		HashMap<String,Object> params = new HashMap<>();
+		params.put("dto", dto);
+		System.out.println("상세프로필을 읽어오겠다/");
+		return memberRepository.userRead(dto);
+	}
+    
     
 	
 

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import trade.assignment.domain.Member;
 import trade.assignment.dto.LoginDTO;
+import trade.assignment.dto.RelationDTO;
 
 public interface MemberRepository {
 
@@ -25,5 +26,6 @@ public interface MemberRepository {
 
 	public Member naverReadUser(LoginDTO dto) throws Exception; // 네이버 유저읽기( 아직 안됨)
 
-	
+	////profile
+	public Member userRead(RelationDTO dto) throws Exception;
 }
