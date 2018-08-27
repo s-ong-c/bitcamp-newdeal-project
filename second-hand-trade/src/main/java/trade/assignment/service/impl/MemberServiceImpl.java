@@ -3,19 +3,46 @@ package trade.assignment.service.impl;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+
+import common.MailHandler;
 import trade.assignment.domain.Member;
+import trade.assignment.dto.LoginDTO;
+import trade.assignment.dto.RelationDTO;
 import trade.assignment.repository.MemberRepository;
 import trade.assignment.service.MemberService;
+import common.TempKey;
 
 @Service
 public class MemberServiceImpl implements MemberService {
     
     @Autowired MemberRepository memberRepository;
+    @Autowired
+	private JavaMailSender mailSender;
     
     @Override
-    public int add(Member member) {
+    public int add(Member member) throws Exception {
+    	
+		String key = new TempKey().getKey(50,false);  // 인증키 생성
+		
+		System.out.println(key+"키는??");
+		//memberRepository.createAuthKey(member.getEmail(),key); //인증키 db 저장
+    	
+		//메일 전송
+		MailHandler sendMail = new MailHandler(mailSender);
+		sendMail.setSubject("8AZON  서비스 이메일 인증]");
+		sendMail.setText(
+				new StringBuffer().append("<h1>메일인증</h1>")
+				.append("<a href='http://localhost:8080/auth/emailConfirm?email=")
+				.append(member.getEmail()).append("&memberAuthKey=")
+				.append(key).append("' target='_blank'>이메일 인증 확인</a>")
+				.toString());
+		sendMail.setFrom("sososososo@gmail.com", "서어비스센터 ");
+		sendMail.setTo(member.getEmail());
+		sendMail.send();
+  
         
         return memberRepository.insert(member);
         
@@ -72,7 +99,32 @@ public class MemberServiceImpl implements MemberService {
           return vo;
     }
     
- 
+	//구글 oauth login
+    @Override
+    public Member googleLogin(LoginDTO dto) throws Exception {
+    	System.out.println("구글 로그인을 시작한다. ");
+    	Member vo =new Member();
+        vo=memberRepository.naverReadUser(dto);
+        if(vo==null){
+            try{
+            	memberRepository.naverInsertUser(dto);
+            }catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }}
+        return memberRepository.naverReadUser(dto);
+    }
+    
+    
+	@Override
+	public Member userRead(RelationDTO dto) throws Exception{
+		
+		HashMap<String,Object> params = new HashMap<>();
+		params.put("dto", dto);
+		System.out.println("상세프로필을 읽어오겠다/");
+		return memberRepository.userRead(dto);
+	}
+    
     
 	
 

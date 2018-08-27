@@ -9,6 +9,10 @@
          <id column="MNO" property="no"/>
          <result column="NAME" property="name"/>
          <result column="EMAIL" property="email"/>
+         <result column="PRI_LEVEL" property="prilevel"/>
+         <result column="PROFILEPHOTO" property="memberPicture"/>
+         <result column="WEBSITE" property="website"/>
+         <result column="INTRO" property="intro"/>
          <result column="PWD" property="password"/>
        </resultMap>
        
@@ -19,22 +23,61 @@
  
  <select id="findByEmailAndPassword"
   parameterType="map"
-  resultMap="memberMap"
-  >
+  resultMap="memberMap">
     select MNO,EMAIL, NAME
     from tbl_user
     where EMAIL=#{email} and PWD =password(#{password})
  </select>
  
-  <select id="checkdupl"   
+  <select id="authenticate"   
 	  parameterType="map"
 	  resultMap="memberMap">
         SELECT
-            MNO    EMAIL,
-            PRI_LEVEL userState
+            MNO,
+            EMAIL,
+            PRILEVEL
         FROM tbl_user
         WHERE EMAIL = #{email}
     </select>
+    
+    <update id="createAuthKey">
+        UPDATE tbl_user
+        SET AUTHKEY = #{memberAuthKey}
+        WHERE EMAIL = #{email}
+    </update>
+    
+        <insert id="naverInsertUser">
+        INSERT INTO tbl_user (EMAIL, SNSID, NAME)
+        VALUES (#email}, #{snsID}, #{name})
+    </insert>
+
+    <select id="naverReadUser"   parameterType="map"
+	  resultMap="memberMap">
+        SELECT
+            MNO,
+            name    name,
+            EMAIL   email,
+            PROFILEPHOTO 
+        FROM tbl_user
+        WHERE SNSID = #{snsID}
+    </select>
+    
+    
+    	<!-- 특정 유저데이터 읽기 -->
+	<select id="userRead" parameterType="map"
+	  resultMap="memberMap">
+        SELECT 
+        MNO, 
+        email, 
+        name, 
+         WEBSITE website, 
+         profilephoto memberPicture, 
+         INTRO intro
+		FROM
+		tbl_user
+		WHERE name=#{name}
+       
+	</select>
 
 </mapper>
 
