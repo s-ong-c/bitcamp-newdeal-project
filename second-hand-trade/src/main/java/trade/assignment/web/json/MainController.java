@@ -31,7 +31,7 @@ public class MainController {
 		
 		HttpSession session=request.getSession();
 		Member vo=(Member)session.getAttribute("login");
-		
+		System.out.println(vo);
 		System.out.println(vo+"??어디까지 들어온;?");
 
 		if(vo!=null){
