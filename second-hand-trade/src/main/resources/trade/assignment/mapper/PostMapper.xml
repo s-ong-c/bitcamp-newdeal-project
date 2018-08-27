@@ -23,10 +23,10 @@
 			pa.postid = pls.postid) plsa
 			
         join
-			(select u.id, u.NICKNAME as USERNICKNAME, u.PROFILEPHOTO
-			from tbl_follow f join tbl_user u on f.FOLLOWEDID = u.ID and f.userid = #{userid} or u.id = #{userid} group by u.id) as uf
+			(select u.MNO, u.NAME as USERNAME, u.PROFILEPHOTO
+			from tbl_follow f join tbl_user u on f.FOLLOWEDID = u.MNO and f.userid = #{userid} or u.MNO = #{userid} group by u.MNO) as uf
 		on
-			plsa.USERID = uf.id
+			plsa.USERID = uf.MNO
 		order by p_regdate DESC, a_regdate DESC
 	</select>
 

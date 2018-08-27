@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,13 +29,18 @@ public class MainController {
 		System.out.println("main이다");
 		
 		HttpSession session=request.getSession();
-		Member vo=(Member)session.getAttribute("login");
-		System.out.println(vo);
-		System.out.println(vo+"??어디까지 들어온;?");
+		System.out.println(session.toString());
+		System.out.println("======");
+		Member loginUser=(Member)session.getAttribute("loginUser");
+		System.out.println(session);
+		System.out.println(loginUser+"??어디까지 들어온;?");
+		
+		 session.setAttribute("loginUser",loginUser);
 
-		if(vo!=null){
-				model.addAttribute("list", service.mainRead(vo.getNo())); //세션 아이디값을 통해 현재 팔로우중인 유저들의 게시물정보 및 유저정보 등을 받아옴
-				session.setAttribute("loginUser",vo);
+		if(loginUser!=null){
+				model.addAttribute("list", service.mainRead(loginUser.getNo())); //세션 아이디값을 통해 현재 팔로우중인 유저들의 게시물정보 및 유저정보 등을 받아옴
+				
+				result.put("loginUser",loginUser);
 				result.put("status","success");
 		}
 		
