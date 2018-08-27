@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+div.container {
+    width: 800px;
+    font-size: small;
+}
+
+#content {
+    margin-top: 30px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+#edit-menu {
+    float: left;
+    width: 25%;
+    margin: 0;
+}
+
+#edit-menu>ul {
+    margin: 0;
+    padding: 0;
+}
+
+#edit-menu li {
+    list-style: none;
+}
+
+#edit-content {
+    float: left;
+    border-left: 1px solid black;
+    min-height: 500px;
+    width: 75%;
+    text-align: center;
+    padding-bottom: 20px
+}
+
+#edit-content>form {
+    height: auto;
+}
+
+#edit-content label {
+    text-align: right;
+}
+
+#profile-r {
+    display: inline-block;
+    width: auto;
+    height: 100px;
+    margin: 11px;
+    text-align: left;
+}
+
+#profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 3px;
+}
+
+.a-check {
+    bottom: 10px;
+}
+
+.s-check {
+    bottom: 10px;
+    left: 14px;
+}
+
+#btn-auth {
+    margin-left: 5px;
+}
+
+#profile-box {
+    margin: 20px 0 30px 0;
+}
+
+#edit-menu-list {
+    width: 100%;
+}
+
+#pwd-form{
+	margin-top: 20px;
+}
+
+
+/* 찜 */
+
+#zzim-r {
+    min-height: 500px;
+    text-align: center;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.product {
+    list-style: none;
+    border: 1px solid black;
+    width: 270px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    overflow: hidden;
+
+}
+
+.product>strong {
+    display: block;
+}
+
+.detail {
+    margin: 1px 15px;
+}
+
+.product>button {
+    float: right;
+}
+
+.btn-x-right {
+    text-align: right;
+}
+
+/* ---------img--------- */
+.product-img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+
+}
+
+.detail:hover .product-img {
+    opacity: 0.8;
+}

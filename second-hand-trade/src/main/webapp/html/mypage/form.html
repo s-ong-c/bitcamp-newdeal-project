@@ -1,0 +1,72 @@
+<form>
+    <div id="profile-box">
+        <img id="profile-img" src="p1.jpg">
+        <div id="profile-r">
+            <h3>SONGC</h3>
+            <a data-toggle="modal" href="#img-edit-modal">프로필 사진 수정</a>
+            <!-- Modal -->
+            <div class="modal fade" id="img-edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">프로필 변경</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="file">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">변경</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="f-name" class="col-sm-3 col-form-label">이름</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control form-control" id="f-name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="f-email" class="col-sm-3 col-form-label">이메일</label>
+        <div class="col-sm-6">
+            <input type="email" class="form-control" id="f-email">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="f-site" class="col-sm-3 col-form-label">웹사이트</label>
+        <div class="col-sm-8">
+            <input type="tel" class="form-control" id="f-site">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="f-tel" class="col-sm-3 col-form-label">전화번호</label>
+        <div class="col-sm-5">
+            <input type="tel" class="form-control" id="f-tel">
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="f-auth-check">
+            <label class="a-check custom-control-label" for="f-auth-check"></label>
+        </div>
+        <button id="btn-auth" type="button" class="btn btn-outline-primary btn-sm">인증하기</button>
+    </div>
+    <div class="form-group row">
+        <label for="f-memo" class="col-sm-3 col-form-label">소개</label>
+        <div class="col-sm-8">
+            <textarea class="form-control" id="f-memo" rows="4"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="f-secret" class="col-sm-3 col-form-label">비공개</label>
+        <div class="custom-control custom-checkbox col-sm-1 p-0">
+            <input type="checkbox" class="custom-control-input" id="f-secret-check">
+            <label class="s-check custom-control-label" for="f-secret-check"></label>
+        </div>
+    </div>
+    <button id="btn-submit" type="button" class="btn btn-primary btn-sm">제출하기</button>
+</form>
