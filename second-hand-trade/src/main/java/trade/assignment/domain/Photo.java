@@ -1,11 +1,11 @@
 package trade.assignment.domain;
 
-import java.security.Timestamp;
+import java.sql.Date;
 
 public class Photo {
     private int no;
     private String URL;
-    private Timestamp regdate;
+    private Date regdate;
     public int getNo() {
         return no;
     }
@@ -18,10 +18,10 @@ public class Photo {
     public void setURL(String uRL) {
         URL = uRL;
     }
-    public Timestamp getRegdate() {
+    public Date getRegdate() {
         return regdate;
     }
-    public void setRegdate(Timestamp regdate) {
+    public void setRegdate(Date regdate) {
         this.regdate = regdate;
     }
     @Override

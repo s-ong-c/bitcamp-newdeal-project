@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import trade.assignment.domain.Photo;
 import trade.assignment.repository.PhotoRepository;
-import trade.assignment.web.json.PhotoService;
+import trade.assignment.service.PhotoService;
 
 @Service
 public class PhotoServiceImpl implements PhotoService {

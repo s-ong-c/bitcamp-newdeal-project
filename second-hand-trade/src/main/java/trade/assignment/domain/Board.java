@@ -54,11 +54,11 @@ public class Board {
         this.createdate = createdate;
     }
 
-    public String getPhoto() {
+    public String getphoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setphoto(String photo) {
         this.photo = photo;
     }
 
