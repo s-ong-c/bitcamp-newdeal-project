@@ -4,6 +4,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,9 +43,27 @@ public class AuthController {
     @Autowired 
     MemberService memberService;
    @PostMapping("signIn")
-    public Object signUp(String email, String password,boolean saveEmail,HttpSession session) {
+    public Object signUp(String email, 
+    		String password,
+    		boolean saveEmail,
+    		HttpSession session,
+    		 HttpServletResponse response) {
         
         HashMap<String, Object> result = new HashMap<>();
+        
+        Cookie cookie = null;
+        if (saveEmail) {
+            // 입력폼에서 로그인할 때 사용한 ID를 자동으로 출력할 수 있도록
+            // 웹브라우저로 보내 저장시킨다.
+            cookie = new Cookie("email", email);
+            cookie.setMaxAge(60 * 60 * 24 * 7);
+        } else { 
+            cookie = new Cookie("email", "");
+            cookie.setMaxAge(0); // 웹브라우저에 "id"라는 이름으로 저장된 쿠키가 있다면 제거한다.
+        }
+
+        response.addCookie(cookie);
+        System.out.println(cookie+"??");
         
         try {
             Member loginUser = memberService.getMember(email,password);
@@ -66,6 +85,21 @@ public class AuthController {
             
             return result;
     }
+   
+   @RequestMapping("/logout")
+   public String logout(
+           HttpServletRequest request,
+           HttpSession session) throws Exception {
+	   
+	   System.out.println("로그인아웃을 하러 왔단다왔단");
+       // 세션을 꺼내 무효화시킨다
+	   session.removeAttribute("loginUser");
+       session.invalidate();
+
+       // 웹 애플리케이션의 시작 페이지로 가라고 웹브라우저에게 얘기한다.
+       return "/index.html"; // 
+   }
+   
    //유저 email 중복 체크
   	//@PostMapping(value = "/authenticate" ,  produces = "application/json; charset=utf-8")
 	@RequestMapping(value = "/authenticate" , method = RequestMethod.POST, produces = "application/json; charset=utf-8")
