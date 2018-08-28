@@ -6,6 +6,7 @@
             return;
         }
        console.log(result.loginUser.name);
+       var name =  $('#login-name').html();
        $('#login-name').html(result.loginUser.name);
   	 $.getJSON(`${serverApiAddr}/json/edit/`+name, (result) => {
 			console.log(result);
