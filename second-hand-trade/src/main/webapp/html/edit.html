@@ -18,6 +18,7 @@ h2{
 	<script src="js/jquery.bit.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/edit.js"></script>
+	<script src="main/main.js"></script>
 	<script src="edit.js"></script>
 <script>
 //프로필 수정 후 로딩 될때 메시지 띄우기
@@ -59,7 +60,7 @@ h2{
 				<aside class="_kx10g"> <label>사용자 이름</label> </aside>
 				<div class="_cd2n1">
 					<input type="text" id="f-name" class="_4abhr _o716c"
-						name="nickname" value="${userVO.nickname }" onkeyup="validCheck(this)">
+						name="nickname" value="" onkeyup="validCheck(this)">
 				</div>
 			</div>
 			<!-- 에러 메세지 표시 -->
@@ -74,9 +75,9 @@ h2{
 			<div class="_e1xik">
 				<aside class="_kx10g"> <label>웹사이트</label> </aside>
 				<div class="_cd2n1">
-					<input type="text" id="website" name="website"
+					<input type="text" id="f-website" name="website"
 						class="_4abhr _o716c" onkeyup="validCheck(this)"
-						value="${userVO.website }" >
+						value="" >
 						<label class="err" id="errWeb"
 						style="padding: 5px; font-weight: 600; font-size:20px; cursor: pointer; display:none">X</label>
 				</div>
@@ -87,7 +88,7 @@ h2{
 			<div class="_e1xik">
 				<aside class="_kx10g"> <label>소개</label> </aside>
 				<div class="_cd2n1">
-					<textarea id="intro" name="intro" onkeyup="validCheck(this)"
+					<textarea id="intro" name="f-intro" onkeyup="validCheck(this)"
 						class="_jlcqs"
 						style="width: 500px; height: 150px; resize: none; overflow: hidden; overflow-y: scroll;">${userVO.intro }</textarea>
 				</div>
@@ -108,7 +109,7 @@ h2{
 				<aside class="_kx10g"> <label>이메일</label></aside>
 				<div class="_cd2n1">
 					<input type="text" name="email" class="_4abhr _o716c"
-						value="somony79@naver.com" readonly="readonly">
+						value="" readonly="readonly">
 				</div>
 			</div>
 			<!-- 전화번호 -->
