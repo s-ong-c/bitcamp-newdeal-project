@@ -19,7 +19,8 @@
 
   <context:component-scan base-package="trade.assignment.web.json">
   </context:component-scan>
-
+	
+	
   <mvc:annotation-driven enable-matrix-variables="true">
       <mvc:message-converters>
           <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -35,7 +36,19 @@
           </bean>
       </mvc:message-converters>
   </mvc:annotation-driven>
+  
+			<!-- 최대 용량설정 -->
+<bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="maxUploadSize" value="104857600"></property>
+</bean>
 
+<!-- 업로드 패스 설정 -->
+  <bean class="java.lang.String" id="uploadPath">
+<constructor-arg value="faint1122"> </constructor-arg>
+</bean>
+	
+	
   <mvc:cors>
 
     <mvc:mapping path="/**"
@@ -43,6 +56,7 @@
         max-age="100000" />
 
 </mvc:cors>
+</beans>
 
 <!--  <mvc:interceptors>
     <mvc:interceptor>
@@ -52,7 +66,6 @@
         <bean class="trade.assignment.web.json.interceptor.AuthInterceptor"/>
     </mvc:interceptor>
 </mvc:interceptors>  -->
-</beans>
 
 
 
