@@ -6,6 +6,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -329,7 +330,8 @@ $(document).ready(function() {
         let no = $(this).data('no');
     
         $.ajax({
-			url : "/deleteFile",
+			//url : "/deleteFile",
+			url:`${serverApiAddr}/json/upload/deleteFile`,
 			type : "post",
 			data : {
 				fileName : $(this).attr("data-src")
@@ -378,19 +380,30 @@ $(document).ready(function() {
 			str += "<input type='hidden' name='files' value='" + JSON.stringify(data) + "'> ";
 			
 			cnt++;
+	
+
     	});
-    	//사진 없으면 업로드 실패
-		if(cnt==0){
-			alert("이미지나 동영상을 추가하세요.");
+    	
+    	if(cnt==0){
+			alert("이미지나 동영상을 추가하세요.");1
 			return false;
 		}
+    	//사진 없으면 업로드 실패
 		
-		//첨부파일 추가
 		form.append(str);
-		form.attr("action", "/post/register");
-		
+		form.attr("action", `${serverApiAddr}/json/post/register`);
 		form.submit();
+		
+    
     });
+	/* 	
+		//첨부파일 추가
+		
+		//
+		form.attr("action", `${serverApiAddr}/html/register.html`);
+		
+		form.submit(); */
+ 
     
     //필터 적용
    $(".hide-bullets > li > a").on("click", function(){
@@ -519,7 +532,6 @@ function selectUploadImaage(obj){
 	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="../vendor/countdowntime/countdowntime.js"></script>
 	<script src="../js/main.js"></script>
-	
 	<script src="../html/js/jquery.bit.js"></script>
 	
 </html>

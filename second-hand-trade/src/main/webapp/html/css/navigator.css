@@ -1,0 +1,74 @@
+@charset "UTF-8";
+nav {
+    display: flex;
+    flex-direction: column;
+    border-right: solid 1px rgba(0,0,0,0.2);
+}
+nav > section {
+    padding: 0 16px;
+}
+#profile {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin: 16px 0 8px 0;
+}
+#profileImage {
+    height:50px;
+    width:50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#profileName {
+    font-size: 20px;
+    margin: 0 auto 0 10px;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+.profilePopup{
+	display: none;
+}
+
+.sideItems {
+    padding: 0 8px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.sideItems:hover  {
+	background-color: rgba(96,213,218,0.2);
+}
+.selected {
+	background-color: rgba(96,213,218,0.2);
+}
+.selected:hover {
+	background-color: rgba(96,213,218,0.5);
+}
+
+.navIcon{
+    font-size: 20px;
+    color: rgba(0,0,0,0.3);
+}
+.navTitle{
+	height:100%;
+	display:flex;
+	align-items: center;
+    padding-left:10px;
+    margin-right:auto;
+}
+.countPlan{
+    font-size:12px;
+}
+#addtype{
+	height: 75%;
+	font-size: 17px;
+	padding-left:10px;
+    line-height: normal;
+    width: 80%;
+    margin-left: 10px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 1em 0.15em rgba(0,0,0,0.1);
+}

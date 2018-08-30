@@ -29,6 +29,23 @@
 			plsa.USERID = uf.MNO
 		order by p_regdate DESC, a_regdate DESC
 	</select>
+	
+		<!-- 유저 게시글 읽기 -->
+	<select id="read" resultType="trade.assignment.domain.Post">
+		select pa.*, likeCount, replyCount from
+			(select p.id as ID, p.USERID, p.CAPTION, p.CATEID, group_concat(a.url separator '|') as url, p.regdate as p_regdate
+			from tbl_post p left join tbl_attach a on p.id = a.POSTID group by postid order by a.url) pa
+		left join
+			(select p.id, count(*) as likeCount from tbl_post p right join tbl_post_like l on p.id=l.postid group by p.id) pl
+		on
+		pa.id=pl.id
+		left join
+			(select p.id, count(*) as replyCount from tbl_post p right join tbl_reply r on p.id=r.postid group by p.id) pr
+		on
+		pa.id=pr.id
+		where userid=#{userid}
+		order by p_regdate desc
+	</select>
 
 </mapper>
 
