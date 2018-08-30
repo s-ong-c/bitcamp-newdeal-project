@@ -2,11 +2,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../vendor/animsition/js/animsition.min.js"></script>
+	<script src="../vendor/bootstrap/js/popper.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendor/select2/select2.min.js"></script>
+	<script src="../vendor/daterangepicker/moment.min.js"></script>
+	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="../vendor/countdowntime/countdowntime.js"></script>
+	<script src="../js/main.js"></script>
+	
+	<script src="../html/js/jquery.bit.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
 <title>Insert title here</title>
@@ -118,7 +124,7 @@
 	
 </style>
 
-<link href="../../resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 
 
 <body>
@@ -137,22 +143,15 @@
 		<!-- 프사, 닉네임 -->
 		<header class="_7b8eu _9dpug">
 			<div class="_82odm _i2o1o">
-				<a class="_pg23k _jpwof _gvoze" href="/member/${userVO.nickname}" style="width: 30px; height: 30px;">
+				<a class="_pg23k _jpwof _gvoze" href="#" style="width: 30px; height: 30px;">
 				<img class="_rewi8"
-				src="
-						<c:if test="${userVO.profilephoto ne null && userVO.profilephoto != '' }">
-							/displayFile?fileName=${userVO.profilephoto}
-						</c:if>
-						<c:if test="${userVO.profilephoto eq null || userVO.profilephoto == '' }">
-							../../resources/img/emptyProfile.jpg
-						</c:if>
-				">
+				src="emptyProfile.jpg">
 				</a>
 			</div>
 			<div class="_j56ec">
 				<div class="">
 					<div class="_eeohz">
-						<a class="_2g7d5 notranslate _iadoq" title="${userVO.nickname }" href="/member/${userVO.nickname}">${userVO.nickname }</a>
+						<a class="_2g7d5 notranslate _iadoq" title="" href="#">song</a>
 					</div>
 				</div>
 				<div class="_60iqg">
@@ -166,33 +165,7 @@
 					<div>
 						<div class="_e3il2 _gxii9">
 							<div class="_4rbun " id="imgdiv" >
-							<c:forEach var="file" items='${files}' varStatus='status'>
-								<c:if test="${file.fileType eq 'image'}">
-										<img alt="이미지" class="_2di5p " id="image${status.index}" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122${file.fileUrl }" srcset=""
-										style="<c:out value="${status.index eq 0 ? '' : 'display: none;'}"/> ">
-										
-										<c:if test = "${status.index eq 0}">
-											<script>
-												$('#imgdiv').css("padding-bottom", $('#image${status.index}').height()/6+"%");
-												$("#imgdiv").attr("class", "_4rbun ${file.filter}");
-											</script>
-										</c:if> 
-									</c:if>
-	<!-- 								<c:if test="${file.fileType eq 'video'}">
-										<video class="_2di5p " id="video${status.index}" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122${file.fileUrl }" loop="true" 
-										<c:out value="${status.index eq 0 ? 'autoplay' : ''}"/>
-										style="<c:out value="${status.index eq 0 ? '' : 'display: none;'}"/> ">
-										<c:if test = "${status.index eq 0}">
-											<script>
-												document.getElementById('video${status.index}').onloadeddata = function() { 
-													$('#imgdiv').css("padding-bottom", $(this).height()/6+"%");
-													$("#imgdiv").attr("class", "_4rbun ${file.filter}");
-												};
-											</script>
-										</c:if>
-										</video>
-								</c:if> -->
-							</c:forEach>
+
 						</div>
 							<div class="_si7dy"></div>
 						</div>
@@ -200,14 +173,13 @@
 					<!-- 왼쪽 이미지 이동 버튼 -->
 					<a class="_5wmqs _pak6p coreSpriteLeftChevron" role="button" id="moveLeft" style ="display: none"><i class="fa fa-chevron-circle-left"style="font-size: 30px; color: lightgray;"></i></a>
 					<!-- 오른쪽 이미지 이동 버튼 -->
-					<a class="_5wmqs _by8kl coreSpriteRightChevron" role="button" id="moveRight" style="<c:out value="${fn:length(files) eq 1 ? 'display: none;' : ''}"/>">
-					<i class="fa fa-chevron-circle-right" style="font-size: 30px; color: lightgray;"></i></a>
+					<a class="_5wmqs _by8kl coreSpriteRightChevron" role="button" id="moveRight" />
+					<i class="fa fa-chevron-circle-right" style="font-size: 30px; color: lightgray;"></i>
 					<!-- 사진 몇개인지 표시 -->
 					<div class=" _g5463"> 
 						<table class="_4ag49">
 							<tbody>
 							<tr>
-							<c:forEach var="file" items='${files}' varStatus='status'>
 							<!-- 현재 표시중인 이미지 위치는  _c0g09 -->
 								<td><div class="_5zbvx _c0g09"></div></td>
 								<td><div class="_5zbvx"></div></td>
@@ -223,36 +195,9 @@
 		</div>
 		<div class="_ebcx9">
 		<section class="_hmd6j _8oo9w"style="display: inline-block">
-		<!-- 카테고리 선택 -->
-	 	<div class="form-group" style="display: inline-block; margin-top: 5px; margin-bottom:0px">
-	        <div data-toggle="buttons" style="display: inline-block;">
-	          <label class="btn btn-default btn-circle">
-	          	<input type="radio" id="cate1" name="categorys" value="1">
-	          		<i class="glyphicon glyphicon-plane" checked></i>
-	          	</label>
-	          <label class="btn btn-default btn-circle">       
-	          	<input type="radio" id="cate2" name="categorys" value="2">
-	          	<i class="glyphicon glyphicon-film"></i>
-	          	</label>
-	          	<label class="btn btn-default btn-circle">       
-	          		<input type="radio" id="cate3" name="categorys" value="3">
-	          		<i class="glyphicon glyphicon-music"></i>
-	    		</label>
-	    		<label class="btn btn-default btn-circle">       
-	          		<input type="radio" id="cate4" name="categorys" value="4">
-	          		<i class="fa fa-cutlery"></i>
-	    		</label><label class="btn btn-default btn-circle">       
-	          		<input type="radio" id="cate5" name="categorys" value="5">
-	          		<i class="fa fa-pencil"></i>
-	    		</label>
-	        </div>
-	        
-	      </div>
+
 	        <div style="display: inline-block; position:  absolute;top:5px;right:0;">
-		        <!-- 위치 추가 -->
-		        <label class="btn btn-default btn-circle" id="addLocation" >
-		       			<i class="fa fa-map-o"></i>
-		        </label>
+		
 	        </div>
         <!-- <input type="hidden" id='cateid' name='cateid' placeholder="Enter cateid"> -->
       </section>
@@ -280,57 +225,11 @@
 	</section>
 	</span>
 </body>
-<!-- <script type="text/javascript" src="/resources/js/upload.js"></script> -->
+ <script type="text/javascript" src="upload.js"></script>
 <!-- 구글맵 api -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDzpqYW7uB7zVuh5_QgruzBNcsFt71fkI&callback=initMap" async="" defer=""></script>
 
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
-<script id="modalMapTemplate" type="text/x-handlebars-template"> 
-	<div class="_pfyik" role="dialog" onclick="callRemoveDialog(event)">
-	<div class="_23gmb"></div>
-	<div class="_o0j5z" onclick="callRemoveDialog(event)">
-	<div class="_784q7" id="modalChangeProfilePhoto" >
-<div style="display: inline-block; width: 500px; height: 35px;text-align:right" >
 
-		<input id="modalAddress" type="textbox" value="" placeholder="Enter address">
- <label class="btn btn-default btn-circle" id="findLocation" >
-	       			<i class="fa fa-search"></i>
-	        </label>		
- <label class="btn btn-default btn-circle" id="getLocation" >
-	       			<i class="fa fa-map-marker"></i>
-	        </label>
- <label class="btn btn-default btn-circle" id="confirm_button" >
-	       			<i class="glyphicon glyphicon-ok"></i>
-	        </label>
-</div>
-		<div id="map" style="width:500px; height:500px; display: block;"></div>
-	</div>
-		</div>
-		<button class="_dcj9f"  onclick="callRemoveDialog(event)">닫기</button>
-	</div> 
-<style>
-._pfyik{background-color:rgba(0,0,0,.5);bottom:0;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;left:0;overflow-y:auto;-webkit-overflow-scrolling:touch;position:fixed;right:0;top:0;z-index:1}
-._dcj9f{background:0 0;border:0;cursor:pointer;height:36px;outline:0;overflow:hidden;position:absolute;right:0;top:0;z-index:2}
-._dcj9f::before{color:#fff;content:'\00D7';display:block;font-size:36px;font-weight:600;line-height:36px;padding:0;margin:0}
-._784q7{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;margin:auto;max-width:935px;pointer-events:auto;width:100%}
-._23gmb{bottom:0;left:0;pointer-events:none;position:fixed;right:0;top:0;z-index:0}
-._23gmb *{pointer-events:auto}
-._o0j5z{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;min-height:100%;overflow:auto;width:auto;z-index:1}
-@media (min-width:481px){._o0j5z{padding:0 40px;pointer-events:none;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
-._o0j5z::after,._o0j5z::before{content:'';display:block;-webkit-flex-basis:40px;-ms-flex-preferred-size:40px;flex-basis:40px;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0}}
-@media (max-width:480px){._23gmb,._dcj9f{display:none}}
-
-._h74gn{background:#fff;border:0;color:#262626;cursor:pointer;font-size:16px;font-weight:400;line-height:50px;margin:0;overflow:hidden;padding:0 16px;text-align:center;text-overflow:ellipsis;white-space:nowrap;width:100%}
-._h74gn:hover{background-color:#efefef}
-._hql7s,._o2wxh{background-color:#fff;border-bottom:1px solid #dbdbdb}
-._o2wxh:last-child{border-bottom-width:0}
-._hql7s{color:#999;font-size:16px;font-weight:600;line-height:50px;text-align:center}
-@media (min-width:736px){._hql7s,._o2wxh{min-width:510px}}
-@media (min-width:414px) and (max-width:735px){._cepxb,._hql7s,._o2wxh{width:100%}}
-@media (min-width:414px){._cepxb{margin:0 auto}}
-</style>
-</script>
  <script>
 	$(document).ready(function() {
 		
@@ -385,50 +284,7 @@
 			form.submit(); 
 		});
 		
-		//위치
-		$("#addLocation").on("click", function() {
-			
-			var template = Handlebars.compile($("#modalMapTemplate").html());
-			$("#react-root").after(template);
-			$("body").attr("sytle","position: fixed; top: -"+$(window).scrollTop()+"px; width: 100%;");
-			$("#react-root").attr("aria-hidden","true");
-			
-			$("._784q7").on("click",function(event){
-				event.stopPropagation();
-			});
-			
-			//맵초기화
-			initMap();
-		 	//맵초기화 끝나고 현재 접속한 위치 GPS로 읽기
-			if($("#address").text() == null || $("#address").text() == ""){
-				navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-			}
-			else{
-				geocoding($('#address').text());
-			}
-			
-			// 모달 창 닫기 버튼
-			$("#modalclose").click(function(event) {
-				callRemoveDialog(event);
-			});
-	
-			// 모달 창 안에 있는 확인 버튼에 이벤트 걸기
-			$("#confirm_button").click(function(evnet) {
-				$("#address").attr("title", $('#modalAddress').val());
-				$('#address').text($('#modalAddress').val());
-				callRemoveDialog(evnet);
-			});
-			
-			$("#findLocation").click(function() {
-				//지도에 현재 위치 표시, 위도경도 읽어옴
-				geocoding($('#modalAddress').val());
-			});
-			
-			$("#getLocation").click(function() {
-				//지도에 현재 위치 표시, 위도경도 읽어옴
-				navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-			});
-		});
+		//위치 
 		
 		//오른쪽으로 넘기기
 		$("#moveRight").on("click",function(){
@@ -550,109 +406,6 @@
 		$("#react-root").attr("aria-hidden","false");
 		$("div[role='dialog']").remove();
 	}
-	
-	var map, geocoder, marker;
-	function initMap(){
-		var mapObj = document.getElementById('map');
-		//맵 객체 없을땐 리턴
-		if(mapObj == null || typeof mapObj == "undefined"){
-			return;
-		}
-		geocoder = new google.maps.Geocoder();
-		map = new google.maps.Map(mapObj, {
-			center : {
-			lat : -34.397, lng : 150.644},
-			zoom : 14
-		});
-		marker = new google.maps.Marker();
-		/* infoWindow = new google.maps.InfoWindow({
-			map : map
-		}); */
-		
-		/* //맵 선택시 새로운 주소 읽어들이고 마킹 바꾸기
-		map.addListener('click', function(event) {
-			//이벤트에서 위치정보 읽어옴
-			var latlng = event.latLng;
-			//위치정보의 주소 읽어들임
-			reverseGeocoding(latlng);
-	  	});  */
-	}
-	
-	function getLocation(){
-		//지도에 현재 위치 표시, 위도경도 읽어옴
-		navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-	}
-	function findLocation(){
-		//지도에 현재 위치 표시, 위도경도 읽어옴
-		geocoding();
-	}
-	
-	//getCurrentPosition메서드 성공하면 불러지는 함수
-	//위도,경도 지정
-	//지도의 가운데 마킹
-	function successCallback(position) {
-		let latlng = {
-			lat : position.coords.latitude,
-			lng : position.coords.longitude
-		};
-		//역지오코딩 호출
-		reverseGeocoding(latlng);
-		
-		//infoWindow.setPosition(latlng);
-		map.setCenter(latlng);
-	}
-	
-	function errorCallback(error) {
-		alert("Error: " + error.message);
-	}
-
-	//GPS정보로 주소 이름 가져오기
-	function reverseGeocoding(latlng){
-		geocoder.geocode({
-			'location' : latlng
-		}, function(results, status) {
-			if (status === 'OK') {
-				if (results[1]) {
-					marker.setPosition(latlng);
-					marker.setMap(map);
-					$("#modalAddress").val(results[1].address_components[1].long_name 
-							+ " " + results[1].address_components[0].long_name);
-					//+ results[1].address_components[2]);
-					//infoWindow.setContent(results[5].formatted_address);
-					//infoWindow.open(map, marker);
-    	  			//$('#hiddenAddress').val(results[5].formatted_address);
-				} else {
-					window.alert('No results found');
-				}
-			} else {
-				window.alert('Geocoder failed due to: ' + status);
-			}
-		});
-	}
-
-	//지오코딩
-	//이름으로 gps위치 얻기
-	function geocoding(str) {
-		if(str == null || str =="" || typeof str == "undefined") return;
-		var modalAddress = str;
-		geocoder.geocode({
-			'address' : modalAddress
-		}, function(results, status) {
-			if (status == 'OK') {
-				marker.setPosition(results[0].geometry.location);
-				marker.setMap(map);
-				//infoWindow.setContent(results[0].formatted_address);
-				//infoWindow.open(map, marker);
-				//$('#hiddenAddress').val(results[0].formatted_address);
-				map.setCenter(results[0].geometry.location);
-			} else {
-				alert('검색결과가 없습니다.');
-			}
-		});
-	}
-	
-	
-	
-	
 </script>
+
 </html>
