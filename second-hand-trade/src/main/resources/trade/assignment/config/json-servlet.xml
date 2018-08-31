@@ -56,19 +56,19 @@
         max-age="100000" />
 
 </mvc:cors>
-</beans>
 
-<!--  <mvc:interceptors>
+
+  <mvc:interceptors>
     <mvc:interceptor>
         <mvc:mapping path="/**"/>
         <mvc:exclude-mapping path="/auth/**"/>
         <mvc:exclude-mapping path="/member/signUp"/>
         <bean class="trade.assignment.web.json.interceptor.AuthInterceptor"/>
     </mvc:interceptor>
-</mvc:interceptors>  -->
+</mvc:interceptors>  
 
 
-
+</beans>
 
 
 

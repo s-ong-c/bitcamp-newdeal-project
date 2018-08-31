@@ -57,7 +57,7 @@ $('#loginBtn').click(() => {
         'saveEmail':$('#fSaveEmail').prop('checked')
     }, (result) => {
         if(result.status==='success'){
-        		location.href='html/main/mainTest.html'
+        		location.href='html/main/main.html'
         }else{
         	alert('로그인 실패')
         }
