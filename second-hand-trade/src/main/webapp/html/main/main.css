@@ -1,0 +1,250 @@
+
+ ::-webkit-scrollbar {
+    width: 18px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkslateblue;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+    {
+    width: 16px;
+    height: 16px;
+    background: white;
+    color: darkslateblue;
+    8
+}
+ 
+img {
+    height: 25px;
+    width: 25px;
+}
+
+body {
+    height: 100vh;
+    font-family: SourceSansPro-Bold;
+    font-size: 16px;
+    background: rgba(93, 84, 240, 0.5);
+    background: -webkit-linear-gradient(left, rgba(0, 168, 255, 0.5),
+        rgba(185, 0, 255, 0.5));
+    background: -o-linear-gradient(left, rgba(0, 168, 255, 0.5),
+        rgba(185, 0, 255, 0.5));
+    background: -moz-linear-gradient(left, rgba(0, 168, 255, 0.5),
+        rgba(185, 0, 255, 0.5));
+    background: linear-gradient(left, rgba(0, 168, 255, 0.5),
+        rgba(185, 0, 255, 0.5));
+    scrollbar-arrow-color: darkslateblue;
+}
+
+#jangter {
+    background-image: url('../../images/bg-01.jpg');
+    opacity: 0.8;
+}
+
+#sct-s {
+    height: 100%;
+    width: 1050px;
+    display: flex;
+    margin: 0 auto;
+}
+
+#s1 {
+    top: 60px;
+    width: 200px;
+    height: 100%;
+    flex: 0 0 200px;
+    position: fixed;
+    margin-top: 23px;  
+}
+
+#s2 {
+    top: 60px;
+    width: 600px;
+    height: 100%;
+    border: 1px solid white;
+    flex: 0 0 600px;
+    color: white;
+    margin-top: 60px;
+    margin-left: 200px;
+}
+
+#s3 {
+    top: 60px;
+    width: 300px;
+    height: 100%;
+    border: 1px solid white;
+    flex: 0 0 300px;
+    color: white; 
+/*  margin-top: 60px; */
+    position: fixed;
+    margin-left: 800px;
+}
+
+.aa {
+
+    width: 100%;
+}
+
+.aa1 {
+    height: 73px;
+    color: white;
+    text-align: center;
+    line-height: 45px; 
+}
+
+.ctgrLinks {
+    background-color: white;  
+    margin-top: 10px;
+    border: none; /*none*/
+    border-radius: 18px;
+    box-shadow: none;
+    cursor: pointer;
+    height: 50px;
+    width: 170px;
+}
+.ctgrLinks-p{
+      background: -webkit-linear-gradient(left, rgba(0, 168, 255, 0.5), 
+         rgba(185, 0, 255, 0.5)); 
+     -webkit-background-clip: text; 
+     -webkit-text-fill-color: transparent; 
+    font-size: 17px;
+    font-weight: bold;
+/*     font-color: white; */
+}
+.active{
+	background: #efedf7;
+}
+
+.aa2 {
+    height: 470px;
+    text-align: center;
+    border: solid 1px white;
+}
+
+.boardSpace {
+    width: 100%;
+    height: 15px;
+}
+
+.boardInfo {
+    width: 100%;
+    height: 40px;
+}
+
+.boardPic {
+    width: 100%;
+    height: 370px;
+    background-color: darkslateblue;
+}
+
+.boardPrice {
+    width: 100%;
+    height: 30px;
+    text-align: right;
+}
+
+.aa3 {
+    height: 270px;
+    text-align: center;
+    line-height: 270px;
+    border: solid 1px white;
+}
+
+/*본문 사진 슬라이드 시작*/
+.mySlides {display: none}
+.bd-img {
+	vertical-align: middle;
+	height: 500px;
+	width: 100%;
+    max-width: 760px;
+	align: middle;
+	}
+
+.slideshow-container {
+  position: relative;
+  margin: auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* .text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+} */
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active-d, .dot:hover {
+  background-color: #717171;
+}
+
+.fade-pic {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+/*본문 사진 슬라이드 끝*/
+
