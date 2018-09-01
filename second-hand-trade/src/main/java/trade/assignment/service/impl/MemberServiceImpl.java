@@ -124,7 +124,39 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("상세프로필을 읽어오겠다/");
 		return memberRepository.userRead(dto);
 	}
-    
+	
+	//회원정보읽기
+	@Override
+	public Member read(Integer id) throws Exception{
+		return memberRepository.read(id);
+	}
+	
+	
+	//비밀번호 체크
+	@Override
+	public int checkPassWord(int id, String pw) throws Exception {
+		return memberRepository.checkPassWord(id, pw);
+	}
+	
+	//비밀번호 수정
+	@Override
+	public void modifypassUser(Member vo) throws Exception{
+		System.out.println("여기 모디 파이 패스 실행 ");
+		System.out.println("dao.vo 입력 값"+vo);
+		System.out.println(vo.getPassword().toString()+"입력받은 비밀번호 ");
+		
+		System.out.println("암호화된 비밀번호 : "+vo.getPassword());
+		try {
+			System.out.println("실행실행 실행 ");
+			memberRepository.successAuth(vo);
+			memberRepository.updatePassword(vo);
+			System.out.println("///////////////////////변경하자 ");
+
+		}catch (Exception e){
+			System.out.println("모디파이 패스 유저 되라 11111111111");
+			e.printStackTrace();
+		}
+	}
     
 	
 

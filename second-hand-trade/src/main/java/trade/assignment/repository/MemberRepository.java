@@ -28,4 +28,10 @@ public interface MemberRepository {
 
 	////profile
 	public Member userRead(RelationDTO dto) throws Exception;
+	
+	public Member read(Integer id) throws Exception;
+	
+	public int checkPassWord(int id, String pw) throws Exception; //비밀번호 체크
+	
+	public void updatePassword(Member vo) throws Exception; //패스워드 변경
 }

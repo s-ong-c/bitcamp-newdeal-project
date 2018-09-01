@@ -78,6 +78,44 @@
 		WHERE name=#{name}
        
 	</select>
+		<!-- 특정 유저데이터 읽기 -->
+	<select id="read" parameterType="map"
+	  resultMap="memberMap">
+		SELECT *
+		FROM
+		tbl_user
+		WHERE MNO=#{id}
+	</select>
+	
+		<!-- 이전 비번 확인 -->
+	<select id="checkPassWord" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM
+		tbl_user
+		WHERE MNO=#{id}
+		AND BINARY PWD= password(#{password})
+	</select>
+	
+	    <!-- 비밀번호 변경 -->
+   	<update id="updatePassword">
+        UPDATE tbl_user
+        SET
+            PWD =password(#{password})
+        WHERE MNO = #{id}
+    </update>
+    	<!-- 사용자가 인증키 확인시 -->
+	<update id="successAuth">
+        UPDATE tbl_user
+        SET
+            AUTHKEY = NULL,
+            prilevel =1
+        WHERE MNO = #{id}
+    </update>
+    
+ 
+	
+	
+	
 
 </mapper>
 

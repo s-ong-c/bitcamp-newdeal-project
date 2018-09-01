@@ -17,4 +17,10 @@ public interface MemberService {
 	
 	public Member userRead(RelationDTO dto) throws Exception;
 	// user 프로필 읽어오
+	public Member read(Integer id) throws Exception; //회원정보읽기
+	
+	public int checkPassWord(int id, String pw) throws Exception; //비밀번호 체크
+	
+	public void modifypassUser(Member vo) throws Exception; //비밀번호 수정
+	
 }
