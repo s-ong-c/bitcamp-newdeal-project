@@ -88,29 +88,45 @@
 	</select>
 	
 		<!-- 이전 비번 확인 -->
-	<select id="checkPassWord" resultType="java.lang.Integer">
+<!-- 	<select id="checkPassWord" resultType="java.lang.Integer">
 		SELECT count(*)
 		FROM
 		tbl_user
-		WHERE MNO=#{id}
+		WHERE MNO id = #{id}
 		AND BINARY PWD= password(#{password})
-	</select>
+	</select> -->
+	 <select id="checkPassWord"
+  parameterType="map"
+  resultMap="memberMap">
+    select MNO,EMAIL, NAME
+    from tbl_user
+    where MNO=#{id} and PWD =password(#{password})
+ </select>
+	
 	
 	    <!-- 비밀번호 변경 -->
-   	<update id="updatePassword">
+<!--    	<update id="updatePassword">
         UPDATE tbl_user
         SET
             PWD =password(#{password})
-        WHERE MNO = #{id}
-    </update>
+        WHERE MNO = #{no}
+    </update> -->
+    
+      <update id="updatePassword" parameterType="member">
+    update tbl_user
+    SET
+       PWD =password(#{password})
+    where 
+        MNO = #{no} 
+  </update>
     	<!-- 사용자가 인증키 확인시 -->
-	<update id="successAuth">
+	<!-- <update id="successAuth">
         UPDATE tbl_user
         SET
             AUTHKEY = NULL,
             prilevel =1
         WHERE MNO = #{id}
-    </update>
+    </update> -->
     
  
 	

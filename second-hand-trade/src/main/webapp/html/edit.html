@@ -21,15 +21,9 @@ h2{
 	<script src="js/jquery.bit.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/edit.js"></script>
-	<script src="side.js"></script>
 	<script src="edit.js"></script>
-<script>
-//프로필 수정 후 로딩 될때 메시지 띄우기
-	if ('${result}' == "profileEdit") {
-		//프로필 수정일 경우 프로필 편집 활성화
-		alert("프로필이 저장되었습니다.");
-	}
-</script>
+	<script src="side.js"></script>
+	
 <body>
 <span id="react-root" aria-hidden="false">
 	<section class="_sq4bv _29u45">
@@ -128,30 +122,11 @@ h2{
 						style=" padding: 5px; font-weight: 600; font-size:20px; cursor: pointer; display:none">X</label>
 				</div>
 			</div>
-			<!-- 성별 -->
-			<div class="_e1xik">
-				<aside class="_kx10g"> <label>성별</label> </aside>
-				<div class="_cd2n1">
-					<div class="_sx05v">
-						<span class="_4v6lq _8scx2 coreSpriteChevronDownGrey"></span> <select
-							id="sex" name="sex" class="_nxkvc">
-							<option value="0">선택 안함</option>
-							<option value="1">남성</option>
-							<option value="2">여성</option>
-						</select>
-					</div>
-				</div>
-				<script>
-					$("#sex option:eq(${userVO.sex})").prop("selected", true);
-				</script>
-
-			</div>
-			<!-- 비공개유무 -->
-
-			<!-- 제출 -->
+			
 			<div class="_e1xik">
 				<aside class="_kx10g _ldhkl">
-				<label></label></aside>
+				<label></label>
+				</aside>
 				<div class="_cd2n1">
 					<div class="_eqmpg">
 						<span class="_ov9ai">

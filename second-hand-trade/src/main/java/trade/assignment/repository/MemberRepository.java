@@ -31,7 +31,6 @@ public interface MemberRepository {
 	
 	public Member read(Integer id) throws Exception;
 	
-	public int checkPassWord(int id, String pw) throws Exception; //비밀번호 체크
-	
+	Member checkPassWord(Map<String,Object> params) throws Exception; //비밀번호 체크
 	public void updatePassword(Member vo) throws Exception; //패스워드 변경
 }

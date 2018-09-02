@@ -134,8 +134,13 @@ public class MemberServiceImpl implements MemberService {
 	
 	//비밀번호 체크
 	@Override
-	public int checkPassWord(int id, String pw) throws Exception {
-		return memberRepository.checkPassWord(id, pw);
+	public Member checkPassWord(int id, String password) throws Exception {
+	        HashMap<String, Object> params = new HashMap<>();
+	        params.put("id", id);
+	        params.put("password",password);
+		System.out.println("비밀번호확인하러왔다.");
+		//return memberRepository.checkPassWord(id, password);
+		return memberRepository.checkPassWord(params);
 	}
 	
 	//비밀번호 수정
@@ -145,10 +150,9 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("dao.vo 입력 값"+vo);
 		System.out.println(vo.getPassword().toString()+"입력받은 비밀번호 ");
 		
-		System.out.println("암호화된 비밀번호 : "+vo.getPassword());
 		try {
 			System.out.println("실행실행 실행 ");
-			memberRepository.successAuth(vo);
+			//memberRepository.successAuth(vo);
 			memberRepository.updatePassword(vo);
 			System.out.println("///////////////////////변경하자 ");
 

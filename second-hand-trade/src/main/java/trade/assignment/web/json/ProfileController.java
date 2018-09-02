@@ -75,18 +75,34 @@ public class ProfileController {
 
 		//pw중복확인
 		@RequestMapping(value = "/profile/edit/chkPW", method = RequestMethod.GET)
-		public int checkPW(@RequestParam("userid") int userid, @RequestParam("pw") String pw) throws Exception {
+		public Object checkPW(@RequestParam("id") int id, @RequestParam("password") String password) throws Exception {
+			
+			  HashMap<String, Object> result = new HashMap<>();
 			System.out.println("비번확인으로하러");
 			System.out.println("checkPW...................");
-			System.out.println("userid : " + userid);
-			System.out.println("pw : " + pw);
-			return memberService.checkPassWord(userid, pw);
+			System.out.println("id : " + id);
+			System.out.println("password : " + password);
+			  try {
+			Member passCh = memberService.checkPassWord(id, password);
+			if(passCh == null) {
+				System.out.println("-------");
+				return 0;
+			}
+			result.put("status","success");
+			System.out.println("성공");
+			 }
+			  catch(Exception e) {
+			  result.put("status","success");
+			  }
+			return 1;
 		}
 		
 		// 비밀번호 수정
 		@RequestMapping(value = "/profile/passwordChange", method = RequestMethod.POST)
-		public Object passwordChangePOST(Member user, RedirectAttributes rttr) throws Exception {
+		public Object passwordChangePOST(Member user, RedirectAttributes rttr,  HttpSession session) throws Exception {
 			System.out.println("profile edit POST..............");
+			
+			
 			System.out.println(user.toString());
 			
 			HashMap<String, Object> result = new HashMap<>();

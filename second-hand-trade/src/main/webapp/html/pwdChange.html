@@ -1,4 +1,9 @@
-
+	<section class="_sq4bv _29u45">
+	<main class="_8fi2q _2v79o">
+	<div class="_28rsa">
+	<!-- 사이드바 -->
+	<header></header>
+	<article class="_75z9k">
 
 	<input type="file" name="file" id="inputfile" accept="image/*"	style="display: none;">
 		<!-- 비밀번호 변경 폼 -->
@@ -44,6 +49,8 @@
 		
 	<input type="file" name="file" id="inputfile" accept="image/*"
 		style="display: none;">
+		
+		
 		
 		<!-- 공통 처리 import -->
 <script src="../js/common.js"></script>
@@ -91,9 +98,31 @@
 				}
 			});
 			if(errFlg) return;
-			var formObj = $("#pwChangeForm");
-			
-			formObj.submit();
+		$.getJSON(`${serverApiAddr}/json/edit/profile/passwordChange`, function(data) {
+				
+				console.log(data);
+				console.log(data.Member.no);
+				var no =data.Member.no
+				var name = data.Member.no;
+		    $.post(`${serverApiAddr}/json/edit/profile/passwordChange`, {
+		        'no':data.Member.no,
+		    		'password': $('#newPw').val()
+		 
+		    }, (result) => {
+
+		        if (result.status !== 'success') return;
+		        swal("비밀번호변경완료!!!", "잃어버리지마세요!!");
+          			  setTimeout(function () {
+          				 location.reload();
+          			  }, 1000);
+		    }, 'json')
+		    .fail(() => {
+		        alert('서버 요청 중 오류 발생!')
+		    });
+			/* var formObj = $("#pwChangeForm");
+		
+			formObj.submit(); */
+		});
 		});
 	}); //end ready
 	
@@ -168,24 +197,30 @@
 				
 				console.log(data);
 				console.log(data.Member.no);
+				var no =data.Member.no
+				var name = data.Member.no;
+				//비밀번호 일치 확인
+				$.getJSON(`${serverApiAddr}/json/edit/profile/edit/chkPW`,{id:no, password: $(obj).val()}, function(data) {
+					//data != 1 불일치, 1 일치
+					
+					if (data == 1) {
+						//글자색 검정
+						errMsg= "비밀번호가 일치합니다.";
+						color ="#999";
+					} else {
+						//글자색 빨강
+						errMsg= "비밀번호가 일치하지 않습니다.";
+						color ="red";
+					}
+					$("#chkprevPw").css("color", color);
+					$("#chkprevPw").text(errMsg);
+				});
 				
 			});
 			
-			//비밀번호 일치 확인
-			$.getJSON(`${serverApiAddr}/json/edit/profile/edit/chkPW`, function(data) {
-				//data != 1 불일치, 1 일치
-				if (data == 1) {
-					//글자색 검정
-					errMsg= "비밀번호가 일치합니다.";
-					color ="#999";
-				} else {
-					//글자색 빨강
-					errMsg= "비밀번호가 일치하지 않습니다.";
-					color ="red";
-				}
-				$("#chkprevPw").css("color", color);
-				$("#chkprevPw").text(errMsg);
-			});
+			console.log()
+			
+	
 			break;
 		default:
 			return;
@@ -207,5 +242,6 @@
 			$("#btnChangePW").attr("disabled",true);
 		}
 	}
+
 </script>
 

@@ -1,16 +1,5 @@
 'use strict'
 
-$('#edit2').on('click', (e) => {
-	console.log("edit2 클릭");
-    $('#edit2')
-        .removeClass('_fvhml _etlo6');
-    $(e.target).addClass('._fvhml _t0stc');
-    
-    $('#edit1').removeClass('._fvhml _t0stc');
-    		$(e.target).addClass('_fvhml _etlo6');
-    	  
-});
-
 $('#edit1').on('click', (e) => {
 	console.log("edit1 클릭");
     $('#edit1')
@@ -20,10 +9,8 @@ $('#edit1').on('click', (e) => {
     $('#edit2').removeClass('._fvhml _t0stc');
     		$(e.target).addClass('_fvhml _etlo6');
 });
-console.log("aa");
 //회원탈퇴
-$('#edit3').on('click', (e) => {
-	
+$('a#edit3').on('click', (e) => {
 	swal({
 		  title: '정말 탈퇴하겠습니까?',
 		  text: "기존 게시글은 삭제가 됩니다.",
@@ -44,9 +31,15 @@ $('#edit3').on('click', (e) => {
 		  });
 
 })
-   
 
 $('#edit2').on('click', (e) => {
+    $('#edit2')
+    .removeClass('_fvhml _etlo6');
+    $(e.target).addClass('._fvhml _t0stc');
+
+    $('#edit1').removeClass('._fvhml _t0stc');
+		$(e.target).addClass('_fvhml _etlo6');
+	  
 	console.log("비밀번호 변경하러가자")
 	  $.ajax({
 	        type: 'GET',

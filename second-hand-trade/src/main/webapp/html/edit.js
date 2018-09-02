@@ -1,19 +1,20 @@
 'use strict'
-
   $.getJSON(`${serverApiAddr}/json/main/mainTest`, (result) => {
         if (result.status !== 'success') {
             return;
         }
        console.log(result.loginUser.name);
+       console.log(result.loginUser.no);
+       
        var name =  $('#login-name').html();
        $('#login-name').html(result.loginUser.name);
   	 $.getJSON(`${serverApiAddr}/json/edit/`+name, (result) => {
 			console.log(result);
 			
-		    if (result.status !== 'success') {
-		 
-	            return;
-	        }
+//		    if (result.status !== 'success') {
+//		 
+//	            return;
+//	        }
 		   $('#f-name').val(result.data.name);
 	       $('#f-email').val(result.data.email);
 	       $('#f-nickname').val(result.data.nickname);
@@ -31,11 +32,12 @@
     		
     		 $.getJSON(`${serverApiAddr}/json/edit/`+name, (result) => {
     			console.log(result);
-    			
-    		    if (result.status !== 'success') {
-    		 
-    	            return;
-    	        }
+    			console.log("----")
+    			console.log(result.status);
+//    		    if (result.status !== 'success') {
+//    		 
+//    	            return;
+//    	        }
     		   	  $('#f-name').val(result.data.name);
    		       $('#f-email').val(result.data.email);
    		       $('#f-nickname').val(result.data.nickname);
@@ -49,5 +51,5 @@
     		 })
     })	
 
-
+ 
 
