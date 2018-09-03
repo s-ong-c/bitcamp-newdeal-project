@@ -161,7 +161,35 @@ public class MemberServiceImpl implements MemberService {
 			e.printStackTrace();
 		}
 	}
-    
 	
+	
+	//프로필 사진 변경
+//	@Override
+//	public void modifyPhoto(Integer id, String profilephoto) throws Exception {
+//		System.out.println("여기서12222");
+//		 memberRepository.updatePhoto(id, profilephoto);
+//		 
+//	}
+//		//비밀번호 수정
+	@Override
+	public void modifyPhoto(int no,String profilephoto) throws Exception{
+		System.out.println("여기 모디 파이 패스 실행 ");
+		System.out.println("dao.vo 입력 값"+profilephoto);
+		System.out.println("dao.vo 입력 값"+no);
+		//System.out.println(vo.getProfilephoto().toString()+"입력받은 사 ");
+		Member vo = new Member();
+		vo.setNo(no);
+		vo.setProfilephoto(profilephoto);
+		try {
+			System.out.println("실행실행 실행 ");
+			//memberRepository.successAuth(vo);
+			memberRepository.updatePhoto(vo);
+			System.out.println("///////////////////////변경하자 ");
+
+		}catch (Exception e){
+			System.out.println("모디파이 패스 유저 되라 11111111111");
+			e.printStackTrace();
+		}
+	}
 
 }

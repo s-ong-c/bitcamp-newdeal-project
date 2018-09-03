@@ -17,14 +17,13 @@ margin:0;
 		</button>
 	</div>
 		<div class="_ax54t">
-			<h1 class="_gvhl0" id="login-name">이름:</h1> 
+			<h1 class="_gvhl0" id="login-name1"></h1> 
 			<a class="_5aav8 linkChangeProfilePotho" href="javascript:;">프로필
 				사진 수정</a>
 		</div>
 	</div>
-	
 </body>
-
+<script src="upload.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
@@ -128,7 +127,7 @@ $(document).ready(function(){
 			formData.append("file", this);
 
 			$.ajax({
-				url : '/uploadAjax',
+				url:`${serverApiAddr}/json/upload/uploadAjax`,
 				data : formData,
 				dataType : 'text',
 				processData : false,
@@ -151,7 +150,7 @@ $(document).ready(function(){
 		var data_src = $("#btnChangePhoto").children("img").attr("src").substr(22);
 		//첨부파일 삭제
 		$.ajax({
-			url : "/deleteFile",
+			url:`${serverApiAddr}/json/upload/deleteFile`,
 			type : "post",
 			data : {
 				//data-src 첨부파일 fullname
@@ -186,11 +185,17 @@ $(document).ready(function(){
 	}
 	//프로필 사진 DB업데이트
 	function updatePhoto(fullName){
+		  $.getJSON(`${serverApiAddr}/json/main/mainTest`, (result) => {
+		        if (result.status !== 'success') {
+		            return;
+		        }
+		       console.log(result.loginUser.name);
+		       console.log(result.loginUser.no);
 		$.ajax({
-			url : '/member/profile/edit/modifyPhoto',
+			url : `${serverApiAddr}/json/edit/profile/edit/modifyPhoto`,
 			data : {
-				"userid": userid,
-				"fileName": fullName
+				"no": result.loginUser.no,
+				"profilephoto": fullName
 			},
 			dataType : 'text',
 			type : 'POST',
@@ -205,6 +210,7 @@ $(document).ready(function(){
 					}
 			}
 		}); //ajax end
+		});
 	}
 </script>
 </html>

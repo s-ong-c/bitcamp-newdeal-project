@@ -8,11 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -118,5 +116,32 @@ public class ProfileController {
 			}
 			System.out.println(rttr.toString());
 			return result;
+		}
+		
+		//프로필 사진 수정
+		@RequestMapping(value = "/profile/edit/modifyPhoto", method = RequestMethod.POST)
+		public Object profilePhothoEdit (@RequestParam("no") int no, @RequestParam("profilephoto") String profilephoto,HttpSession session) throws Exception {
+			
+			//@RequestParam("id") int id, @RequestParam("fileName") String fileName,
+			System.out.println("profilePhothoEdit POST..............");
+			System.out.println(profilephoto.toString());
+			
+			HashMap<String, Object> result = new HashMap<>();
+			System.out.println("비번확인으로하러");
+			System.out.println("checkPW...................");
+			System.out.println("id : " + no);
+			System.out.println("fileName : " + profilephoto);
+			try { 
+				//memberService.modifyPhoto(id, fileName);
+				memberService.modifyPhoto(no,profilephoto);
+				result.put("status", "success"); 
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				
+				
+			}
+			 
+			 return 1;
 		}
 }

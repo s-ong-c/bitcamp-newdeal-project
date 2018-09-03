@@ -1,6 +1,7 @@
 package trade.assignment.web.json;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import trade.assignment.domain.Member;
+import trade.assignment.domain.Post;
+import trade.assignment.dto.FollowinPostDTO;
 import trade.assignment.service.PostService;
 
 @RestController
@@ -39,8 +42,10 @@ public class MainController {
 
 		if(loginUser!=null){
 				model.addAttribute("list", service.mainRead(loginUser.getNo())); //세션 아이디값을 통해 현재 팔로우중인 유저들의 게시물정보 및 유저정보 등을 받아옴
-				
+				List<FollowinPostDTO> list = service.mainRead(loginUser.getNo());
+				System.out.println(list.toString());
 				result.put("loginUser",loginUser);
+				result.put("list",list);
 				result.put("status","success");
 		}
 		

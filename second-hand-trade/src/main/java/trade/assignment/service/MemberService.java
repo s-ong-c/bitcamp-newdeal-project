@@ -23,4 +23,6 @@ public interface MemberService {
 	
 	public void modifypassUser(Member vo) throws Exception; //비밀번호 수정
 	
+	//public void modifyPhoto(Integer id, String fileName) throws Exception; //프로필 사진 변경
+	public void modifyPhoto(int no, String profilephoto) throws Exception;
 }

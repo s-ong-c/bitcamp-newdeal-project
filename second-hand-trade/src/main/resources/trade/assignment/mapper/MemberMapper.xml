@@ -8,9 +8,11 @@
     <resultMap type="member" id="memberMap">
          <id column="MNO" property="no"/>
          <result column="NAME" property="name"/>
+         <result column="NICKNAME" property="nickname"/>
          <result column="EMAIL" property="email"/>
+         <result column="PROFILEPHOTO" property="profilephoto"/>
+         <result column="PHONENUMBER" property="phonenumber"/>
          <result column="PRI_LEVEL" property="prilevel"/>
-         <result column="PROFILEPHOTO" property="memberPicture"/>
          <result column="WEBSITE" property="website"/>
          <result column="INTRO" property="intro"/>
          <result column="PWD" property="password"/>
@@ -18,13 +20,18 @@
        
   <insert id="insert" parameterType="Member">
     insert into tbl_user(EMAIL,NAME,PWD) 
+    
     values(#{email},#{name},password(#{password}))
   </insert>
  
  <select id="findByEmailAndPassword"
   parameterType="map"
   resultMap="memberMap">
-    select MNO,EMAIL, NAME
+    select 
+    MNO,
+    EMAIL, 
+    NAME,
+    PROFILEPHOTO
     from tbl_user
     where EMAIL=#{email} and PWD =password(#{password})
  </select>
@@ -61,7 +68,7 @@
         FROM tbl_user
         WHERE SNSID = #{snsID}
     </select>
-    
+
     
     	<!-- 특정 유저데이터 읽기 -->
 	<select id="userRead" parameterType="map"
@@ -69,9 +76,11 @@
         SELECT 
         MNO, 
         email, 
-        name, 
-         WEBSITE website, 
-         profilephoto memberPicture, 
+        name,
+        nickname, 
+         website, 
+         profilephoto,
+         phonenumber, 
          INTRO intro
 		FROM
 		tbl_user
@@ -87,14 +96,7 @@
 		WHERE MNO=#{id}
 	</select>
 	
-		<!-- 이전 비번 확인 -->
-<!-- 	<select id="checkPassWord" resultType="java.lang.Integer">
-		SELECT count(*)
-		FROM
-		tbl_user
-		WHERE MNO id = #{id}
-		AND BINARY PWD= password(#{password})
-	</select> -->
+
 	 <select id="checkPassWord"
   parameterType="map"
   resultMap="memberMap">
@@ -127,8 +129,15 @@
             prilevel =1
         WHERE MNO = #{id}
     </update> -->
-    
- 
+
+         	<!-- 프로필 사진 수정 -->
+	<update id="updatePhoto">
+		UPDATE tbl_user
+	     SET
+	      PROFILEPHOTO= #{profilephoto}
+	    
+		WHERE MNO=#{no}
+	</update>
 	
 	
 	

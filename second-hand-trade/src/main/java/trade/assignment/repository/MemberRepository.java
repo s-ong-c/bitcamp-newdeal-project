@@ -33,4 +33,7 @@ public interface MemberRepository {
 	
 	Member checkPassWord(Map<String,Object> params) throws Exception; //비밀번호 체크
 	public void updatePassword(Member vo) throws Exception; //패스워드 변경
+	
+	public void updatePhoto(Member vo) throws Exception; //프로필 사진 변경
+	//public void updatePhoto(Member vo) throws Exception;
 }

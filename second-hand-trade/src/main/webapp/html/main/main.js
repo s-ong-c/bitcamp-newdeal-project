@@ -64,8 +64,13 @@ function showSlides(n) {
         if (result.status !== 'success') {
             return;
         }
+        console.log(result)
        console.log(result.loginUser.name);
        var name =  $('#login-name').html();
+       //console.log(result.loginUser.profilephoto);
+       var fileInfo = getFileInfo(result.loginUser.profilephoto);
+			//프로필 사진 수정
+	$("#profile").attr("src", fileInfo.imgsrc);
        $('#login-name').html(result.loginUser.name);
   	 $.getJSON(`${serverApiAddr}/json/edit/`+name, (result) => {
 			console.log(result);
@@ -81,6 +86,7 @@ function showSlides(n) {
 	       $('#f-tel').val(result.data.phonenumber);
 	       $('#f-email').val(result.data.email);
 	       $('#f-intro').val(result.data.memo);
+	       
     })
   });
     
@@ -103,6 +109,11 @@ function showSlides(n) {
    		       $('#f-tel').val(result.data.phonenumber);
    		       $('#f-email').val(result.data.email);
    		       $('#f-intro').val(result.data.memo);
+   		       console.log(result.data.profilephoto);
+   		       
+   		       var fileInfo = getFileInfo(result.data.profilephoto);
+   				//프로필 사진 수정
+   				$("#profile").children("img").attr("src", fileInfo.imgsrc);
    		       
    		    location.href=`${serverApiAddr}/html/edit.html`;
     			
