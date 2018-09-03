@@ -3,6 +3,7 @@ package trade.assignment.repository;
 import java.util.List;
 
 import trade.assignment.domain.Post;
+import trade.assignment.domain.Tag;
 import trade.assignment.dto.FollowinPostDTO;
 
 public interface PostRepository {
@@ -11,4 +12,18 @@ public interface PostRepository {
 	
 	//특정유저의 전체 포스트
 	public List<Post> read(Integer userid) throws Exception;
+	
+	//게시물 생성
+	public void create(Post vo)throws Exception;
+	//파일첨부
+	public void addAttach(String fullName, String filter) throws Exception;
+	
+	//tag등록
+	public void insertTag(Tag vo) throws Exception; 
+	
+	//tag name으로 찾기
+	public Tag selectTagByName(String name) throws Exception;
+	
+	//postid와 tagid 등록
+	public void insertPostedTag(int postid, int tagid) throws Exception;
 }

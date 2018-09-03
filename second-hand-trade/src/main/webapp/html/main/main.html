@@ -319,11 +319,11 @@ text-decoration:none;
       	 <form>
           <div class="form-group">
             <label for="recipient-name" class="control-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="f-title">
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea class="form-control" id="f-content"></textarea>
           </div>
         </form> 
       <div class="container">
@@ -351,6 +351,29 @@ text-decoration:none;
                         <figcaption>#nofilter</figcaption>
                         </a>
                     </li>
+                         <li class="col-sm-2">
+                        <a class="thumbnail _1977" id="1977" title="_1977"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>1977</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail aden" id="Aden" title="aden"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Aden</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail brannan" id="Brannan" title="brannan"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Brannan</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail brooklyn" id="Brooklyn" title="brooklyn"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Brooklyn</figcaption></a>
+                    </li>
                     </ul>
                     </div>
                     </div>
@@ -359,7 +382,7 @@ text-decoration:none;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary" id ="write-C">Send message</button>
       </div>
     </div>
   </div>
@@ -413,7 +436,7 @@ $(document).ready(function() {
         var droplist = event.originalEvent.dataTransfer.files;
         readImage(droplist);
     });
-    $("#upload").on("click", function(event){
+    $("#write-C").on("click", function(event){
         event.preventDefault();
         var form = $("#uploadForm");
         //파일 개수
@@ -438,7 +461,7 @@ $(document).ready(function() {
         }
         //사진 없으면 업로드 실패
         form.append(str);
-        form.attr("action", `${serverApiAddr}/json/post/register`);
+        form.attr("action", `${serverApiAddr}/json/post/register/submit`);
         form.submit();
     });
     /*  
@@ -564,6 +587,7 @@ function selectUploadImaage(obj){
     <script src="../../vendor/countdowntime/countdowntime.js"></script>
     
     <script src="../../js/main.js"></script>
+    <script src="register.js"></script>
     <script src="../js/jquery.bit.js"></script>
 </body>
 </html>

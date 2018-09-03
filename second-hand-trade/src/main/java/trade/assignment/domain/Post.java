@@ -1,5 +1,6 @@
 package trade.assignment.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Post {
@@ -21,6 +22,15 @@ public class Post {
 		private int row;
 		
 		private String[] files;
+		private String[] filters;
+		
+		public String[] getFilters() {
+			return filters;
+		}
+
+		public void setFilters(String[] filters) {
+			this.filters = filters;
+		}
 
 		public int getId() {
 			return id;
@@ -124,6 +134,14 @@ public class Post {
 
 		public void setFiles(String[] files) {
 			this.files = files;
+		}
+
+		@Override
+		public String toString() {
+			return "Post [id=" + id + ", userid=" + userid + ", cateid=" + cateid + ", caption=" + caption
+					+ ", regdate=" + regdate + ", moddate=" + moddate + ", location=" + location + ", replyCount="
+					+ replyCount + ", likeCount=" + likeCount + ", url=" + url + ", filter=" + filter + ", row=" + row
+					+ ", files=" + Arrays.toString(files) + ", filters=" + Arrays.toString(filters) + "]";
 		}
 		
 		

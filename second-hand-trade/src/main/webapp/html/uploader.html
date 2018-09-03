@@ -377,7 +377,7 @@ $(document).ready(function() {
 			console.log(obj[0]);
     		data.filter = obj.attr("class").split(" ")[1];
     		console.log(JSON.stringify(data));
-			str += "<input type='hidden' name='files' value='" + JSON.stringify(data) + "'> ";
+			str += "<input type='hidden' name='files' id='files' value='" + JSON.stringify(data) + "'> ";
 			
 			cnt++;
 	
@@ -389,10 +389,14 @@ $(document).ready(function() {
 			return false;
 		}
     	//사진 없으면 업로드 실패
-		
-		form.append(str);
+    		console.log("aaa")
+    		form.append(str);
+
 		form.attr("action", `${serverApiAddr}/json/post/register`);
 		form.submit();
+/* 		form.append(str);
+		form.attr("action", `${serverApiAddr}/html/register.html`);
+		 */
 		
     
     });

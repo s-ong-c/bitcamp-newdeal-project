@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import trade.assignment.domain.Member;
 import trade.assignment.domain.Post;
@@ -51,7 +52,7 @@ public class PostController {
 	public Object registerPOST(Model model, HttpServletRequest request) throws Exception {
 		System.out.println("register post..............");
 		
-		
+		System.out.println("글올리기 폼정@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		HashMap<String, Object> result = new HashMap<>();
 		HttpSession session = request.getSession();
 		if(session !=null){
@@ -76,11 +77,68 @@ public class PostController {
 			System.out.println(jArray.toJSONString());
 			model.addAttribute("files", jArray);
 			result.put("files", jArray);
+			 session.setAttribute("files", jArray);
+			 result.put("status", "success");
 		}
 		System.out.println(Arrays.toString(files));
 		
 		return result;
 	}
+	
+	/*게시물 등록 - model방식*/
+	@RequestMapping(value = "/register/submit", method = RequestMethod.POST)
+	public Object registerSubmit(Post post, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+		System.out.println("regist submit POST..............");
+		System.out.println("regist submit POST..............");
+		System.out.println("regist submit POST..............");
+		System.out.println("regist submit POST..............");
+		System.out.println("regist submit POST..............");
+		System.out.println("regist submit POST..............");
+		System.out.println("regist submit POST..............");
+		
+		System.out.println(post.toString());
+		HashMap<String, Object> result = new HashMap<>();
+		HttpSession session = request.getSession();
+		if(session !=null){
+			Member vo = (Member)session.getAttribute("loginUser");
+			System.out.println("글올리기 폼정");
+			System.out.println(vo.toString());
+		}
+		
+		String[] files = request.getParameterValues("files");
+
+		if(files != null){
+			JSONArray jArray = new JSONArray();
+
+			for(int i=0; i<files.length;i++){
+				JSONParser jsonParser = new JSONParser();
+				JSONObject jsonObject = (JSONObject) jsonParser.parse(files[i]);
+				jArray.add(jsonObject);
+			}
+			System.out.println("사진 폼으로 전송은??");
+			System.out.println(jArray.toJSONString());
+			System.out.println("===111");
+			result.put("files", jArray);
+			System.out.println("===222"); 
+			session.setAttribute("files", jArray);
+			System.out.println("===333"); 
+			 result.put("status", "success");
+		}
+		System.out.println("===444"); 
+		System.out.println(Arrays.toString(post.getFilters()));
+		System.out.println("===555"); 
+		Member user = (Member)session.getAttribute("loginUser");
+		System.out.println("==============================");
+		System.out.println(user.toString());
+		post.setUserid(user.getNo());
+		
+		service.regist(post);
+
+		rttr.addFlashAttribute("msg", "SUCCESS");
+
+		return result;
+	}
+	
 	
 	@RequestMapping(value="/{userid}", method=RequestMethod.GET)
 	public ResponseEntity<List<Post>> list(@PathVariable("userid") Integer userid){
