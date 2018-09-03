@@ -37,12 +37,12 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.insert(board);
     }
 
-    @Override
+    /*@Override
     public Board getBoard(Board board) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("Board", board);
         return boardRepository.findByWriterAndDateAndTitle(params);
-    }
+    }*/
 
     @Override
     public Board get(int no) {
@@ -52,8 +52,9 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Board> list(int page, int size) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("page", page);
-        params.put("size", size);
+        params.put("startIndex", (page - 1) * size);
+        params.put("pageSize", size);
+        
         return boardRepository.findByPageAndSize(params);
     }
 

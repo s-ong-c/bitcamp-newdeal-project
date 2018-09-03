@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+div.container {
+    width: 750px;
+    font-size: small;
+}
+
+#top {
+    overflow: hidden;
+    height: 182px;
+    margin-top: 30px;
+}
+
+#bottom {
+    overflow: hidden;
+    border: 1px solid black;
+    margin-top: 11px;
+}
+
+#profile-l {
+    float: left;
+    width: 152px;
+    height: 172px;
+    text-align: center;
+    margin-left: 90px;
+    margin-top: 6px;
+
+}
+
+#profile-r {
+    float: left;
+    height: 152px;
+    margin: 10px 20px;
+}
+
+#profile-r>h4{
+    margin: 15px 0px 35px 10px;
+}
+
+#profile-img {
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 3px;
+}
+
+span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#zzim-l {
+    float: left;
+    width: 20%;
+    padding: 10px;
+}
+
+#zzim-r {
+    float: left;
+    width: 80%;
+    border-left: 1px solid black;
+    min-height: 500px;
+    text-align: center;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.product {
+    list-style: none;
+    border: 1px solid black;
+    width: 270px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    overflow: hidden;
+
+}
+
+.product>strong {
+    display: block;
+}
+
+.detail {
+    margin: 1px 15px;
+}
+
+.product>button {
+    float: right;
+}
+
+.btn-x-right {
+    text-align: right;
+}
+
+/* ---------img--------- */
+.product-img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+
+}
+
+.detail:hover .product-img {
+    opacity: 0.8;
+}

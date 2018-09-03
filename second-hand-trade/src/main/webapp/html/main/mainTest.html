@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>메인 화면</title>
 <link rel="stylesheet" type="text/css" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" type="text/css" href="../../fonts/iconic/css/material-design-iconic-font.min.css">
 <style type="text/css">
 ::-webkit-scrollbar {
     width: 18px;
@@ -235,10 +235,11 @@ header #hRight {
             <div id="hRight">
                 <img id="profile" src="../../images/icons/profile.png">
                 
-                <span id="login-name" style="color: white;"><span style="text-decoration: underline">&nbsp;name&nbsp;</span>님</span>
+                <span id="login-name" style="color: white;"><span style="text-decoration: underline"><input type="text" class="" id="f-name"></span>님</span>
                 &nbsp;&nbsp;
-                <button id="my-page"  data-no="{{name}}"  onclick="location.href='../edit.html' "><p id="my-page-p">&nbsp;My Page&nbsp;{{name}}</p></button>&nbsp;&nbsp;
+                <button id="my-page" onclick="location.href='../edit.html' "><p id="my-page-p">&nbsp;My Page&nbsp;</p></button>&nbsp;&nbsp;
                 <button id="logout"><p id="logout-p">&nbsp;Logout&nbsp;</p></button>
+            		   
             </div><!-- #hRight -->
            </div><!-- #h-div -->
         </header>
@@ -338,8 +339,10 @@ header #hRight {
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="../js/jquery.bit.js"></script>
-    
+    <script src="../js/common.js"></script>
+     <script src="main.js"></script>
     <script>
        function openBoard(evt, ctgrName){
            var i, aa2, ctgrLinks;

@@ -9,6 +9,8 @@
 <style>
 div.container {
 	width: 400px;
+	border: 1px solid #dbdbdb;
+	margin-top: 40px;
 }
 
 .file label {
@@ -37,12 +39,17 @@ div.container {
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 }
+
+head {
+	
+}
 </style>
 </head>
 <body>
 	<div class="container">
-		<h1>게시글 등록</h1>
-
+		<center>
+			<h4>게시글 등록</h4>
+		</center>
 		<form enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="fWriter">작성자</label> <input type="text"
@@ -61,10 +68,12 @@ div.container {
 				<label for="fPhoto">사진 선택</label>
 				<div class="form-group">
 					<input type="file" class="form-control" id="fPhoto" multiple> 
-					<img id="image_section" src="#" alt="your image" />
 				</div>
+				<div class="imgs_wrap">
+						<img id="img" />
+					</div>
 			</div>
-
+			
 			<button id="addBtn" type="button" class="btn btn-primary">완료</button>
 		</form>
 		<footer></footer>

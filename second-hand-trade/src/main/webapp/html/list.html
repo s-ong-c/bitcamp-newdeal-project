@@ -3,8 +3,7 @@
 <head>
 <meta charset='UTF-8'>
 <title>멤버 목록</title>
-<link rel="stylesheet"
-	href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/common.css">
 <style>
 a {
@@ -12,7 +11,7 @@ a {
 	color: black;
 }
 
-a#eNewBtn {
+a #eNewBtn {
 	float: right;
 }
 </style>
@@ -35,17 +34,18 @@ a#eNewBtn {
 			<button id="ePrevBtn" class="btn btn-outline-secondary btn-sm">이전</button>
 			<span id="ePageNo"></span>
 			<button id="eNextBtn" class="btn btn-outline-secondary btn-sm">다음</button>
-			<a id="eNewBtn" href='boardUp.html' class="btn btn-primary btn-sm">글작성</a>
+			<a id="eNewBtn" href='boardUp.html' class="btn btn-primary btn-sm">글쓰기</a>
 		</div>
+
 	</div>
 	<!-- .container -->
 
-	<script id="tr-template-src" type="text/x-handlebars-template">
+<script id="tr-template-src" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
   <td><a href='#' 
-       data-id='{{title}}'
-       class='viewLink'>{{title}}</a></td>
+         data-id='{{no}}' 
+         class='viewLink'>{{title}}</a></td>
   <td><a href='#'>{{writer}}</a></td>
   <td>{{createdate}}</td>
   <td>{{content}}</td>
@@ -53,6 +53,7 @@ a#eNewBtn {
 </tr>
 {{/each}}
 </script>
+
 	<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>

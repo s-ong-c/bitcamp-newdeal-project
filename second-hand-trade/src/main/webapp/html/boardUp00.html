@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 등록</title>
+<link rel="stylesheet"
+	href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<style>
+div.container {
+	border: 1px solid #dbdbdb;
+	margin-top: 40px;
+}
+
+.file label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #337ab7;
+	font-size: inherit;
+	font-weight: bold;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	line-height: normal;
+}
+
+.file input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.head {
+	padding-top: 25px;
+	padding-bottom: 30px;
+}
+
+.imgs_wrap {
+	width: 400px;
+	margin-top: 50px;
+	flex-direction: row;
+	flex-wrap: wrap;
+} 
+
+.imgs_wrap img {
+	max-width: 150px;
+}
+
+.imgs_wrap a {
+	width: 150px;
+	height: 150px;
+}
+
+.test_box {
+     width: 100%; 
+     min-height: 120px; 
+     max-height: 300px;
+     _height: 120px; 
+     margin-left: auto; 
+     margin-right: auto; 
+     padding: 3px; 
+     outline: 0; 
+     border: 1px solid #a0b3d6; 
+     font-size: 12px; 
+     word-wrap: break-word;
+     overflow-x: hidden;
+     overflow-y: auto;
+ }
+</style>
+</head>
+<body>
+	<div class="container">
+		<form enctype="multipart/form-data">
+			<div class="_e1xik form-group head">
+				<aside class="_kx10g"> 
+				</aside>
+				<div class="_cd2n1">
+                    <h1 class="_gvhl0">게시글 등록</h1>
+				</div>
+			</div>
+			<div class="_e1xik form-group">
+				<aside class="_kx10g"> 
+					<label>작성자</label> 
+				</aside>
+				<div class="_cd2n1">
+					<input type="text" id="fWriter" class="_4abhr _o716c"
+						name="nickname" onkeyup="validCheck(this)" readonly>
+				</div>
+			</div>
+			<div class="_e1xik form-group">
+				<aside class="_kx10g"> 
+					<label>제목</label> 
+				</aside>
+				<div class="_cd2n1">
+					<input type="text" id="fTitle" class="_4abhr _o716c"
+						name="title" onkeyup="validCheck(this)">
+				</div>
+			</div>
+			<div class="_e1xik form-group">
+				<aside class="_kx10g"> 
+					<label>글작성</label> 
+				</aside>
+				<div class="_cd2n1">
+					 <!-- <textarea id="fContent" name="intro" onkeyup="validCheck(this)" 
+						 class="_jlcqs"  style="width: 500px; height: 150px; resize: none; 
+						 overflow: hidden; overflow-y: scroll;">
+					</textarea> -->
+					<div id="fContent" name="intro" onkeyup="validCheck(this)" 
+						class="_jlcqs"  style="width: 500px; height: 150px; resize: none; 
+						overflow: hidden; overflow-y: scroll;" contenteditable="true">
+					</div>
+				</div>
+			</div>
+			<div class="_e1xik form-group file">
+				<aside class="_kx10g">
+					<label for="fPhoto">
+						<a href="javascript:" onclick="fileUploadAction();"	class="my_button">사진 선택</a>
+					</label>
+				</aside>
+				<div class="form-group">
+					<input type="file" id="input_imgs" multiple>
+				</div>
+				<div class="imgs_wrap">
+					<img id="img" />
+				</div>
+			</div>
+			<div class="_e1xik">
+				<aside class="_kx10g _ldhkl">
+				<label></label></aside>
+				<div class="_cd2n1">
+					<div class="_eqmpg">
+						<span class="_ov9ai">
+							<button id="btnSubmit" type="button"
+								class="_qv64e _gexxb _r9b8f _njrw0">완료</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+		<footer></footer>
+
+	</div>
+	<!-- .container -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="js/jquery.bit.js"></script>
+	<script src="js/common.js"></script>
+	<script src="boardUp00.js"></script>
+</body>
+</html>

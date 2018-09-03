@@ -13,7 +13,7 @@ public interface BoardRepository {
 
     int insert(Board board);
 
-    Board findByWriterAndDateAndTitle(HashMap<String, Object> params);
+    /*Board findByWriterAndDateAndTitle(HashMap<String, Object> params);*/
 
     Board selectOne(int no);
 

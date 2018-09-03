@@ -43,12 +43,13 @@ public class BoardController {
         return result;
     }
     
-    @GetMapping("detailView/{no}")
-    public Object view(
-            @PathVariable int no) throws Exception { 
+    @GetMapping("view/{no}")
+    public Object view(@PathVariable int no) throws Exception{
+        
+        System.out.println(no);
+        
         HashMap<String,Object> data = new HashMap<>();
         data.put("board", boardService.get(no));
-        data.put("status", "success");
         return data;
     }
     
