@@ -16,16 +16,16 @@ public interface PostService {
 	// POST등록(사진/태그 Transaction)
 		public void regist(Post post) throws Exception;
 		
-	// registPostAndTag에서 사용
-    public void insertTag(Tag vo) throws Exception;
-    
-	// regist에서 사용
-	public void registPostAndTag(Integer postid, String tagname) throws Exception;
-	
-	// registPostAndTag에서 사용
-	public void insertPostedTag(int postid, int tagid) throws Exception;
-	
-	// tag name검색
-	public Tag selectTagByName(String name) throws Exception;
+//	// registPostAndTag에서 사용
+//    public void insertTag(Tag vo) throws Exception;
+//    
+//	// regist에서 사용
+//	public void registPostAndTag(Integer postid, String tagname) throws Exception;
+//	
+//	// registPostAndTag에서 사용
+//	public void insertPostedTag(int postid, int tagid) throws Exception;
+//	
+//	// tag name검색
+//	public Tag selectTagByName(String name) throws Exception;
 
 }

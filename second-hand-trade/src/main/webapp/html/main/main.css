@@ -1,4 +1,7 @@
-
+@font-face{
+  font-family: BMDOHYEON;
+  src: url('BMDOHYEON_ttf.ttf') format('truetype');
+}
  ::-webkit-scrollbar {
     width: 18px;
 }
@@ -27,7 +30,7 @@ img {
 
 body {
     height: 100vh;
-    font-family: SourceSansPro-Bold;
+    font-family: BMDOHYEON;
     font-size: 16px;
     background: rgba(93, 84, 240, 0.5);
     background: -webkit-linear-gradient(left, rgba(0, 168, 255, 0.5),

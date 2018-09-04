@@ -4,8 +4,11 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
-
-@font-face {
+@font-face{
+  font-family: BMDOHYEON;
+  src: url('../BMDOHYEON_ttf.ttf') format('truetype');
+}
+/* @font-face {
   font-family: SourceSansPro-Regular;
   src: url('../fonts/source-sans-pro/SourceSansPro-Regular.ttf'); 
 }
@@ -23,7 +26,7 @@
 @font-face {
   font-family: JosefinSans-Bold;
   src: url('../fonts/JosefinSans/JosefinSans-Bold.ttf'); 
-}
+} */
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
@@ -36,12 +39,12 @@
 
 body, html {
 	height: 100%;
-	font-family: SourceSansPro-Regular, sans-serif;
+	font-family: BMDOHYEON;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: SourceSansPro-Regular;
+	font-family: BMDOHYEON-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -66,7 +69,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: SourceSansPro-Regular;
+	font-family: BMDOHYEON-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -124,14 +127,14 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: SourceSansPro-Regular;
+  font-family: BMDOHYEON;
   font-size: 16px;
   line-height: 1.4;
   color: #999999;
 }
 
 .txt2 {
-  font-family: SourceSansPro-Regular;
+  font-family: BMDOHYEON;
   font-size: 16px;
   line-height: 1.4;
   color: #4b2354;
@@ -205,7 +208,7 @@ iframe {
 
 .login100-form-title {
   display: block;
-  font-family: SourceSansPro-Bold;
+  font-family: BMDOHYEON;
   font-size: 30px;
   color: #4b2354;
   line-height: 1.2;
@@ -223,7 +226,7 @@ iframe {
 }
 
 .input100 {
-  font-family: SourceSansPro-Bold;
+  font-family: BMDOHYEON;
   font-size: 16px;
   color: #4b2354;
   line-height: 1.2;
@@ -356,14 +359,14 @@ iframe {
   padding: 0 45px 0 22px;
   pointer-events: none;
 
-  font-family: SourceSansPro-Bold;
+  font-family: BMDOHYEON;
   font-size: 16px;
   color: #fa4251;
   line-height: 1.2;
 }
 
 .btn-hide-validate {
-  font-family: Material-Design-Iconic-Font;
+  font-family: BMDOHYEON;
   font-size: 15px;
   color: #fa4251;
   cursor: pointer;

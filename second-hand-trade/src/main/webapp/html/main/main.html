@@ -5,8 +5,10 @@
 <title>메인 화면</title>
 <link rel="stylesheet" type="text/css" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!-- <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"> -->
+<link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" type="text/css" href="main.css">
 <link rel="stylesheet" type="text/css" href="header.css">
 <style>
@@ -123,6 +125,7 @@ text-decoration:none;
 .preview-image.selected {
     box-shadow: 0 0 0 4px #00c09e;
 }
+
 </style>
 <script src="../upload.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -326,6 +329,7 @@ text-decoration:none;
             <textarea class="form-control" id="f-content"></textarea>
           </div>
         </form> 
+        
       <div class="container">
     <fieldset class="form-group" style="text-align: right;">
         <div class="btn btn-default image-preview-input" onclick="$('#pro-image').click()"> 
@@ -449,20 +453,45 @@ $(document).ready(function() {
             data.fileUrl =$(this).attr("data-src");
             //파일 type 추가
             data.fileType = obj.attr("data-type");
-            console.log(obj[0]);
+            console.log(obj[0]+"ㅁㅁㅁ");
             data.filter = obj.attr("class").split(" ")[1];
-            console.log(JSON.stringify(data));
+            console.log(JSON.stringify(data)+"ㅃㅃㅃㅃ");
             str += "<input type='hidden' name='files' value='" + JSON.stringify(data) + "'> ";
             cnt++;
-        });
+  			
+            ///////////
+            console.log(JSON.stringify(data.fileUrl));
+           	var sss = JSON.stringify(data.fileUrl);
+           	console.log(sss.toString());
+           	
+            var files ={};
+            files =data.fileUrl;
+            console.log(files);
+            console.log(files.toString())
         if(cnt==0){
             alert("이미지나 동영상을 추가하세요.");1
             return false;
         }
         //사진 없으면 업로드 실패
         form.append(str);
-        form.attr("action", `${serverApiAddr}/json/post/register/submit`);
-        form.submit();
+       	console.log(str);
+        console.log(data.fileUrl);
+		$.ajax({
+			url : `${serverApiAddr}/json/post/register/submit`,
+			data : {
+				"files":sss
+			},
+			dataType : 'json',
+			type : 'POST',
+			success : function(result) {
+					//update문, 0보다크면 업데이트 성공
+					location.reload();
+					console.log(result)
+			}
+		}); //ajax end
+        //form.attr("action", `${serverApiAddr}/json/post/register/submit`);
+       // form.submit();
+        });
     });
     /*  
         //첨부파일 추가
@@ -534,6 +563,7 @@ function readImage(files) {
                     }
                     output.append(html);
                     //처음 업로드 되는 이미지로 필터 이미지 변경
+                    console.log(num)
                     if(num == 0){
                         if(fileInfo.fileType != 'video'){
                             $(".thumbnail > img").css("display","block");

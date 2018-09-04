@@ -16,14 +16,14 @@ public interface PostRepository {
 	//게시물 생성
 	public void create(Post vo)throws Exception;
 	//파일첨부
-	public void addAttach(String fullName, String filter) throws Exception;
+	public void addAttach(String fullName) throws Exception;
 	
 	//tag등록
-	public void insertTag(Tag vo) throws Exception; 
-	
-	//tag name으로 찾기
-	public Tag selectTagByName(String name) throws Exception;
-	
-	//postid와 tagid 등록
-	public void insertPostedTag(int postid, int tagid) throws Exception;
+//	public void insertTag(Tag vo) throws Exception; 
+//	
+//	//tag name으로 찾기
+//	public Tag selectTagByName(String name) throws Exception;
+//	
+//	//postid와 tagid 등록
+//	public void insertPostedTag(int postid, int tagid) throws Exception;
 }

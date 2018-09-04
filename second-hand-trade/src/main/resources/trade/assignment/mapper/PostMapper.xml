@@ -48,16 +48,15 @@
 	</select>
 	
 		<!-- 게시글 작성 -->
-	<!-- <insert id="create">
+	 <insert id="create">
 		insert into tbl_post (userid, cateid, caption, location)
 		values(#{userid}, #{cateid}, #{caption}, #{location})
 		<selectKey keyProperty="id" resultType="int" order="AFTER">
-			pk가 아닐땐, 키컬럼도 넣어 설정할 수 있음
 			select last_insert_id() as id
 		</selectKey>
-	</insert> -->
+	</insert>
 	
-		<!--                    tag 관련                  -->	
+		<!--                    tag 관련-->	
 	<!--Tag 삽입  -->
 <!-- 	<insert id="insertTag">
 		insert into tbl_tag (name, tagcount)
@@ -71,9 +70,9 @@
 	
 		<!-- 	첨부파일 추가 -->
 		<!-- 게시글에 이미지,동영상추가 -->
-	<!-- <insert id="addAttach">
-		insert into tbl_attach (postid, url, filter) values (LAST_INSERT_ID(), #{url}, #{filter})
-	</insert> --> 
+	<insert id="addAttach">
+		insert into tbl_attach (postid, url) values (LAST_INSERT_ID(), #{url})
+	</insert> 
 	
 		<!--postid , tagid 넣기  -->
 	<!-- <insert id="insertPostedTag">

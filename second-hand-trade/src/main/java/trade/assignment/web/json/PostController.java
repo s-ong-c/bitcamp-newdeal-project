@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -70,13 +71,14 @@ public class PostController {
 			for(int i=0; i<files.length;i++){
 				JSONParser jsonParser = new JSONParser();
 				JSONObject jsonObject = (JSONObject) jsonParser.parse(files[i]);
+				System.out.println("jsonObject"+jsonObject);
 				jArray.add(jsonObject);
 			}
 			
 			System.out.println("사진 폼으로 전송은??");
 			System.out.println(jArray.toJSONString());
 			model.addAttribute("files", jArray);
-			result.put("files", jArray);
+			result.put("files", jArray.toJSONString());
 			 session.setAttribute("files", jArray);
 			 result.put("status", "success");
 		}
@@ -87,7 +89,7 @@ public class PostController {
 	
 	/*게시물 등록 - model방식*/
 	@RequestMapping(value = "/register/submit", method = RequestMethod.POST)
-	public Object registerSubmit(Post post, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+	public Object registerSubmit(Post post, RedirectAttributes rttr, @RequestParam("files") String[] files, HttpServletRequest request) throws Exception {
 		System.out.println("regist submit POST..............");
 		System.out.println("regist submit POST..............");
 		System.out.println("regist submit POST..............");
@@ -105,8 +107,8 @@ public class PostController {
 			System.out.println(vo.toString());
 		}
 		
-		String[] files = request.getParameterValues("files");
-
+		//String[] files = request.getParameterValues("files");
+/*
 		if(files != null){
 			JSONArray jArray = new JSONArray();
 
@@ -114,6 +116,7 @@ public class PostController {
 				JSONParser jsonParser = new JSONParser();
 				JSONObject jsonObject = (JSONObject) jsonParser.parse(files[i]);
 				jArray.add(jsonObject);
+				System.out.println(jsonObject);
 			}
 			System.out.println("사진 폼으로 전송은??");
 			System.out.println(jArray.toJSONString());
@@ -124,16 +127,21 @@ public class PostController {
 			System.out.println("===333"); 
 			 result.put("status", "success");
 		}
+		*/
+		System.out.println("-------555");
+		System.out.println(files);
 		System.out.println("===444"); 
-		System.out.println(Arrays.toString(post.getFilters()));
+		//System.out.println(Arrays.toString(post.getFilters()));
 		System.out.println("===555"); 
 		Member user = (Member)session.getAttribute("loginUser");
 		System.out.println("==============================");
 		System.out.println(user.toString());
+		System.out.println("===666"); 
 		post.setUserid(user.getNo());
-		
+		System.out.println("===777"+Arrays.toString(files)); 
+		System.out.println(post.toString());
 		service.regist(post);
-
+		result.put("status", "success");
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
 		return result;
