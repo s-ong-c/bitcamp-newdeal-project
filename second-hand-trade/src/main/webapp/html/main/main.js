@@ -61,11 +61,20 @@ function showSlides(n) {
 //좋아요 버튼 체인지 끝
     
   $.getJSON(`${serverApiAddr}/json/main/mainTest`, (result) => {
+	  	console.log(result);
         if (result.status !== 'success') {
-            return;
+	        	swal("로그인이 만료되었습니다.", "접근이 비정상적입니다.");
+				  setTimeout(function () {
+					  location.href=`${serverApiAddr}`
+				  }, 1000);
+            //location.href=`${serverApiAddr}`
         }
         console.log(result)
        console.log(result.loginUser.name);
+        console.log(result.loginUser);
+        if(result.loginUser ==null){
+        		location.href=`${serverApiAddr}`
+        }
        var name =  $('#login-name').html();
        //console.log(result.loginUser.profilephoto);
        var fileInfo = getFileInfo(result.loginUser.profilephoto);
@@ -137,7 +146,7 @@ $('#logout').on('click',()=>{
             '로그아웃 성공',
             '로그아웃 되었습니다.',
             'success'
-          	).then($.getJSON(`${serverApiAddr}/json/main/mainTest`,()=>{
+          	).then($.getJSON(`${serverApiAddr}/json/auth/logout`,()=>{
           		console.log("aa")
           		location.href=`${serverApiAddr}/index.html`;
           	}))

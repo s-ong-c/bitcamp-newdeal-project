@@ -10,6 +10,7 @@
 		<!-- 비밀번호 변경 -->
 		<li><a class="_fvhml _etlo6" id="change">비밀번호 변경</a></li> 
 		<li><a class='_fvhml _etlo6' id="edit3">회 원 탈 퇴</a></li>
+		<li><a class='_fvhml _etlo6' id="edit4">돌아가자!</a></li>
 	</ul>
 </div>
 <script>
@@ -50,7 +51,9 @@ $('a#edit3').on('click', (e) => {
 		  });
 
 })
-
+$('a#edit4').on('click', (e) => {
+	location.href=`${serverApiAddr}/html/main/main.html`
+});
 $('#change').on('click', (e) => {
     $('#edit2')
     .removeClass('_fvhml _etlo6');
