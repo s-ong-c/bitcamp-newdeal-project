@@ -1,4 +1,4 @@
-/*package trade.assignment.web.json;
+/*package trade.assignment.utils;
 
 import java.util.HashMap;
 import java.util.Map;

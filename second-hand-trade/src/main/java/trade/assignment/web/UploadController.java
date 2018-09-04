@@ -1,4 +1,4 @@
-/*package trade.assignment.web.json;
+/*package trade.assignment.web;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +23,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.util.IOUtils;
 
+import trade.assignment.domain.UserVO;
+import trade.assignment.utils.MediaUtils;
+import trade.assignment.utils.S3Util;
+import trade.assignment.utils.UploadFileUtils;
+
 @Controller
 public class UploadController {
     
@@ -44,8 +49,10 @@ public class UploadController {
         logger.info("originalName: " + file.getOriginalFilename());
         logger.info("size : " +  file.getSize());
         logger.info("contentType : " + file.getContentType());
+        UserVO vo = (UserVO)session.getAttribute("login");
+        String userid = vo.getNickname();
         return new ResponseEntity<>(
-                UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()),
+                UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes(), userid),
                 HttpStatus.CREATED);
     }
     
@@ -78,7 +85,6 @@ public class UploadController {
                 uCon = (HttpURLConnection) url.openConnection();
                 in = uCon.getInputStream();
             }
-
                                                             // 여기
             entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),
             headers,
