@@ -11,7 +11,7 @@ let data = null;
 if (page != undefined && size != undefined) {
     loadList(page, size);
 } else {
-    loadList(1, 10);
+    loadList(1, 15);
 }
 
 $(ePrevBtn).click(function() {
@@ -23,11 +23,15 @@ $(eNextBtn).click(function() {
 });
 
 function loadList(page, size) {
-    $.getJSON(serverApiAddr + '/json/board/list',
+    $.getJSON(serverApiAddr + '/json/board/list', // ../..을 못써서 serverApiAddr롤 분리시킴 
         {
             page: page,
             size: size
-        }, function() {console.log("로딩 성공!")})
+        }, function() {
+            console.log("로딩 성공!")
+            console.log(page)
+            console.log(size)
+        })
      .done(function(result) {
        data = result;
 
@@ -50,5 +54,7 @@ function loadList(page, size) {
 tbody.on('click', 'a.viewLink', function(event) {
     event.preventDefault();
     var no = $(event.target).attr('data-id');
-    location.href = `detailView.html?no=${no}&page=${data.page}&size=${data.size}`;
+    console.log(no);
+    console.log('=====')
+    location.href = `view.html?no=${no}&page=${data.page}&size=${data.size}`;
 });

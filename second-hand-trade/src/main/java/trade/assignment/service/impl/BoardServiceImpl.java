@@ -36,6 +36,21 @@ public class BoardServiceImpl implements BoardService {
         }
         return boardRepository.insert(board);
     }
+    
+    /*@Override
+    public int add(Board board, HttpServletRequest request) throws Exception {
+        String uploadURI = "/uploadfile/storephoto";
+        String dir = request.getSession().getServletContext().getRealPath(uploadURI);
+        if (!board.getPhotofile().isEmpty()) {
+            // 새로운 파일 이름 생성 -> 파일 저장 -> DB에 저장할 파일이름 set
+            String fileName = board.getNo() + "_" + board.getPhotofile().getOriginalFilename();
+            board.getPhotofile().transferTo(new File(dir, fileName));
+            board.setphoto(fileName);
+        }
+        
+        int resultCnt = boardRepository.insert(board);
+        return resultCnt;
+    }*/
 
     /*@Override
     public Board getBoard(Board board) {
@@ -60,6 +75,20 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public int getTotalPage(int size) {
-        return boardRepository.totalPage(size);
+        int count = boardRepository.countAll();
+        int totalPage = count / size;
+        if (count % size > 0)
+            totalPage++;
+        return totalPage;
+    }
+    
+    @Override
+    public int update(Board board) {
+        return boardRepository.update(board);
+    }
+    
+    @Override
+    public int delete(int no) {
+        return boardRepository.delete(no);
     }
 }

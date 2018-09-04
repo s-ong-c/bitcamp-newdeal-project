@@ -11,13 +11,17 @@ import trade.assignment.domain.Board;
 
 public interface BoardRepository {
 
-    int insert(Board board);
-
-    /*Board findByWriterAndDateAndTitle(HashMap<String, Object> params);*/
+    List<Board> findByPageAndSize(HashMap<String, Object> params);
 
     Board selectOne(int no);
 
-    List<Board> findByPageAndSize(HashMap<String, Object> params);
+    int update(Board board);
 
-    int totalPage(int size);
+    int delete(int no);
+
+    int insert(Board board);
+
+    int countAll();
+    
+    /* Board findByWriterAndDateAndTitle(HashMap<String, Object> params); */
 }

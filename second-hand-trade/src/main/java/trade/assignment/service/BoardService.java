@@ -21,4 +21,8 @@ public interface BoardService {
     List<Board> list(int page, int size);
 
     int getTotalPage(int size);
+
+    int update(Board board);
+
+    int delete(int no);
 }

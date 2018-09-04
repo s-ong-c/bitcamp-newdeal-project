@@ -13,6 +13,45 @@
 		<result column="photo" property="photo" />
 	</resultMap>
 
+	<select id="findByPageAndSize" resultMap="BoardMap"
+		parameterType="map">
+		select
+		BNO,
+		TITL,
+		WRIT,
+		CDT,
+		CONT,
+		PHOTO
+		from P2_BOARD
+		<if test="startIndex != null and pageSize != null">
+			limit #{startIndex}, #{pageSize}
+		</if>
+	</select>
+	
+	<select id="selectOne" resultMap="BoardMap" parameterType="int">
+		select
+		BNO,
+		WRIT,
+		TITL,
+		CONT,
+		PHOTO
+		from P2_BOARD
+		where BNO = #{value}
+	</select>
+
+	<update id="update" parameterType="Board">
+		update P2_BOARD set
+		  TITL=#{title},
+		  CONT=#{content},
+		  PHOTO=#{photo}
+		where BNO=#{no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+        delete from P2_BOARD 
+        where BNO=#{value}
+    </delete>
+
 	<insert id="insert" parameterType="Board">
 		insert into P2_BOARD(
 		BNO,
@@ -28,34 +67,8 @@
 		now(),
 		#{photo})
 	</insert>
-
-	<select id="selectOne" 
-	        resultMap="BoardMap" 
-	        parameterType="int">
-		select
-		WRIT,
-		TITL,
-		CONT,
-		PHOTO
-		from P2_BOARD
-		where BNO = #{value}
-	</select>
-
-	<select id="findByPageAndSize" resultMap="BoardMap"
-		parameterType="map">
-		select
-		TITL,
-		WRIT,
-		CDT,
-		CONT,
-		PHOTO
-		from P2_BOARD
-		<if test="startIndex != null and pageSize != null">
-			limit #{startIndex}, #{pageSize}
-		</if>
-	</select>
-
-	<select id="totalPage" resultType="int">
+	
+	<select id="countAll" resultType="int">
 		select
 		count(*)
 		from P2_BOARD

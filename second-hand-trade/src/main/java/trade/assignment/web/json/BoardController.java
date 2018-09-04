@@ -28,7 +28,7 @@ public class BoardController {
     @PostMapping("boardUp")
     public Object BoardUp(Board board, MultipartFile photo) {
         
-        System.out.println(photo);
+        //System.out.println(photo);
         
         HashMap<String, Object> result = new HashMap<>();
         try {
@@ -43,23 +43,13 @@ public class BoardController {
         return result;
     }
     
-    @GetMapping("view/{no}")
-    public Object view(@PathVariable int no) throws Exception{
-        
-        System.out.println(no);
-        
-        HashMap<String,Object> data = new HashMap<>();
-        data.put("board", boardService.get(no));
-        return data;
-    }
-    
     @GetMapping("list")
     public Object list(
             @RequestParam(defaultValue="1") int page, 
-            @RequestParam(defaultValue="10") int size) throws Exception {
+            @RequestParam(defaultValue="15") int size) throws Exception {
         
         if (page < 1) page = 1;
-        if (size < 1 || size > 20) size = 10;
+        if (size < 1 || size > 30) size = 15;
         
         List<Board> list = boardService.list(page, size);
         
@@ -69,6 +59,54 @@ public class BoardController {
         data.put("size", size);
         data.put("totalPage", 
                 boardService.getTotalPage(size));
+        return data;
+    }
+    
+    @GetMapping("delete")
+    public Object delete(int no) throws Exception {
+        HashMap<String,Object> result = new HashMap<>();
+        if (boardService.delete(no) == 0) {
+            result.put("status", "fail");
+            result.put("error", "해당 아이디가 없습니다.");
+        } else {
+            result.put("status", "success");
+        }
+        return result;
+    }
+    
+    @PostMapping("update")
+    public Object update(Board board) {
+        
+        System.out.println(board);
+        
+        boardService.update(board);
+        
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("status", "success");
+        return result;
+    }
+    /*@PostMapping("update")
+    public Object update(Board board) throws Exception {
+        HashMap<String,Object> result = new HashMap<>();
+        
+        System.out.println(board);
+        
+        if (boardService.update(board) == 0) {
+            result.put("status", "fail");
+            result.put("error", "해당 게시글이 없습니다.");
+        } else {
+            result.put("status", "success");
+        }
+        return result;
+    }*/
+    
+    @GetMapping("view/{no}")
+    public Object view(@PathVariable int no) throws Exception{
+        
+        //System.out.println(no);
+        
+        HashMap<String,Object> data = new HashMap<>();
+        data.put("board", boardService.get(no));
         return data;
     }
 }
