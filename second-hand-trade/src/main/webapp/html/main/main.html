@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="peed.css">
 <link rel="stylesheet" type="text/css" href="header.css">
 <link href="../node_modules/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="../node_modules/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
@@ -132,6 +133,7 @@ text-decoration:none;
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>      
+  <!--  <div class="row" id="card"></div> -->
 	<div class="jangter">
          <header>
        <div id="h-div" >
@@ -194,6 +196,9 @@ text-decoration:none;
 	   </section>
         <section id="s2" class="ss"><!-- 500*6985 -->
            <article id="a21" class="aa aa2">
+         <div class="sideItems" id="card">
+            </div><!-- sideItems --> 
+           
               <div class="boardSpace"></div>
               <div class="boardInfo">
                     <a class="boardInfo-s" data-toggle="modal" data-target="#myModal" href="#" 
@@ -206,7 +211,29 @@ text-decoration:none;
               </div>
               <div class="boardPrice">
                     <span style="color: white;  margin-right: 20px; margin-top: 10px;">1억 원 </span>
-              </div> 
+              </div>
+            
+
+<script id="li-template" type="text/x-handlebars-template">
+		{{#each list}}
+  		<div class="boardSpace"></div>
+        <div class="boardSpace"></div>
+		<div class="boardInfo">
+				<a class="boardInfo-s" data-toggle="modal" data-target="#myModal" href="#" 
+                        style="color: #708090;  float: left; margin-left: 10px;">{{caption}}..</a>
+                    <a class="boardInfo-s" href="#" style="color: white;  float: right; "> <img src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{profilephoto}}">{{name}}</a>
+
+              </div>
+		<div class="boardPic">
+                    <img style="height: 370px; width: 590px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{url}}">
+              </div>
+              <div class="boardPrice">
+                    <span style="color: white;  margin-right: 20px; margin-top: 10px;">{{price}}0,000원 </span>
+              </div>
+
+			{{/each}}
+		</script>
+		
               <div class="boardSpace"></div>
               <div class="boardSpace"></div>
               <div class="boardInfo">
@@ -251,6 +278,7 @@ text-decoration:none;
                <p>게시글6</p>
            </article>
         </section>
+        
         <section id="s3" class="ss"><!-- 308*1156 -->
            <article id="a31" class="aa aa3">
                <p>광고1</p>
@@ -392,15 +420,25 @@ text-decoration:none;
     </div>
   </div>
 </div><!-- #writeModal -->
-
+	<!-- <div id="carousel">
+			<div class="post" data-filter="${postDTO.cateid}">
+				<img  src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122${urlList[i]}"
+					title="${postDTO.postid}" />
+				<img  src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122${urlList[i]}"
+								style="display: none;" title="${postDTO.postid}" />
+			</div>
+	</div> -->
     </div><!-- .jangter -->
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script src="../../html/js/common.js"></script>
 	<script src="../js/jquery.bit.js"></script>
+     <script src="feed.js"></script>
     <script src="main.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </body>
 <script src="../upload.js"></script>
 
@@ -465,7 +503,10 @@ $(document).ready(function() {
            	var sss = JSON.stringify(data.fileUrl);
            	console.log(sss.toString());
            	
-            var files ={};
+            var files = new Array();
+            // or var arr = [];
+            files.push(data.fileUrl);
+            console.log(files)
             files =data.fileUrl;
             console.log(files);
             console.log(files.toString())
@@ -480,9 +521,9 @@ $(document).ready(function() {
 		$.ajax({
 			url : `${serverApiAddr}/json/post/register/submit`,
 			data : {
-				"files":sss
+				"files":data.fileUrl
 			},
-			dataType : 'json',
+			dataType : 'text',
 			type : 'POST',
 			success : function(result) {
 					//update문, 0보다크면 업데이트 성공

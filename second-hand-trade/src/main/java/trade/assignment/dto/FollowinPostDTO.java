@@ -5,9 +5,11 @@ public class FollowinPostDTO {
 	private int userid;
 	private String caption;
 	private int cateid;
+	private int price;
+	private String content;
 	private String location;
 	private String url; //모든 첨부파일 통합 String '|'로 파일명 구분
-	private String username;
+	private String name;
 	private String profilephoto;
 	private Date regdate;
 	private int isLike; //userid or null(=0)
@@ -47,11 +49,11 @@ public class FollowinPostDTO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getProfilephoto() {
 		return profilephoto;
@@ -71,6 +73,19 @@ public class FollowinPostDTO {
 	public void setIsLike(int isLike) {
 		this.isLike = isLike;
 	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 	
 	
 }

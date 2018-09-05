@@ -1,5 +1,4 @@
 'use strict'
-
 //header
 //$('header').load(`${serverApiAddr}/html/main/header.html`);
 
@@ -81,22 +80,23 @@ function showSlides(n) {
 			//프로필 사진 수정
 	$("#profile").attr("src", fileInfo.imgsrc);
        $('#login-name').html(result.loginUser.name);
-  	 $.getJSON(`${serverApiAddr}/json/edit/`+name, (result) => {
-			console.log(result);
-			
-		    if (result.status !== 'success') {
-		 
-	            return;
-	        }
-		   $('#f-name').val(result.data.name);
-	       $('#f-email').val(result.data.email);
-	       $('#f-nickname').val(result.data.nickname);
-	       $('#f-website').val(result.data.website);
-	       $('#f-tel').val(result.data.phonenumber);
-	       $('#f-email').val(result.data.email);
-	       $('#f-intro').val(result.data.memo);
-	       
-    })
+       
+//  	 $.getJSON(`${serverApiAddr}/json/edit/`+name, (result) => {
+//			console.log(result);
+//			
+//		    if (result.status !== 'success') {
+//		 
+//	            return;
+//	        }
+//		   $('#f-name').val(result.data.name);
+//	       $('#f-email').val(result.data.email);
+//	       $('#f-nickname').val(result.data.nickname);
+//	       $('#f-website').val(result.data.website);
+//	       $('#f-tel').val(result.data.phonenumber);
+//	       $('#f-email').val(result.data.email);
+//	       $('#f-intro').val(result.data.memo);
+//	       
+//    })
   });
     
     $('#login-name').on('click',()=>{

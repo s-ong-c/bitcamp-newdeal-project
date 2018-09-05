@@ -1,0 +1,107 @@
+#carousel {
+	position: relative;
+	height: 500px;
+	top: 50%;
+	transform: translateY(-50%);
+	overflow: hidden;
+}
+#carousel div {
+	height: 500px;
+	width: 500px;
+	position: absolute;
+	/*  transition 변경되는 부분 width 1s만 쓰면 어색함 왜냐하면 width랑 height랑 2가지 요소가 바뀜 */
+	transition: transform 1s, left 1s, opacity 1s, z-index 0s, width 1s, height 1s;
+	opacity: 1;
+}
+#carousel div img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#carousel .hideLeft {
+	height: 200px;
+	width: 200px;
+	left: 0%; /* 왼쪽 0으로 빠지는 애니메이션 효과 */
+	opacity: 0; /*투명도 0으로 숨김처리 */
+	transform: translateY(75%) translateX(-75%); /*부모기준으로 위치지정 */
+}
+#carousel .hideLeft img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#carousel .hideRight {
+	height: 200px;
+	width: 200px;
+	left: 100%;
+	opacity: 0;
+	transform: translateY(75%) translateX(-75%);
+}
+#carousel .hideRight img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#carousel .prev {
+	height: 400px;
+	width: 400px;
+	z-index: 5;
+	left: 30%;
+	transform: translateY(50px) translateX(-50%);
+}
+#carousel .prev img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#carousel .prevLeftSecond {
+	height: 300px;
+	width: 300px;
+	z-index: 4;
+	left: 15%;
+	transform: translateY(33%) translateX(-50%);
+	opacity: .7;
+}
+#carousel .prevLeftSecond img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+/*가운데 이미지 */
+#carousel .selected {
+	height: 500px;
+	width: 500px;
+	z-index: 10;
+	left: 50%;
+	transform: translateY(0px) translateX(-50%);
+}
+#carousel .selected img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#carousel .next {
+	height: 400px;
+	width: 400px;
+	z-index: 5;
+	left: 70%;
+	transform: translateY(50px) translateX(-50%);
+}
+#carousel .next img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#carousel .nextRightSecond {
+	height: 300px;
+	width: 300px;
+	z-index: 4;
+	left: 85%;
+	transform: translateY(33%) translateX(-50%);
+	opacity: .7;
+}
+#carousel .nextRightSecond img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}

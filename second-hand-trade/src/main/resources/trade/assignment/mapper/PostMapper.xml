@@ -3,12 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="trade.assignment.repository.PostRepository">
-	
+
 
        
 	<!-- 메인 피드용 게시글 읽기 (팔로우하는 사람의 게시글 정보 / 최신 등록 순)-->
 	<select id="mainRead" resultType="trade.assignment.dto.FollowinPostDTO">
-		select * from
+				select * from
+        (select pa.postid as postid, pa.userid, pa.caption, pa.cateid, pa.price, pa.content, pa.url, pa.location, a_regdate, p_regdate, isLike, isStore  from
+        
+			(select p.id as POSTID, p.USERID, p.CAPTION,p.PRICE,p.CONTENT, p.CATEID, group_concat(a.url separator '|') as url, p.location, a.REGDATE as a_regdate, p.regdate as p_regdate
+			 from tbl_post p left join tbl_attach a on p.id = a.POSTID group by p.id) as pa
+			join
+			(select pl.postid, isLike, isStore from
+				(select distinct(p.id) as postid, l.userid as isLike from tbl_post p left join tbl_post_like l on p.id = l.POSTID and l.userid = 30) pl
+				join
+				(select p.id as postid, s.userid as isStore from tbl_post p left join tbl_store s on p.id = s.POSTID and s.userid = #{userid}) ps
+				on pl.postid=ps.postid) as pls
+			on
+			pa.postid = pls.postid) plsa
+			
+        join
+			(select u.mno, u.name as name, u.PROFILEPHOTO
+			from tbl_post p join tbl_user u on p.userid = u.mno and p.userid = #{userid} or u.mno = #{userid} group by u.mno) as uf
+		on
+			plsa.USERID = uf.mno
+		order by p_regdate DESC, a_regdate DESC
+			
+     
+<!-- 		select * from
         (select pa.postid as postid, pa.userid, pa.caption, pa.cateid, pa.url, pa.location, a_regdate, p_regdate, isLike, isStore  from
         
 			(select p.id as POSTID, p.USERID, p.CAPTION, p.CATEID, group_concat(a.url separator '|') as url, p.location, a.REGDATE as a_regdate, p.regdate as p_regdate
@@ -20,14 +42,13 @@
 				(select p.id as postid, s.userid as isStore from tbl_post p left join tbl_store s on p.id = s.POSTID and s.userid = #{userid}) ps
 				on pl.postid=ps.postid) as pls
 			on
-			pa.postid = pls.postid) plsa
 			
         join
 			(select u.MNO, u.NAME as USERNAME, u.PROFILEPHOTO
 			from tbl_follow f join tbl_user u on f.FOLLOWEDID = u.MNO and f.userid = #{userid} or u.MNO = #{userid} group by u.MNO) as uf
 		on
 			plsa.USERID = uf.MNO
-		order by p_regdate DESC, a_regdate DESC
+		order by p_regdate DESC, a_regdate DESC -->
 	</select>
 	
 		<!-- 유저 게시글 읽기 -->
