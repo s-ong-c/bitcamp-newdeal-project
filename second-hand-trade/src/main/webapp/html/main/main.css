@@ -248,3 +248,58 @@ body {
 }
 /*본문 사진 슬라이드 끝*/
 
+/* 글 작성 시 카테고리 시작*/
+.container-radio {
+    position: relative;
+    padding-left: 35px;
+    margin-right: 30px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container-radio .input-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.container-radio:hover .input-radio ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container-radio .input-radio:checked ~ .checkmark {
+    background-color: #ada6d8;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container-radio .input-radio:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container-radio .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+/* 글 작성 시 카테고리 끝*/

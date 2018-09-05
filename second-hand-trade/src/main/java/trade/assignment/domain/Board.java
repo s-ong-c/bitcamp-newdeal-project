@@ -8,12 +8,32 @@ import java.sql.Date;
 
 public class Board {
     private int no;
-    private String writer;
+    private String name;
     private String title;
     private String content;
     private Date createdate;
     private String photo;
+    //회진 추가
+    private int price;
+    private int category;
+    //0:의류,패션잡화  1:뷰티,미용  2:디지털,가전  3:생활,식품  4:기타
+    
+    public int getPrice() {
+        return price;
+    }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+    
     public int getNo() {
         return no;
     }
@@ -22,12 +42,12 @@ public class Board {
         this.no = no;
     }
 
-    public String getWriter() {
-        return writer;
+    public String getName() {
+        return name;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTitle() {
@@ -64,7 +84,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board [no=" + no + ", writer=" + writer + ", title=" + title + ", content=" + content + ", createdate="
-                + createdate + ", photo=" + photo + "]";
+        return "Board [no=" + no + ", name=" + name + ", title=" + title + ", content=" + content + ", createdate="
+                + createdate + ", photo=" + photo+ ", price=" + price+ ", category=" + category + "]";
     }
 }

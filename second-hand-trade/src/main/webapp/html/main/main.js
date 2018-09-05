@@ -59,7 +59,9 @@ function showSlides(n) {
         $('#heart-pic').attr('src',src);
     });
 //좋아요 버튼 체인지 끝
-    
+//메인 보드리스트 시작
+
+//메인 보드리스트 끝
   $.getJSON(`${serverApiAddr}/json/main/mainTest`, (result) => {
         if (result.status !== 'success') {
             return;
