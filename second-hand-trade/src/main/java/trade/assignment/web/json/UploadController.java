@@ -76,7 +76,7 @@ public class UploadController {
             MediaType mType = MediaUtils.getMediaType(formatName);
             HttpHeaders headers = new HttpHeaders();
 
-            String inputDirectory = "faint1122";
+            String inputDirectory = "kds-01.newdeal.bitcamp.net";
             URL url;
 
             try {

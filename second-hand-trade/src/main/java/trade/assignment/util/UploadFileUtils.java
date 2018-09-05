@@ -75,7 +75,7 @@ public class UploadFileUtils {
         String datePath = monthPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.DATE));
         
            S3Util s3 = new S3Util();
-            String bucketName = "faint1122";
+            String bucketName = "kds-01.newdeal.bitcamp.net";
 
 
 

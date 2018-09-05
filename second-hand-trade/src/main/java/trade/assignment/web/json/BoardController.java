@@ -28,8 +28,6 @@ public class BoardController {
     @PostMapping("boardUp")
     public Object BoardUp(Board board, MultipartFile photo) {
         
-        //System.out.println(photo);
-        
         HashMap<String, Object> result = new HashMap<>();
         try {
             boardService.add(board, photo);
@@ -39,7 +37,6 @@ public class BoardController {
             result.put("status", "fail");
             result.put("message", e.getMessage());
         }
-
         return result;
     }
     
@@ -77,33 +74,15 @@ public class BoardController {
     @PostMapping("update")
     public Object update(Board board) {
         
-        System.out.println(board);
-        
         boardService.update(board);
         
         HashMap<String,Object> result = new HashMap<>();
         result.put("status", "success");
         return result;
     }
-    /*@PostMapping("update")
-    public Object update(Board board) throws Exception {
-        HashMap<String,Object> result = new HashMap<>();
-        
-        System.out.println(board);
-        
-        if (boardService.update(board) == 0) {
-            result.put("status", "fail");
-            result.put("error", "해당 게시글이 없습니다.");
-        } else {
-            result.put("status", "success");
-        }
-        return result;
-    }*/
     
     @GetMapping("view/{no}")
     public Object view(@PathVariable int no) throws Exception{
-        
-        //System.out.println(no);
         
         HashMap<String,Object> data = new HashMap<>();
         data.put("board", boardService.get(no));
