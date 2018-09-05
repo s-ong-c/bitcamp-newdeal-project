@@ -1,4 +1,4 @@
-/*package trade.assignment.utils;
+package trade.assignment.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,4 +20,4 @@ public class MediaUtils {
         
         return mediaMap.get(type.toUpperCase());
     }
-}*/
+}

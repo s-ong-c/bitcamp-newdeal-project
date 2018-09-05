@@ -1,4 +1,4 @@
-/*package trade.assignment.utils;
+package trade.assignment.util;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,11 +9,8 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 
 import org.imgscalr.Scalr;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class UploadFileUtils {
-    private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 
     // String uploadPath 파일의 저장경로
     // String originalName 원본 팡리 이름
@@ -22,7 +19,7 @@ public class UploadFileUtils {
           //S3 서버 관련 설정   // 3/28
         
            S3Util s3 = new S3Util();
-            String bucketName = "faint1122";
+            String bucketName = "kds-01.newdeal.bitcamp.net";
             
             
         UUID uid = UUID.randomUUID();
@@ -81,10 +78,6 @@ public class UploadFileUtils {
             String bucketName = "faint1122";
 
 
-        // 폴더 생성 호출
-//      makeDir(uploadPath, yearPath, monthPath, datePath);
-//
-//      logger.info(datePath);
 
         return datePath;
     }
@@ -121,10 +114,4 @@ public class UploadFileUtils {
         ImageIO.write(destImg, formatName.toUpperCase(), newFile);
         return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
     }
-
-    public static Object uploadFile(String uploadpath, String originalFilename, byte[] bytes) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }
-*/
