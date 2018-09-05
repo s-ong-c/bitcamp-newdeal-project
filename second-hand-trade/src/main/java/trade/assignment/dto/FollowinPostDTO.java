@@ -10,6 +10,7 @@ public class FollowinPostDTO {
 	private String location;
 	private String url; //모든 첨부파일 통합 String '|'로 파일명 구분
 	private String name;
+	private String nickname;
 	private String profilephoto;
 	private Date regdate;
 	private int isLike; //userid or null(=0)
@@ -84,6 +85,12 @@ public class FollowinPostDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 	

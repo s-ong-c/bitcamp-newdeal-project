@@ -127,7 +127,19 @@ text-decoration:none;
 .preview-image.selected {
     box-shadow: 0 0 0 4px #00c09e;
 }
-
+/*댓글css  */
+.s2_2{ width: 100%; height: auto; padding-top: 16px; padding-bottom: 16px; text-align: left; border-bottom: 1.3px solid #efefef; }
+.s2_2_1{ width: 100%; height: 352px; overflow-y: auto; }
+.replyContainer{ margin-top: 20px; bottom: 0; }
+.reply{ margin-bottom: 4px; }
+.s2_3{ width: 100%; height: 85px; text-align: left; border-bottom: 1.3px solid #efefef; }
+.s2_3_1{ padding: 10px 0 10px 0; height: 100%;}
+.likeBtn{ height: 24px; width: 24px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); border: none; background-color: #fff; margin: 0 8px 8px 0; font-size: 0;}
+.replyBtn{ height: 24px; width: 24px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); background-position: -306px -289px; background-color: #fff; margin: 0 8px 8px 0; border: none; font-size: 0;}
+.storeBtn{ height: 24px; width: 24px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); background-color: #fff; margin-left: 842%; border: none; font-size: 0;}
+.s2_4{ width: 100%; height: auto; }
+.s2_4_1{ padding: 10px 0 10px 0; }
+.replyRegist{ font-size: 15px; border: none; width: 100%; height: auto; float: left; }
 </style>
 <script src="../upload.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -352,9 +364,31 @@ text-decoration:none;
   <img id="heart-pic" src="../../images/icons/heart-0.png" style="float: right; margin-right: 15px; width: 35px; height: 35px; cursor: pointer;">
 </div>
           <hr>
-          <p id="p-content"></p>
+         <!--  <p id="p-content"></p> -->
           
         </div>
+        <div class="s2_2">
+            <div class="s2_2_1" id="post{{postid}}">
+               <a id="p-nickname" href="#"><span class="nickname"></span></a>  <!-- 닉네임 -->
+                <p id="p-content"></p>
+               <div class="replyContainer" title="{{postid11}}" data-limit=0>
+               </div>
+            </div> 
+         </div>
+       <div class="s2_3">
+            <div class="s2_3_1">
+               <div class="btnContainer" title="{{postid}}">
+                  <button class="replyBtn" onclick="replyCursor(this)">댓글달기</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="s2_4">
+            <div class="s2_4_1" title="{{postid}}">
+               <!-- 댓글달기 -->
+               <input class="replyRegist" onkeypress="registReply(this, event);" type="textarea" placeholder="댓글 달기..." name="replyCaption">
+            </div>
+         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
         </div>
@@ -432,8 +466,11 @@ text-decoration:none;
             <label for="message-text" class="control-label">Message:</label>
             <textarea class="form-control" id="f-content"></textarea>
           </div>
+         <div class="form-group">
+            <label for="message-text" class="control-label-sm">판매가:</label>
+            <input class="form-control-sm" id="f-price" placeholder="ex)만원" style="margin:10px,2px,0px,10px">
+          </div>
         </form> 
-        
       <div class="container">
     <fieldset class="form-group" style="text-align: right;">
         <div class="btn btn-default image-preview-input" onclick="$('#pro-image').click()"> 
@@ -596,7 +633,10 @@ $(document).ready(function() {
 		$.ajax({
 			url : `${serverApiAddr}/json/post/register/submit`,
 			data : {
-				"files":data.fileUrl
+				"files":data.fileUrl,
+				"content":$('#f-content').val(),
+				"caption":$('#f-title').val(),
+				"price":$('#f-price').val()
 			},
 			dataType : 'text',
 			type : 'POST',
@@ -723,6 +763,7 @@ function selectUploadImaage(obj){
     }
 
 }
+
 </script>
     <script src="../../vendor/animsition/js/animsition.min.js"></script>
     <script src="../../vendor/bootstrap/js/popper.js"></script>

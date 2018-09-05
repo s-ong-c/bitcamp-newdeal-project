@@ -20,7 +20,7 @@
 			pa.postid = pls.postid) plsa
 			
         join
-			(select p.id as pid, u.mno, u.name as name, u.PROFILEPHOTO
+			(select p.id as pid, u.mno, u.name as name, u.PROFILEPHOTO,u.NICKNAME
 			from tbl_post p join tbl_user u on p.userid = u.MNO and p.id=#{postid}) as pu
 		on
 		plsa.USERID = pu.mno
@@ -92,8 +92,8 @@
 	
 		<!-- 게시글 작성 -->
 	 <insert id="create">
-		insert into tbl_post (userid, cateid, caption, location)
-		values(#{userid}, #{cateid}, #{caption}, #{location})
+		insert into tbl_post (userid, cateid, caption,content,price, location)
+		values(#{userid}, #{cateid}, #{caption},#{content},#{price}, #{location})
 		<selectKey keyProperty="id" resultType="int" order="AFTER">
 			select last_insert_id() as id
 		</selectKey>
@@ -112,7 +112,7 @@
           	select topT.*, (@rank := @rank +1) as rank
         	from
             ( select pa.* , likeCount, replyCount from
-            (select p.id, p.userid,p.cateid, u.name,u.profilephoto, p.caption,p.price,p.CONTENT, p.regdate, a.url, p.location
+            (select p.id, p.userid,p.cateid, u.name,u.nickname,u.profilephoto, p.caption,p.price,p.CONTENT, p.regdate, a.url, p.location
             from tbl_post as p
             join tbl_attach as a
             on p.id = a.postid

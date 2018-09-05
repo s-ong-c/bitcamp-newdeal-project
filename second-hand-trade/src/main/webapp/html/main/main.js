@@ -76,6 +76,7 @@ function showSlides(n) {
         }
        var name =  $('#login-name').html();
        $('#login-name').html(result.loginUser.name);
+       $('#login-name').attr('title',result.loginUser.no);
        //console.log(result.loginUser.profilephoto);
        if(result.loginUser.profilephoto != null){
 	    	   var fileInfo = getFileInfo(result.loginUser.profilephoto);

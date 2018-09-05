@@ -10,6 +10,15 @@ public class Post {
 		private int cateid;
 		private String caption;
 		private String name;
+		private String nickname;
+		public String getNickname() {
+			return nickname;
+		}
+
+		public void setNickname(String nickname) {
+			this.nickname = nickname;
+		}
+
 		private String profilephoto;
 		private String content;
 		private int price;
