@@ -23,6 +23,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import trade.assignment.domain.Member;
 import trade.assignment.domain.Post;
+import trade.assignment.dto.FollowinPostDTO;
+import trade.assignment.dto.RelationDTO;
 import trade.assignment.service.PostService;
 
 @RestController
@@ -159,6 +161,29 @@ public class PostController {
 		}
 		return entity;
 	}
+	
+	/////////////////////////////////////////////////////
+	@RequestMapping(value="/detail", method=RequestMethod.POST)
+	public ResponseEntity<FollowinPostDTO> detailRead(@RequestParam("postid") Integer postid, HttpServletRequest request){
+		
+		HttpSession session=request.getSession();
+		Member userVO=(Member)session.getAttribute("loginUser");
+		
+		RelationDTO dto = new RelationDTO();
+		dto.setPostid(postid);
+		dto.setLoginid(userVO.getNo());
+		
+		ResponseEntity<FollowinPostDTO> entity=null;
+		
+		try{
+			entity=new ResponseEntity<>(service.detailRead(dto), HttpStatus.OK);
+		}catch(Exception e){
+			e.printStackTrace();
+			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
 	
 }
 	

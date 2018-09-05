@@ -3,7 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="trade.assignment.repository.PostRepository">
-
+	 <!-- 세부 게시글 정보  (모달팝업용) -->
+	<select id="detailRead" resultType="trade.assignment.dto.FollowinPostDTO">
+			select * from
+        (select pa.postid as postid, pa.userid, pa.caption, pa.cateid, pa.url, pa.price, pa.content, pa.location, a_regdate, p_regdate, isLike, isStore  from
+        
+			(select p.id as POSTID, p.USERID, p.CAPTION, p.CATEID,p.PRICE,p.CONTENT, group_concat(a.url separator '|') as url, p.location, a.REGDATE as a_regdate, p.regdate as p_regdate
+			 from tbl_post p left join tbl_attach a on p.id = a.POSTID group by p.id) as pa
+			join
+			(select pl.postid, isLike, isStore from
+				(select distinct(p.id) as postid, l.userid as isLike from tbl_post p left join tbl_post_like l on p.id = l.POSTID and l.userid = #{loginid}) pl
+				join
+				(select distinct(p.id) as postid, s.userid as isStore from tbl_post p left join tbl_store s on p.id = s.POSTID and s.userid = #{loginid}) ps
+				on pl.postid=ps.postid) as pls
+			on
+			pa.postid = pls.postid) plsa
+			
+        join
+			(select p.id as pid, u.mno, u.name as name, u.PROFILEPHOTO
+			from tbl_post p join tbl_user u on p.userid = u.MNO and p.id=#{postid}) as pu
+		on
+		plsa.USERID = pu.mno
+        and plsa.postid = pu.pid
+	</select>
 
        
 	<!-- 메인 피드용 게시글 읽기 (팔로우하는 사람의 게시글 정보 / 최신 등록 순)-->
@@ -77,17 +99,7 @@
 		</selectKey>
 	</insert>
 	
-		<!--                    tag 관련-->	
-	<!--Tag 삽입  -->
-<!-- 	<insert id="insertTag">
-		insert into tbl_tag (name, tagcount)
-		values (#{name}, #{tagcount})
-	
-		<selectKey keyProperty="id" resultType="int" order="AFTER"> 
-		pk가 아닐땐, 키컬럼도 넣어 설정할 수 있음
-            select last_insert_id() as id
-        </selectKey> 
-	</insert> -->
+
 	
 		<!-- 	첨부파일 추가 -->
 		<!-- 게시글에 이미지,동영상추가 -->
@@ -95,22 +107,9 @@
 		insert into tbl_attach (postid, url) values (LAST_INSERT_ID(), #{url})
 	</insert> 
 	
-		<!--postid , tagid 넣기  -->
-	<!-- <insert id="insertPostedTag">
-		insert into tbl_posted_tag (postid, tagid)
-		values(#{postid}, #{tagid})
-	</insert>
-		태그 name으로 찾기
-	<select id="selectTagByName" resultType="trade.assignment.domain.Tag">
-		 <![CDATA[
-			 select 
-			    *
-			 from 
-			   tbl_tag
-			 where  name =#{name}
-		 ]]>
-	</select>
- -->
+
+ 
+
 </mapper>
 
 

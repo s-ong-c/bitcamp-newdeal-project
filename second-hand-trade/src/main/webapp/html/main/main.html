@@ -138,15 +138,37 @@ text-decoration:none;
          <header>
        <div id="h-div" >
             <div style="flex-grow: 2;"></div><!-- 로고 왼쪽 공간 -->
-            <div style="flex-grow: 3;"><!-- 로고 오른쪽 공간 -->
-                <img id="logo" style="cursor: pointer;" onclick="location.href='http://localhost:8080/second-hand-trade/html/main/main.html'" src="../../images/icons/cart.png">
+            <div style="flex-grow: 3;font-size:27px;"><!-- 로고 오른쪽 공간 -->
+                <img id="logo" style="cursor: pointer;" onclick="location.href='http://localhost:8080/second-hand-trade/html/main/main.html'" src="../../images/icons/man-cart.png">8AZON
             </div>
-            <div id="sbi" style="flex-grow: 3;">
+<!--             <div id="sbi" style="flex-grow: 3;">
                 <input id="search" type="text">&nbsp;&nbsp;
                 <button id="sBtn" class="btn btn-outline-light">
                     <span>검색</span>
                 </button>
-            </div><!--#sbi -->
+            </div>#sbi -->
+            <script src="jquery-1.11.2.min.js" type="text/javascript"></script>
+            <script src="typed.js" type="text/javascript"></script>
+<script>
+  $(function(){
+    $(".typed").typed({
+      strings: ["Technology.","Programming.","Open Source.","Science."],
+      typeSpeed: 100,
+      loop: true,
+      backDelay: 1000
+    });
+  });
+</script>
+
+<div class="mobile-js-hide">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+          <h1>I write about <span class="typed" style="color:#890000";></span></h1>
+      </div>
+    </div>
+  </div>
+</div>
             <div id="hRight">
                 <img id="profile" style="width: 25px; height: 25px; border-radius: 10px;" src="../emptyProfile.jpg">
                 <span id="login-name" style="color: white;"><span style="text-decoration: underline">&nbsp;name&nbsp;</span>님</span>
@@ -219,7 +241,7 @@ text-decoration:none;
   		<div class="boardSpace"></div>
         <div class="boardSpace"></div>
 		<div class="boardInfo">
-				<a class="boardInfo-s" data-toggle="modal" data-target="#myModal" href="#" 
+				<a class="boardInfo-s" data-toggle="modal" data-target="#myModal" data-no="{{postid}}" href="#" 
                         style="color: #708090;  float: left; margin-left: 10px;">{{caption}}..</a>
                     <a class="boardInfo-s" href="#" style="color: white;  float: right; "> <img src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{profilephoto}}">{{name}}</a>
 
@@ -280,19 +302,69 @@ text-decoration:none;
         </section>
         
         <section id="s3" class="ss"><!-- 308*1156 -->
-           <article id="a31" class="aa aa3">
-               <p>광고1</p>
+           <article  id="a31" class="aa aa3" >
+              <img style="width:100%;height:100%;" src="../../images/icons/ad1.png"> 
            </article>
            <article id="a32" class="aa aa3">
-               <p>광고2</p>
+                <img style="width:100%;height:100%;" src="../../images/icons/ad4.PNG"> 
            </article>
            <article id="a33" class="aa aa3">
-               <p>광고3</p>
+               <img style="width:100%;height:100%;" src="../../images/icons/ad3.jpg"> 
            </article>
         </section>
     </div><!-- #sct-s -->
    <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="border: 1px solid pink;">
+           <h4 class="modal-title" id="caption" style="float: left; border: 1px solid steelblue;">은우의 미소를 팝니다.. 아니 다내꺼야</h4>
+           <button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
+            </div>
+         <div style="border: 1px solid tomato; margin-top: 5px; margin-left: 15px; ">
+           <img id="p-photo" style="float: left;" src="../../images/icons/profile.png">&nbsp;&nbsp;&nbsp;
+           <a id="p-name" style="float: left;" href="http://localhost:8080/second-hand-trade/html/main/main.html">차은우</a>
+           <span>작성일</span>
+          </div>
+        <div class="modal-body">
+<!-- 본문 슬라이드 사진 -->
+<div class="slideshow-container" style="margin-top: 27px;">
+  <div class="mySlides fade-pic">
+    <div class="numbertext">1 / 3</div>
+    <img class="bd-img" id ="p-url" src="../../images/cha.png">
+  </div>
+  <div class="mySlides fade-pic">
+    <div class="numbertext">2 / 3</div>
+    <img  class="bd-img" id ="p-url"src="../../images/cha2.jpg" >
+  </div>
+  <div class="mySlides fade-pic">
+    <div class="numbertext">3 / 3</div>
+    <img  class="bd-img" id ="p-url"src="../../images/cha3.jpg">
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div><!-- .slideshow-container -->
+<br>
+<div style="text-align:center;">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <img id="heart-pic" src="../../images/icons/heart-0.png" style="float: right; margin-right: 15px; width: 35px; height: 35px; cursor: pointer;">
+</div>
+          <hr>
+          <p id="p-content">은우의 미소는 백만불짜리 미소입니다.</p>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- #myModal -->
+  
+ <!-- ///////////////////////////////////////////// -->
+ <script id="li-template2" type="text/x-handlebars-template">
+		{{#each list}}
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header" style="border: 1px solid pink;">
@@ -338,7 +410,10 @@ text-decoration:none;
         </div>
       </div>
     </div>
-  </div><!-- #myModal -->
+  		{{/each}}
+		</script>
+  
+ <!--///////////////////////////////////////////////  --> 
     <!-- boardWrite modal -->
 <div class="modal fade" id="writeModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -429,7 +504,7 @@ text-decoration:none;
 			</div>
 	</div> -->
     </div><!-- .jangter -->
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script> -->
 	<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>

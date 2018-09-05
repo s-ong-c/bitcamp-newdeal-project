@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import trade.assignment.domain.Post;
 import trade.assignment.domain.Tag;
 import trade.assignment.dto.FollowinPostDTO;
+import trade.assignment.dto.RelationDTO;
 import trade.assignment.repository.PostRepository;
 import trade.assignment.service.PostService;
 import trade.assignment.util.HashTagHelper;
@@ -92,6 +93,12 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<Post> read(Integer userid) throws Exception{
 		return postRepository.read(userid);
+	}
+	
+	// 특정게시물 세부내용(매개변수:postid, loginid)
+	@Override
+	public FollowinPostDTO detailRead(RelationDTO dto) throws Exception{
+		return postRepository.detailRead(dto);
 	}
 	
 	

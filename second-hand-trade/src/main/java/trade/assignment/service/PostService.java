@@ -5,6 +5,7 @@ import java.util.List;
 import trade.assignment.domain.Post;
 import trade.assignment.domain.Tag;
 import trade.assignment.dto.FollowinPostDTO;
+import trade.assignment.dto.RelationDTO;
 
 public interface PostService {
 	// 메인피드 게시물 리스트(매개변수:postid, loginid)
@@ -15,6 +16,9 @@ public interface PostService {
 	
 	// POST등록(사진/태그 Transaction)
 		public void regist(Post post) throws Exception;
+		
+		// 특정게시물 세부내용(매개변수:postid, loginid)
+		public FollowinPostDTO detailRead(RelationDTO dto) throws Exception;
 		
 //	// registPostAndTag에서 사용
 //    public void insertTag(Tag vo) throws Exception;
