@@ -22,6 +22,9 @@ public interface PostRepository {
 	//게시물의 세부디테일 정보
 	public FollowinPostDTO detailRead(RelationDTO dto) throws Exception;
 	
+	// 인기 게시물
+		public List<FollowinPostDTO> topPost() throws Exception;
+		
 	
 	//tag등록
 //	public void insertTag(Tag vo) throws Exception; 

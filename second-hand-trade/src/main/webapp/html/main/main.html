@@ -221,7 +221,7 @@ text-decoration:none;
          <div class="sideItems" id="card">
             </div><!-- sideItems --> 
            
-              <div class="boardSpace"></div>
+<!--               <div class="boardSpace"></div>
               <div class="boardInfo">
                     <a class="boardInfo-s" data-toggle="modal" data-target="#myModal" href="#" 
                         style="color: white;  float: left; margin-left: 10px;">은우의 미소를 팝니다..</a>
@@ -234,42 +234,29 @@ text-decoration:none;
               <div class="boardPrice">
                     <span style="color: white;  margin-right: 20px; margin-top: 10px;">1억 원 </span>
               </div>
-            
+             -->
 
 <script id="li-template" type="text/x-handlebars-template">
 		{{#each list}}
   		<div class="boardSpace"></div>
         <div class="boardSpace"></div>
 		<div class="boardInfo">
-				<a class="boardInfo-s" data-toggle="modal" data-target="#myModal" data-no="{{postid}}" href="#" 
+				<a class="boardInfo-s" data-toggle="modal" data-target="#myModal" data-no="{{id}}" href="#" 
                         style="color: #708090;  float: left; margin-left: 10px;">{{caption}}..</a>
                     <a class="boardInfo-s" href="#" style="color: white;  float: right; "> <img src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{profilephoto}}">{{name}}</a>
 
               </div>
 		<div class="boardPic">
-                    <img style="height: 370px; width: 590px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{url}}">
+                    <img style="height: 370px; width: 596px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{url}}">
               </div>
               <div class="boardPrice">
                     <span style="color: white;  margin-right: 20px; margin-top: 10px;">{{price}}0,000원 </span>
               </div>
-
+<hr>
 			{{/each}}
 		</script>
 		
-              <div class="boardSpace"></div>
-              <div class="boardSpace"></div>
-              <div class="boardInfo">
-                    <span class="boardInfo-s" style="color: white; border: 1px solid black;">제목</span>
-                    <span class="boardInfo-s"  style="color: white; border: 1px solid black;">이름, 사진</span>
-                    <img src="../../images/icons/profile.png">
-              </div>
-              <div class="boardPic">
-                    <span style="color: white; border: 1px solid black;">판매상품사진</span>
-              </div>
-              <div class="boardPrice">
-                    <span style="color: white; border: 1px solid black; margin-right: 20px;">ㅇㅇㅇ원 </span>
-              </div> 
-              <div class="boardSpace"></div>
+<!--               <div class="boardSpace"></div>
               <div class="boardSpace"></div>
               <div class="boardInfo">
                     <span class="boardInfo-s" style="color: white; border: 1px solid black;">제목</span>
@@ -283,6 +270,19 @@ text-decoration:none;
                     <span style="color: white; border: 1px solid black; margin-right: 20px;">ㅇㅇㅇ원 </span>
               </div> 
               <div class="boardSpace"></div>
+              <div class="boardSpace"></div>
+              <div class="boardInfo">
+                    <span class="boardInfo-s" style="color: white; border: 1px solid black;">제목</span>
+                    <span class="boardInfo-s"  style="color: white; border: 1px solid black;">이름, 사진</span>
+                    <img src="../../images/icons/profile.png">
+              </div>
+              <div class="boardPic">
+                    <span style="color: white; border: 1px solid black;">판매상품사진</span>
+              </div>
+              <div class="boardPrice">
+                    <span style="color: white; border: 1px solid black; margin-right: 20px;">ㅇㅇㅇ원 </span>
+              </div> 
+              <div class="boardSpace"></div> -->
            </article>
            <article id="a22" class="aa aa2">
                <p>게시글2</p>
@@ -352,7 +352,7 @@ text-decoration:none;
   <img id="heart-pic" src="../../images/icons/heart-0.png" style="float: right; margin-right: 15px; width: 35px; height: 35px; cursor: pointer;">
 </div>
           <hr>
-          <p id="p-content">은우의 미소는 백만불짜리 미소입니다.</p>
+          <p id="p-content"></p>
           
         </div>
         <div class="modal-footer">

@@ -101,6 +101,9 @@ public class PostServiceImpl implements PostService {
 		return postRepository.detailRead(dto);
 	}
 	
-	
+	@Override
+	public List<FollowinPostDTO> topPost() throws Exception {
+		return postRepository.topPost();
+	}
 
 }

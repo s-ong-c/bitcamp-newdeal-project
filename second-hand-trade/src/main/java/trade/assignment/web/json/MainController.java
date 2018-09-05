@@ -43,9 +43,10 @@ public class MainController {
 		if(loginUser!=null){
 				model.addAttribute("list", service.mainRead(loginUser.getNo())); //세션 아이디값을 통해 현재 팔로우중인 유저들의 게시물정보 및 유저정보 등을 받아옴
 				List<FollowinPostDTO> list = service.mainRead(loginUser.getNo());
+				List<FollowinPostDTO> topPostList = service.topPost();
 				System.out.println(list.toString());
 				result.put("loginUser",loginUser);
-				result.put("list",list);
+				result.put("list",topPostList);
 				result.put("status","success");
 		}
 		

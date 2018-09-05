@@ -20,6 +20,8 @@ public interface PostService {
 		// 특정게시물 세부내용(매개변수:postid, loginid)
 		public FollowinPostDTO detailRead(RelationDTO dto) throws Exception;
 		
+		// 인기 게시글
+		public List<FollowinPostDTO> topPost() throws Exception;
 //	// registPostAndTag에서 사용
 //    public void insertTag(Tag vo) throws Exception;
 //    

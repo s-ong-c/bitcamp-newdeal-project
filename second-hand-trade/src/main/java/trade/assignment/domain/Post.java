@@ -9,6 +9,10 @@ public class Post {
 		private int userid;
 		private int cateid;
 		private String caption;
+		private String name;
+		private String profilephoto;
+		private String content;
+		private int price;
 		
 		private Date regdate;
 		private Date moddate;	// 수정date
@@ -74,6 +78,38 @@ public class Post {
 
 		public Date getModdate() {
 			return moddate;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getProfilephoto() {
+			return profilephoto;
+		}
+
+		public void setProfilephoto(String profilephoto) {
+			this.profilephoto = profilephoto;
+		}
+
+		public String getContent() {
+			return content;
+		}
+
+		public void setContent(String content) {
+			this.content = content;
+		}
+
+		public int getPrice() {
+			return price;
+		}
+
+		public void setPrice(int price) {
+			this.price = price;
 		}
 
 		public void setModdate(Date moddate) {
