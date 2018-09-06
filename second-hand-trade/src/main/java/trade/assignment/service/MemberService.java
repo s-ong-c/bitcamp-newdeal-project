@@ -17,4 +17,9 @@ public interface MemberService {
 	
 	public Member userRead(RelationDTO dto) throws Exception;
 	// user 프로필 읽어오
+
+	/* ---kgm--- */
+	int update(Member member);
+	
+	public Member chkNick(String nickname) throws Exception;
 }

@@ -124,8 +124,17 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("상세프로필을 읽어오겠다/");
 		return memberRepository.userRead(dto);
 	}
-    
-    
-	
 
+    @Override
+    public int update(Member member) {
+        return memberRepository.update(member);
+    }
+
+    @Override
+    public Member chkNick(String nickname) throws Exception {
+        Member vo = memberRepository.chkNick(nickname);
+        System.out.println("서비스 dao vo:"+vo);
+        
+        return memberRepository.chkNick(nickname);
+    }
 }

@@ -1,5 +1,6 @@
 package trade.assignment.repository;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import trade.assignment.domain.Member;
@@ -28,4 +29,9 @@ public interface MemberRepository {
 
 	////profile
 	public Member userRead(RelationDTO dto) throws Exception;
+
+    int update(Member member);
+    
+    Member chkNick(String nickname) throws Exception;
+
 }

@@ -16,3 +16,10 @@
         $('#f-email').val(result.data.email);
         $('#f-memo').val(result.data.memo);
     })
+
+$('#my-page').on('click', ()=>{
+    var name = $('#my-page > p').html();
+    //event.preventDefault();
+    console.log(name);
+    location.href=`${serverApiAddr}/html/mypage/mypage.html?name=${name}`;
+})

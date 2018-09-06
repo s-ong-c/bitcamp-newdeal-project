@@ -14,12 +14,14 @@
 <div class="container">
     <section id="content">
         <section id="edit-menu" class="row">
-
-            <div class="list-group-flush" id="edit-menu-list" role="tablist">
-                <a class="list-group-item list-group-item-action" id="edit-profile" href="#">프로필 편집</a>
-                <a class="list-group-item list-group-item-action" id="edit-pwd" href="#">비밀번호 변경</a>
-                <a class="list-group-item list-group-item-action" id="edit-zzim" href="#">내가 찜한 물건</a>
-                <a class="list-group-item list-group-item-action" id="user-del"  href="#member-del-modal" data-toggle="modal">회원 탈퇴</a>
+                <ul class="list-group list-group-flush" id="edit-menu-list" role="tablist">
+                </ul>
+                <script id="li-template" type="text/x-handlebars-template">
+	                <li class="list-group-item list-group-item-action active" id="edit-profile" data-name="{{data.name}}">프로필 편집</li>
+	                <li class="list-group-item list-group-item-action" id="edit-pwd" data-name="{{data.name}}">비밀번호 변경</li>
+	                <li class="list-group-item list-group-item-action" id="edit-zzim" data-name="{{data.name}}">내가 찜한 물건</li>
+	                <li class="list-group-item list-group-item-action" id="user-del" data-toggle="modal" data-name="{{name}}">회원 탈퇴</li>
+                </script>
                 <!-- Modal -->
                 <div class="modal fade" id="member-del-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -40,12 +42,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
         </section>
         <section id="edit-content">
 
-        </section> <!-- #zzim-r -->
+        </section> 
     </section> <!-- #content -->
 </div><!-- .container -->
 
@@ -55,6 +56,8 @@
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/jquery.bit.js"></script>
 <script src="mypage-edit.js"></script>
 
 </body>

@@ -9,7 +9,7 @@
          <id column="MNO" property="no"/>
          <result column="NAME" property="name"/>
          <result column="EMAIL" property="email"/>
-         <result column="PRI_LEVEL" property="prilevel"/>
+         <result column="PRILEVEL" property="prilevel"/>
          <result column="PROFILEPHOTO" property="memberPicture"/>
          <result column="WEBSITE" property="website"/>
          <result column="INTRO" property="intro"/>
@@ -62,23 +62,47 @@
         WHERE SNSID = #{snsID}
     </select>
     
-    
     	<!-- 특정 유저데이터 읽기 -->
 	<select id="userRead" parameterType="map"
 	  resultMap="memberMap">
-        SELECT 
-        MNO, 
-        email, 
-        name, 
-         WEBSITE website, 
-         profilephoto memberPicture, 
-         INTRO intro
+        SELECT
+        MNO,
+        NAME,
+        NICKNAME,
+        EMAIL,
+        WEBSITE,
+        PHONENUMBER,
+        INTRO,
+        SEX,
+        PROFILEPHOTO 
+
 		FROM
 		tbl_user
 		WHERE name=#{name}
-       
 	</select>
-
+	
+    <!-- kgm userUpdate -->
+    <update id="update" parameterType="member">
+	    UPDATE tbl_user
+	    SET
+	        NAME = #{name},
+	        NICKNAME = #{nickname},
+	        EMAIL = #{email},
+	        WEBSITE = #{website},
+            PHONENUMBER = #{phonenumber},
+	        INTRO = #{intro},
+	        SEX = #{sex}
+	    WHERE
+	        MNO = #{no}
+    </update>
+    
+    <select id="chkNick" parameterType="map" resultMap="memberMap">
+        SELECT
+            MNO, NICKNAME 
+        FROM tbl_user
+        WHERE NICKNAME = #{nickname}
+    </select>
+    
 </mapper>
 
 

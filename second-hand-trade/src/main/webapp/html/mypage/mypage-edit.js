@@ -1,63 +1,49 @@
 'use strict'
 
-/*var serverApiAddr = "http://localhost:8080/testjangter";
+var liTemplateSrc = $('#li-template').text();
+var template = Handlebars.compile(liTemplateSrc);
 
-$('section#edit-content').load(`${serverApiAddr}/mypage2/form.html`);*/
 
-$('#edit-menu-list').on('click', 'a', (e) => {
-    $('#edit-menu-list a.active')
+$('#edit-menu-list').on('click', 'li', (e) => {
+    $('#edit-menu-list li.active')
         .removeClass('active');
     $(e.target).addClass('active');
     
 });
 
-$('#edit-profile').click(()=>{
-    $.ajax({
-        type: 'GET',
-        url: 'form.html',
-        dataType: 'text',
-        error: function(){
-            alert('통신 실패!')
-        },
-        success: function(data){
-            $('#edit-content').html(data);
-        }
-    })
+$('#edit-menu-list').on('click','#edit-profile', (e) =>{
+    $('section#edit-content').load(`${serverApiAddr}/html/mypage/form.html`,()=>{
+        console.log("헐헐");
+        var name = $(e.target).attr('data-name');
+        console.log("data네임"+name);
+        $(document.body).trigger('show.detail', [name]);
+    });
+    
 })
 
-
-$('#edit-pwd').click(()=>{
-    $.ajax({
-        type: 'GET',
-        url: 'form-pwd.html',
-        dataType: 'text',
-        error: function(){
-            alert('통신 실패!')
-        },
-        success: function(data){
-            $('#edit-content').html(data);
-        }
-        
-    })
+$('#edit-menu-list').on('click','#edit-pwd', (e) =>{
+    $('section#edit-content').load(`${serverApiAddr}/html/mypage/form-pwd.html`, ()=>{
+        console.log("비번")
+    });
 })
 
-$('#edit-zzim').click(()=>{
-    $.ajax({
-        type: 'GET',
-        url: 'edit-zzim.html',
-        dataType: 'text',
-        error: function(){
-            alert('통신 실패!')
-        },
-        success: function(data){
-            $('#edit-content').html(data);
-        }
-    })
+$('#edit-menu-list').on('click','#edit-zzim', (e) =>{
+    $('section#edit-content').load(`${serverApiAddr}/html/mypage/edit-zzim.html`,()=>{
+        console.log("찜")
+    });
 })
-
 
 loadList();
 
+$(document.body).on('refresh.list', () => loadList());
+
 function loadList(){
-    $('#edit-menu-list a:first-child').click();
+    $.getJSON(`${serverApiAddr}/json/edit3/${name}`, (result) => {
+        console.log(result);
+        var html = template(result);
+        console.log(html)
+        $('#edit-menu-list').html(html);
+        console.log(html);
+        $('#edit-menu-list li:first-child').click();
+    })
 }

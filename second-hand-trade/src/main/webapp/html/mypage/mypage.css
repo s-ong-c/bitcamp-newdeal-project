@@ -1,7 +1,12 @@
 @charset "UTF-8";
 
+body {
+    background: -webkit-linear-gradient(left, rgba(0, 168, 255, 0.5),
+        rgba(185, 0, 255, 0.5));
+}
+
 div.container {
-    width: 750px;
+    width: 800px;
     font-size: small;
 }
 
@@ -13,7 +18,7 @@ div.container {
 
 #bottom {
     overflow: hidden;
-    border: 1px solid black;
+    border: 1px solid white;
     margin-top: 11px;
 }
 
@@ -22,7 +27,7 @@ div.container {
     width: 152px;
     height: 172px;
     text-align: center;
-    margin-left: 90px;
+    margin-left: 95px;
     margin-top: 6px;
 
 }
@@ -33,7 +38,7 @@ div.container {
     margin: 10px 20px;
 }
 
-#profile-r>h4{
+#profile-r>h3{
     margin: 15px 0px 35px 10px;
 }
 
@@ -48,18 +53,20 @@ div.container {
 span {
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 15px;
 }
 
 #zzim-l {
     float: left;
     width: 20%;
     padding: 10px;
+    text-align: center;
 }
 
 #zzim-r {
     float: left;
     width: 80%;
-    border-left: 1px solid black;
+    border-left: 1px solid white;
     min-height: 500px;
     text-align: center;
 }
@@ -69,23 +76,24 @@ ul {
     padding: 0;
 }
 
+#bottom h6{
+    font-weight: bolder;
+}
+
 .product {
     list-style: none;
-    border: 1px solid black;
+    border: 1px solid white;
     width: 270px;
     display: inline-block;
     vertical-align: top;
-    margin: 5px;
+    margin: 10px;
     overflow: hidden;
 
 }
 
-.product>strong {
-    display: block;
-}
-
-.detail {
-    margin: 1px 15px;
+.detail h6{
+	margin-top: 15px;
+	
 }
 
 .product>button {
@@ -98,8 +106,8 @@ ul {
 
 /* ---------img--------- */
 .product-img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 268px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -112,4 +120,20 @@ ul {
 
 .detail:hover .product-img {
     opacity: 0.8;
+}
+
+.btn-x-right > button{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-x-right img{
+    padding: 5px;
+}
+
+.btn-x-right img:hover {
+    background-color: black;
 }

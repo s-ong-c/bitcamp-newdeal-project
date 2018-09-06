@@ -9,18 +9,17 @@
 </head>
 
 <body>
-
 <div class="container">
-
+    <header></header>
     <section id="top">
         <div id="profile-l">
             <img id="profile-img" src="p1.jpg">
-            <button id="ePrevBtn" onclick="location.href='mypage-edit.html'" class="btn btn-secondary btn-sm">프로필 편집</button>
+            <button id="edit-btn" class="btn btn-secondary btn-sm">프로필 편집</button>
         </div>
         <div id="profile-r">
-            <h4>MINSEOK-store</h4>
-            <span>상점 방문 수 200</span>
-            <span>별점 ★★</span>
+            <h3 id="name-test"></h3>
+            <span>상점 방문 수 100</span>
+            <span>별점 ★★★★★</span>
             <span>상품 판매 횟수 16회</span>
         </div>
     </section>
@@ -33,49 +32,57 @@
             <ul class="product-list">
                 <li class="product">
                     <div class="btn-x-right">
-                        <button type="button" class="btn btn-outline-danger btn-sm">X</button>
+                        <button type="button" onclick="alert('삭제');">
+                            <img alt="삭제" src="cancel.png">
+                        </button>
                     </div>
                     <div class="detail">
                         <a href="#">
                             <img class="product-img" src="p1.jpg">
                         </a>
-                        <strong>발렌시아가-트리플s $1,000</strong>
+                        <h6>발렌시아가-트리플s $1,000</h6>
                         <p>song92-store</p>
                     </div>
                 </li>
                 <li class="product">
                     <div class="btn-x-right">
-                        <button type="button" class="btn btn-outline-danger btn-sm">X</button>
+                        <button type="button" onclick="alert('삭제');">
+                            <img alt="삭제" src="cancel.png">
+                        </button>
                     </div>
                     <div class="detail">
                         <a href="#">
                             <img class="product-img" src="p1.jpg">
                         </a>
-                        <strong>발렌시아가-트리플s $1,000</strong>
+                        <h6>발렌시아가-트리플s $1,000</h6>
                         <p>song92-store</p>
                     </div>
                 </li>
                 <li class="product">
                     <div class="btn-x-right">
-                        <button type="button" class="btn btn-outline-danger btn-sm">X</button>
+                        <button type="button" onclick="alert('삭제');">
+                            <img alt="삭제" src="cancel.png">
+                        </button>
                     </div>
                     <div class="detail">
                         <a href="#">
                             <img class="product-img" src="p1.jpg">
                         </a>
-                        <strong>발렌시아가-트리플s $1,000</strong>
+                        <h6>발렌시아가-트리플s $1,000</h6>
                         <p>song92-store</p>
                     </div>
                 </li>
                 <li class="product">
                     <div class="btn-x-right">
-                        <button type="button" class="btn btn-outline-danger btn-sm">X</button>
+                        <button type="button" onclick="alert('삭제');">
+                            <img alt="삭제" src="cancel.png">
+                        </button>
                     </div>
                     <div class="detail">
                         <a href="#">
                             <img class="product-img" src="p1.jpg">
                         </a>
-                        <strong>발렌시아가-트리플s $1,000</strong>
+                        <h6>발렌시아가-트리플s $1,000</h6>
                         <p>song92-store</p>
                     </div>
                 </li>
@@ -88,6 +95,9 @@
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/jquery.bit.js"></script>
+<script src="mypage.js"></script>
 </body>
 
 </html>

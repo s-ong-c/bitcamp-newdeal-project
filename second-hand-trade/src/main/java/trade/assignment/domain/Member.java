@@ -26,7 +26,15 @@ public class Member implements Serializable {
 	
 	private Date regdate;
 	private int postCount;
-	public int getNo() {
+	
+	private int sex;
+	public int getSex() {
+        return sex;
+    }
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+    public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
