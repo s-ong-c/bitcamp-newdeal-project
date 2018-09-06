@@ -142,7 +142,12 @@
 	                        chkid=true;
 	                    }
 	            	else if(responseMsg==='F'){
-	            		alert('인증 대기중인 이메일 입니다. 인증해주세요.' );
+	            		swal({
+                            html: true,
+                            title: "<span style='font-size: 27px;'>이메일인증대기중입니다.<br> 인증을 완료해주세요</span>",
+                            type: "warning",
+                            confirmButtonClass: "btn-danger",
+                          });
 	            	
 	            	}else{
 	            	     swal({

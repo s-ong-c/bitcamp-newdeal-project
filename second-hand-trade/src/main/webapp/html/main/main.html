@@ -135,7 +135,7 @@ text-decoration:none;
 .s2_3{ width: 100%; height: 85px; text-align: left; border-bottom: 1.3px solid #efefef; }
 .s2_3_1{ padding: 10px 0 10px 0; height: 100%;}
 .likeBtn{ height: 24px; width: 24px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); border: none; background-color: #fff; margin: 0 8px 8px 0; font-size: 0;}
-.replyBtn{ height: 24px; width: 24px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); background-position: -306px -289px; background-color: #fff; margin: 0 8px 8px 0; border: none; font-size: 0;}
+.replyBtn{ height: 50px; width: 50px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); background-position: -306px -289px; background-color: #fff; margin: 0 8px 8px 0; border: none; font-size: 0;}
 .storeBtn{ height: 24px; width: 24px; background-image: url("http://hyunjoolee.pythonanywhere.com/static/images/sprites/fef349.png"); background-color: #fff; margin-left: 842%; border: none; font-size: 0;}
 .s2_4{ width: 100%; height: auto; }
 .s2_4_1{ padding: 10px 0 10px 0; }
@@ -164,7 +164,7 @@ text-decoration:none;
 <script>
   $(function(){
     $(".typed").typed({
-      strings: ["Technology.","Programming.","Open Source.","Science."],
+      strings: ["살까!!!?..","말까??....","팔아볼까...","에라모르겠다!...","충동구매다!!!","어머이건사야돼!!!!"],
       typeSpeed: 100,
       loop: true,
       backDelay: 1000
@@ -176,7 +176,7 @@ text-decoration:none;
   <div class="row">
     <div class="col-sm-12">
       <div class="text-center">
-          <h1>I write about <span class="typed" style="color:#890000";></span></h1>
+          <h1>저거.........  <span class="typed" style="color:#890000";></span></h1>
       </div>
     </div>
   </div>
@@ -259,7 +259,7 @@ text-decoration:none;
 
               </div>
 		<div class="boardPic">
-                    <img style="height: 370px; width: 596px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{url}}">
+                    <img style="height: 370px; width: 600px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" src="http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122{{url}}">
               </div>
               <div class="boardPrice">
                     <span style="color: white;  margin-right: 20px; margin-top: 10px;">{{price}}0,000원 </span>
@@ -329,11 +329,11 @@ text-decoration:none;
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header" style="border: 1px solid pink;">
-           <h4 class="modal-title" id="caption" style="float: left; border: 1px solid steelblue;">은우의 미소를 팝니다.. 아니 다내꺼야</h4>
+        <div class="modal-header" style="border: 3px solid pink;">
+           <h4 class="modal-title" id="caption" style="float: left; /* border: 1px solid steelblue; */">은우의 미소를 팝니다.. 아니 다내꺼야</h4>
            <button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
             </div>
-         <div style="border: 1px solid tomato; margin-top: 5px; margin-left: 15px; ">
+         <div style="/* border: 1px solid tomato; */ margin-top: 5px; margin-left: 15px; ">
            <img id="p-photo" style="float: left;" src="../../images/icons/profile.png">&nbsp;&nbsp;&nbsp;
            <a id="p-name" style="float: left;" href="http://localhost:8080/second-hand-trade/html/main/main.html">차은우</a>
            <span>작성일:<span id='p-date'></span></span>
@@ -386,7 +386,7 @@ text-decoration:none;
          <div class="s2_4">
             <div class="s2_4_1" title="{{postid}}">
                <!-- 댓글달기 -->
-               <input class="replyRegist" onkeypress="registReply(this, event);" type="textarea" placeholder="댓글 달기..." name="replyCaption">
+            <!--    <input class="replyRegist" onkeypress="registReply(this, event);" type="textarea" placeholder="댓글 달기..." name="replyCaption"> -->
             </div>
          </div>
         <div class="modal-footer">

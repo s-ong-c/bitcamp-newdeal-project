@@ -80,12 +80,12 @@ body {
     top: 60px;
     width: 300px;
     height: 100%;
-    border: 1px solid white;
+   /*  border: 1px solid white; */
     flex: 0 0 300px;
     color: white; 
 /*  margin-top: 60px; */
     position: fixed;
-    margin-left: 800px;
+    margin-left: 810px;
 }
 
 .aa {

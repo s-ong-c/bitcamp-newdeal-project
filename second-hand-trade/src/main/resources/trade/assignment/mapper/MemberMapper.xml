@@ -12,7 +12,7 @@
          <result column="EMAIL" property="email"/>
          <result column="PROFILEPHOTO" property="profilephoto"/>
          <result column="PHONENUMBER" property="phonenumber"/>
-         <result column="PRI_LEVEL" property="prilevel"/>
+         <result column="PRILEVEL" property="prilevel"/>
          <result column="WEBSITE" property="website"/>
          <result column="INTRO" property="intro"/>
          <result column="PWD" property="password"/>

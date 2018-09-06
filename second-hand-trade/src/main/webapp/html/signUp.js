@@ -95,6 +95,7 @@ if (check) {
 	    	}else{
 	    		alert('실패');
 	    		console.log(result.message)
+	    		console.log(result);
 	    	}
 	        console.log(result);
 	    }, 'json')
