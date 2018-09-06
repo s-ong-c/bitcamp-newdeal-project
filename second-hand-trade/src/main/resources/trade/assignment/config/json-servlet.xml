@@ -63,6 +63,7 @@
         <mvc:mapping path="/**"/>
         <mvc:exclude-mapping path="/auth/**"/>
         <mvc:exclude-mapping path="/member/signUp"/>
+        <mvc:exclude-mapping path="/member/emailConfirm"/>
         <bean class="trade.assignment.web.json.interceptor.AuthInterceptor"/>
     </mvc:interceptor>
 </mvc:interceptors>  

@@ -35,9 +35,9 @@ public class MemberServiceImpl implements MemberService {
 		sendMail.setSubject("8AZON  서비스 이메일 인증]");
 		sendMail.setText(
 				new StringBuffer().append("<h1>메일인증</h1>")
-				.append("<a href='http://localhost:8080/auth/emailConfirm?email=")
-				.append(member.getEmail()).append("&memberAuthKey=")
-				.append(key).append("' target='_blank'>이메일 인증 확인</a>")
+//				.append("<a href='http://192.168.0.9:8080/second-hand-trade/json/member/emailConfirm?email=")
+				.append("<a href='http://192.168.0.9:8080/second-hand-trade/html/emailConfirm.html?email=").append(member.getEmail())
+				.append("' target='_blank'>이메일 인증 확인</a>")
 				.toString());
 		sendMail.setFrom("sososososo@gmail.com", "서어비스센터 ");
 		sendMail.setTo(member.getEmail());
@@ -88,17 +88,18 @@ public class MemberServiceImpl implements MemberService {
     public Member userAuth(Member member) throws Exception {
         Member vo =new Member();
   		System.out.println(member+"user");
-          vo=memberRepository.chkAuth(member);
-          //System.out.println("ser.userAuth.chkauth"+vo);
-          if(vo!=null){
+          //vo=memberRepository.chkAuth(member);
+          System.out.println("ser.userAuth.chkauth"+vo);
+          System.out.println("=================");
+          if(member!=null){
               try{
               	System.out.println(vo+"vo");
               	memberRepository.userAuth(member);
-                  memberRepository.successAuth(vo);
+                  memberRepository.successAuth(member);
               }catch (Exception e) {
                   e.printStackTrace();
               }}
-          return vo;
+          return member;
     }
     
 	//구글 oauth login

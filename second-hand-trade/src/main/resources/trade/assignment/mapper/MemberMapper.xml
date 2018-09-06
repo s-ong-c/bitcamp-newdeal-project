@@ -135,13 +135,28 @@
         MNO = #{no} 
   </update>
     	<!-- 사용자가 인증키 확인시 -->
-	<!-- <update id="successAuth">
+	<update id="successAuth">
         UPDATE tbl_user
         SET
-            AUTHKEY = NULL,
             prilevel =1
-        WHERE MNO = #{id}
-    </update> -->
+        WHERE EMAIL = #{email}
+    </update> 
+        <!-- 인증키 업데이트 -->
+    <update id="userAuth">
+        UPDATE tbl_user
+        SET
+            PRILEVEL = 1
+        where EMAIL = #{email}
+    </update>
+        <!-- 인증키 확인여부 -->
+<!--     <select id="chkAuth" resultType="trade.assignment.domain.Member">
+        SELECT
+            MNO,
+            NAME,
+            EMAIL
+        FROM tbl_user
+        WHERE AUTHKEY = #{memberAuthKey}
+    </select> -->
 
          	<!-- 프로필 사진 수정 -->
 	<update id="updatePhoto">
