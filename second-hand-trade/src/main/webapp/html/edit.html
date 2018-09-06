@@ -6,6 +6,9 @@
 
 </head>
 <link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="node_modules/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <style>
 h2{
 	margin:0;
@@ -14,19 +17,14 @@ h2{
 	<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	 <script src="node_modules/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="js/jquery.bit.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/edit.js"></script>
-	<script src="main/main.js"></script>
 	<script src="edit.js"></script>
-<script>
-//프로필 수정 후 로딩 될때 메시지 띄우기
-	if ('${result}' == "profileEdit") {
-		//프로필 수정일 경우 프로필 편집 활성화
-		alert("프로필이 저장되었습니다.");
-	}
-</script>
+	<script src="side.js"></script>
+	
 <body>
 <span id="react-root" aria-hidden="false">
 	<section class="_sq4bv _29u45">
@@ -37,6 +35,7 @@ h2{
 	<article class="_75z9k">
 	<!-- 프로필 사진 -->
 	<header2></header2>
+	<div id="contants">
 	<input type="file" name="file" id="inputfile" accept="image/*"	style="display: none;">
 		<!-- 프로필 변경 폼 -->
 		<form class="_gzffa" id="profileForm" method="post" >
@@ -59,7 +58,7 @@ h2{
 			<div class="_e1xik">
 				<aside class="_kx10g"> <label>사용자 이름</label> </aside>
 				<div class="_cd2n1">
-					<input type="text" id="f-name" class="_4abhr _o716c"
+					<input type="text" id="f-nickname" class="_4abhr _o716c"
 						name="nickname" value="" onkeyup="validCheck(this)">
 				</div>
 			</div>
@@ -88,9 +87,9 @@ h2{
 			<div class="_e1xik">
 				<aside class="_kx10g"> <label>소개</label> </aside>
 				<div class="_cd2n1">
-					<textarea id="intro" name="f-intro" onkeyup="validCheck(this)"
+					<textarea id="f-intro" name="f-intro" onkeyup="validCheck(this)"
 						class="_jlcqs"
-						style="width: 500px; height: 150px; resize: none; overflow: hidden; overflow-y: scroll;">${userVO.intro }</textarea>
+						style="width: 500px; height: 150px; resize: none; overflow: hidden; overflow-y: scroll;"></textarea>
 				</div>
 			</div>
 			<!-- 개인정보 -->
@@ -124,49 +123,11 @@ h2{
 						style=" padding: 5px; font-weight: 600; font-size:20px; cursor: pointer; display:none">X</label>
 				</div>
 			</div>
-			<!-- 성별 -->
-			<div class="_e1xik">
-				<aside class="_kx10g"> <label>성별</label> </aside>
-				<div class="_cd2n1">
-					<div class="_sx05v">
-						<span class="_4v6lq _8scx2 coreSpriteChevronDownGrey"></span> <select
-							id="sex" name="sex" class="_nxkvc">
-							<option value="0">선택 안함</option>
-							<option value="1">남성</option>
-							<option value="2">여성</option>
-						</select>
-					</div>
-				</div>
-				<script>
-					$("#sex option:eq(${userVO.sex})").prop("selected", true);
-				</script>
-
-			</div>
-			<!-- 비공개유무 -->
-			<div class="_e1xik">
-				<aside class="_kx10g"> <label>비공개</label> </aside>
-				<div class="_cd2n1">
-					<div class="_6dodw">
-						<label class="_l67zd" for="chkPri"> <input id="chkPri"
-							class="_snyzf" type="checkbox"> <c:if
-								test="${userVO.userlevel eq '1' }">
-								<script>
-									$("#chkPri").attr("checked", true);
-								</script>
-							</c:if> <c:if test="${userVO.userlevel eq '0' }">
-								<script>
-									$("#chkPri").attr("checked", false);
-								</script>
-							</c:if>
-							<div class="_1u1jc"></div>
-						</label>
-					</div>
-				</div>
-			</div>
-			<!-- 제출 -->
+			
 			<div class="_e1xik">
 				<aside class="_kx10g _ldhkl">
-				<label></label></aside>
+				<label></label>
+				</aside>
 				<div class="_cd2n1">
 					<div class="_eqmpg">
 						<span class="_ov9ai">
@@ -177,6 +138,7 @@ h2{
 				</div>
 			</div>
 		</form>
+		</div><!--contants  -->
 	</div>
 	</article>
 	</main>
@@ -184,6 +146,8 @@ h2{
 	</span>
 	<input type="file" name="file" id="inputfile" accept="image/*"
 		style="display: none;">
+		
+    <footer></footer>
 </body>
 
 <!-- 공통 처리 import -->

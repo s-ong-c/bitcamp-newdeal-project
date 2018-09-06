@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+@font-face{
+  font-family: BMDOHYEON;
+  src: url('BMDOHYEON_ttf.ttf') format('truetype');
+}
 
 body{
 	font-size:small;
@@ -91,3 +95,12 @@ input:focus {
 	background-color: rgba(0,0,0,0.1);
 }
 
+#app-name{
+	margin: 15px;
+    float: right;
+}
+
+#copyright{
+	margin: 15px;
+    float: left;
+}
