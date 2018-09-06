@@ -80,6 +80,7 @@
 .container {
     padding-top: 50px;
 }
+
 .image-preview-input {
     position: relative;
     overflow: hidden;
@@ -92,6 +93,8 @@
     list-style:none;
     margin-left: -40px;
     margin-top:20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .thumbnail {
     padding: 0;
@@ -449,23 +452,51 @@ text-decoration:none;
   
  <!--///////////////////////////////////////////////  --> 
     <!-- boardWrite modal -->
-<div class="modal fade" id="writeModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="modalLabel">New message</h4>
+<!-- <div class="modal fade" id="writeModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true"> -->
+<div class="modal fade" id="writeModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" style="width: 100%; border: 5px solid black;">
+   <div class="modal-dialog modal-lg"  style="border: 5px solid steelblue; width: 1000px;">
+    <div class="modal-content" style="border: 5px solid darkred;">
+      <div class="modal-header" style="border: 5px solid darkslateblue;">
+       <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h6 class="modal-title" id="modalLabel" style="margin-right: 5px; width: 40px">제목</h6>
+         <input type="text"class="form-control" id="f-title" style="border: 1px solid #cccccc; width: 700px;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <div class="modal-body">
+     <div class="modal-body" style="border: 5px solid darkslategrey;">
+      <div class="modal-category">
+            <label class="container-radio">의류, 패션잡화
+                <input class="input-radio" type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-radio">뷰티, 미용
+                <input class="input-radio" type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-radio">디지털, 가전
+                <input class="input-radio" type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-radio">생활, 식품
+                <input class="input-radio" type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-radio">기타
+                <input class="input-radio" type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+      </div>
+      <div class="modal-textarea">
+            <textarea class="form-control" id="f-content" rows="15" cols="80" style="border: 1px solid black;"></textarea>
+      </div>
       	 <form>
-          <div class="form-group">
+<!--           <div class="form-group">
             <label for="recipient-name" class="control-label">Recipient:</label>
             <input type="text" class="form-control" id="f-title">
-          </div>
-          <div class="form-group">
+          </div> -->
+ <!--          <div class="form-group">
             <label for="message-text" class="control-label">Message:</label>
             <textarea class="form-control" id="f-content"></textarea>
-          </div>
+          </div> -->
          <div class="form-group">
             <label for="message-text" class="control-label-sm">판매가:</label>
             <input class="form-control-sm" id="f-price" placeholder="ex)만원" style="margin:10px,2px,0px,10px">
@@ -496,7 +527,8 @@ text-decoration:none;
                         <figcaption>#nofilter</figcaption>
                         </a>
                     </li>
-                         <li class="col-sm-2">
+
+                    <li class="col-sm-2">
                         <a class="thumbnail _1977" id="1977" title="_1977"><img src="https://una.im/CSSgram/img/atx.jpg">
                         <video style="display:none"></video>
                         <figcaption>1977</figcaption></a>
@@ -519,6 +551,123 @@ text-decoration:none;
                         <video style="display:none"></video>
                         <figcaption>Brooklyn</figcaption></a>
                     </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail clarendon" id="Clarendon" title="clarendon"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Clarendon</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail earlybird" id="Earlybird" title="earlybird"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Earlybird</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail gingham" id="Gingham" title="gingham"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Gingham</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail hudson" id="Hudson" title="hudson"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Hudson</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail inkwell" id="Inkwell" title="inkwell"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Inkwell</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail kelvin" id="Kelvin" title="kelvin"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Kelvin</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail lark" id="Lark" title="lark"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Lark</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail lofi" id="Lo-Fi" title="lofi"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Lo-Fi</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail maven" id="Maven" title="maven"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Maven</figcaption></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail mayfair" id="Mayfair" title="mayfair"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Mayfair</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail moon" id="Moon" title="moon"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Moon</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail nashville" id="Nashville" title="nashville"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Nashville</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail perpetua" id="Perpetua" title="perpetua"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Perpetua</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail reyes" id="Reyes" title="reye"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Reyes</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail rise" id="Rise" title="rise"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Rise</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail slumber" id="Slumber" title="slumber"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Slumber</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail stinson" id="Stinson" title="stinson"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Stinson</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail toaster" id="Toaster" title="toaster"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Toaster</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail valencia" id="Valencia" title="valencia"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Valencia</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail walden" id="Walden" title="walden"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Walden</figcaption></a>
+                    </li>
+                    <li class="col-sm-2">
+                        <a class="thumbnail willow" id="Willow" title="willow"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>Willow</figcaption></a>
+                    </li>
+                     <li class="col-sm-2">
+                        <a class="thumbnail xpro2" id="X-pro II" title="xpro2"><img src="https://una.im/CSSgram/img/atx.jpg">
+                        <video style="display:none"></video>
+                        <figcaption>X-pro II</figcaption></a>
+                    </li>
                     </ul>
                     </div>
                     </div>
@@ -527,7 +676,7 @@ text-decoration:none;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id ="write-C">Send message</button>
+        <button type="button" class="btn btn-primary" id ="write-C">상품 올리</button>
       </div>
     </div>
   </div>
