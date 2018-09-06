@@ -27,11 +27,13 @@ $('.sideItems').on('click', 'a',(e) => {
 	    	console.log("aaaaa");
 	    	console.log(result)
 	    	console.log(result.nickname);
+	    	console.log(result.regdate+"???");
 	    	console.log(result.profilephoto);
 	    		$('#caption').html(result.caption);
 	    		$('#p-content').html(result.content);
 	    		$('#p-name').html(result.name);
 	    		$('#p-nickname').html(result.nickname);
+	    		$('#p-date').html(result.regdate);
 	    		$('.btnContainer').attr('title',result.postid);
 	    		$('.replyContainer').attr('title',result.postid);
 	    		$('.s2_2_1').attr('title',result.postid);
