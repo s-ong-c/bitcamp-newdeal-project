@@ -130,7 +130,7 @@ h2{
 				<div class="_cd2n1">
 					<div class="_eqmpg">
 						<span class="_ov9ai">
-							<button id="btnSubmit"
+							<button id="btnSubmit" type="button"
 								class="_qv64e _gexxb _r9b8f _njrw0">제출</button>
 						</span>
 					</div>
@@ -149,6 +149,7 @@ h2{
 
 <!-- 공통 처리 import -->
 <script>
+/*
 	$(document).ready(function() {
 		//제출 버튼
 		$("#btnSubmit").on("click", function(event) {
@@ -180,7 +181,7 @@ h2{
 		});
 
 	}); //end ready
-
+ */
 
 	//유효성 검사 에러 체크
 	var errFlg = false;
@@ -305,6 +306,33 @@ h2{
 			return false;
 		}
 	}
+	  $('#btnSubmit').on('click',()=>{
+		    console.log("나와랏");
+		    	
+		    var selectedMNO = $('#login-name').attr("title");
+
+		    
+		    $.post(`${serverApiAddr}/json/member/update`, {
+		        'no': selectedMNO,
+		        'nickname': $('#f-nickname').val(),
+		        'email': $('#f-email').val(),
+		        'website': $('#f-website').val(),
+		        'phonenumber': $('#f-tel').val(),
+		        'intro': $('#f-intro').val()
+		       
+		    }, (result)=>{
+		    		console.log('aaaa')
+		    		console.log(result);
+		        if(result.status !== 'success') return;
+		       		// alert('수정 완료!');
+		        swal("프로필수정이 완료되었습니다.!", "언제든지수정하세요!", "success")
+		        //$(document.body).trigger('refresh.list');
+		        
+		    }, 'json').fail(()=>{
+		        alert('서버 요청 중 오류 발생!')
+		    });
+		})
+
 </script>
 
 </html>

@@ -2,6 +2,8 @@ package trade.assignment.web.json;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,21 @@ public class MemberController {
             
             
             return result;
+    }
+    
+    /* 수정 */
+    @PostMapping("update")
+    public Object update(Member member, HttpSession session) throws Exception{
+        
+        Member loginUser = (Member) session.getAttribute("loginUser");
+        System.out.println(loginUser);
+        
+        member.setNo(loginUser.getNo());
+        memberService.update(member);
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("status", "success");
+        
+        return result;
     }
 
 }

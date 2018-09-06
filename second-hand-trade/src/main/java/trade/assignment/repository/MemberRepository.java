@@ -15,6 +15,8 @@ public interface MemberRepository {
 	Member authenticate(String email);
 
 	Member chkAuth(Member member);
+	
+	 int update(Member member);
 
 	void userAuth(Member member);
 

@@ -96,6 +96,19 @@
 		WHERE MNO=#{id}
 	</select>
 	
+	   <!-- kgm userUpdate -->
+    <update id="update" parameterType="member">
+	    UPDATE tbl_user
+	    SET
+	        NICKNAME = #{nickname},
+	        EMAIL = #{email},
+	        WEBSITE = #{website},
+            PHONENUMBER = #{phonenumber},
+	        INTRO = #{intro}
+	       	
+	    WHERE
+	        MNO = #{no}
+    </update>
 
 	 <select id="checkPassWord"
   parameterType="map"

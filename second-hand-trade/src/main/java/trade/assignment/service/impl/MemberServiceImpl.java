@@ -75,10 +75,12 @@ public class MemberServiceImpl implements MemberService {
     		}else{
     			return "D";
     		}
-    
 
     }
-    
+    @Override
+    public int update(Member member) {
+        return memberRepository.update(member);
+    }
     
     
 	//이메일 인증 키 검증

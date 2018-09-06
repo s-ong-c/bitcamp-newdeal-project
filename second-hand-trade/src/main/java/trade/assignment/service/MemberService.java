@@ -11,6 +11,9 @@ public interface MemberService {
     Member getMember(String email, String password);
     public Member userAuth(Member member) throws Exception;
 
+	/* ---kgm--- */
+	int update(Member member);
+    
 	public String authenticate(String email) throws Exception;
 
 	public Member googleLogin(LoginDTO dto) throws Exception;

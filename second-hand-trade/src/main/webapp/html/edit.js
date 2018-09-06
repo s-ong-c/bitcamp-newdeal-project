@@ -17,6 +17,7 @@
 //		 
 //	            return;
 //	        }
+			 $('#f-name').attr('title',result.data.no);
 		   $('#f-name').val(result.data.name);
 	       $('#f-email').val(result.data.email);
 	       $('#f-nickname').val(result.data.nickname);
@@ -59,6 +60,30 @@
     			
     		 })
     })	
+    $('#btnSubmit').on('click',()=>{
+    console.log("나와랏");
+    	
+    var selectedMNO = $('#login-name').attr("title");
+
+    
+    $.post(`${serverApiAddr}/json/member/update`, {
+        'no': selectedMNO,
+        'nickname': $('#f-nickname').val(),
+        'email': $('#f-email').val(),
+        'website': $('#f-website').val(),
+        'phonenumber': $('#f-tel').val(),
+        'intro': $('#f-intro').val()
+       
+    }, (result)=>{
+        if(result.status !== 'success') return;
+        alert('수정 완료!');
+        
+        $(document.body).trigger('refresh.list');
+        
+    }, 'json').fail(()=>{
+        alert('서버 요청 중 오류 발생!')
+    });
+})
 
  
 

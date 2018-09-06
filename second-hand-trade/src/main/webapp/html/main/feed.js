@@ -25,6 +25,7 @@ $('.sideItems').on('click', 'a',(e) => {
 	    	data2 = result;
 	    	console.log({list:result});
 	    	console.log("aaaaa");
+	    	console.log(result)
 	    	console.log(result.nickname);
 	    	console.log(result.profilephoto);
 	    		$('#caption').html(result.caption);
@@ -34,6 +35,7 @@ $('.sideItems').on('click', 'a',(e) => {
 	    		$('.btnContainer').attr('title',result.postid);
 	    		$('.replyContainer').attr('title',result.postid);
 	    		$('.s2_2_1').attr('title',result.postid);
+	    		$('.s2_4_1').attr('title',result.postid);
 	    		$("#p-photo").attr("src", "http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122"+result.profilephoto);
 	    		$("#p-url").attr("src", "http://faint1122.s3.ap-northeast-2.amazonaws.com/faint1122"+result.url);
 	        console.log(html2)
@@ -41,6 +43,12 @@ $('.sideItems').on('click', 'a',(e) => {
 	        //$('#myModal').html(html2);
 	        console.log($('.btnContainer').attr("title"))
 	        reply();
+            
+            //게시물 수정버튼 삽입
+            if(result.userid==$('#login-name').attr("title")){
+          	  $(".s2_4_1").append("<span style='cursor: pointer; '><i id='postEdit' class='glyphicon glyphicon-option-horizontal'></i></span>")
+          	  $(".replyRegist").css("width", "94%");
+            }
 	    });
 	
 });
