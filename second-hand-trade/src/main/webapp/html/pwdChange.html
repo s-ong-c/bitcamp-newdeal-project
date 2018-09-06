@@ -61,7 +61,12 @@
 			event.preventDefault();
 			//에러난 항목 있으면 다시 체크
 			if (errFlg) {
-				alert("올바른 정보를 입력하세요.");
+				 swal({
+			            html: true,
+			            title: "올바른 정보 <br/> 입력하세요!!!",
+			            type: "warning",
+			            confirmButtonClass: "btn-danger",
+			          });
 				return false;
 			}
 			var form = $("#profileForm");
@@ -92,7 +97,12 @@
 			errFlg = false;
 			$(".err").each(function(){
 				if($(this).css("color") == "rgb(255, 0, 0)"){
-					alert("올바른 정보를 입력하세요.");
+					 swal({
+				            html: true,
+				            title: "올바른 정보 <br/> 입력하세요!!!",
+				            type: "warning",
+				            confirmButtonClass: "btn-danger",
+				          });
 					errFlg =true;
 					return false;	
 				}
