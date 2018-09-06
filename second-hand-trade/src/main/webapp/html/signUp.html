@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
+		<link href="node_modules/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
 	<link rel="stylesheet" type="text/css" href="../vendor/css-hamburgers/hamburgers.min.css">
 	<link rel="stylesheet" type="text/css" href="../vendor/animsition/css/animsition.min.css">
@@ -46,11 +48,11 @@
 				</div> 
 				
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-					<input class="input100" type="password" id="fPassword" placeholder="password">
+					<input class="input100" type="password" id="fPassword"onkeyup="checkvalue()" placeholder="password">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-					<input class="input100" type="password" id="chkPassword" placeholder="비밀번확인">
+					<input class="input100" type="password" id="chkPassword"onkeyup="checkvalue()" placeholder="비밀번확인">
 					<span class="focus-input100"></span>
 				</div>
 				<div>
@@ -80,6 +82,8 @@
                 alert("비밀번호 확인 40자 이내로 입력해 주세요.");
                 return false;
             }
+            console.log(signup.fPassword.value+"sss")
+            console.log(signup.chkPassword.value+"sss")
             if(signup.fPassword.value!=signup.chkPassword.value){
                 $('#pwsame').text('비밀번호가 일치하지 않습니다.');
                 $('#pwsame').css("color","red");
@@ -103,7 +107,7 @@
 <script>
     $(document).on('click','#authenticate',function(){
         var email = $('#fEmail').val();
-
+	
         var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 
         if(fEmail.value ==0){
@@ -127,14 +131,26 @@
             if(responseMsg !=null){
 	            	if(responseMsg==='T'){
 	                  
-	                        alert('사용 가능한 이메일입니다.' );
+	                        //alert('사용 가능한 이메일입니다.' );
+	                        swal({
+	                            html: true,
+	                            title: "사용 가능한 이메일입니다.",
+	                            type: "warning",
+	                            confirmButtonClass: "btn-danger",
+	                          });
+
 	                        chkid=true;
 	                    }
 	            	else if(responseMsg==='F'){
 	            		alert('인증 대기중인 이메일 입니다. 인증해주세요.' );
 	            	
 	            	}else{
-	            		alert('이미 사용중인 이메일입니다.');
+	            	     swal({
+	                            html: true,
+	                            title: "이미사용중인이메일입니다.",
+	                            type: "warning",
+	                            confirmButtonClass: "btn-danger",
+	                          });
 	            		}
             }else{
             		alert('서버와의 통신이 원할하지 않습니다.\n다시 시도 해 주십시오.' );
@@ -152,6 +168,7 @@
 	<script src="../vendor/animsition/js/animsition.min.js"></script>
 	<script src="../vendor/bootstrap/js/popper.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="node_modules/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 	<script src="../vendor/select2/select2.min.js"></script>
 	<script src="../vendor/daterangepicker/moment.min.js"></script>
 	<script src="../vendor/daterangepicker/daterangepicker.js"></script>

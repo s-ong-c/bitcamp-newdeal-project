@@ -45,6 +45,16 @@ $('#addBtn').click(() => {
         var thisAlert = $(input).parent();
         $(thisAlert).removeClass('alert-validate');
     }
+    if(!chkid){
+        swal({
+            html: true,
+            title: "아이디 중복체크를 <br/> 확인해주십시오",
+            type: "warning",
+            confirmButtonClass: "btn-danger",
+          });
+      signup.fEmail.focus();
+      return false;
+    }
 //    (function () {
 //        if($('#fEmail').value==null){
 //            alert("이메일이 입력되지 않았습니다.");

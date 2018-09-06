@@ -59,7 +59,14 @@ $('#loginBtn').click(() => {
         if(result.status==='success'){
         		location.href='html/main/main.html'
         }else{
-        	alert('로그인 실패')
+        //	alert('로그인 실패')
+            swal({
+                html: true,
+                title: "<span style='font-size: 27px;'>아이디 혹은 비밀번호가 틀립니다.</span>",
+                text: "다시 한 번 확인 후 로그인해주십시오.",
+                type: "warning",
+                confirmButtonClass: "btn-danger",
+              });
         }
         
     }, 'json')
